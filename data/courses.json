@@ -1,6 +1,7 @@
 {
     "ds": {
         "canonical_name": "Diskrete Strukturen",
+        "canonical_abbr": "DS",
         "names": ["DS", "Diskrete Strukturen"],
         "semester": 1,
         "links": {
@@ -11,6 +12,7 @@
     },
     "eidi": {
         "canonical_name": "Einführung in die Informatik",
+        "canonical_abbr": "EidI",
         "names": ["EidI", "EI", "Einführung in die Informatik"],
         "semester": 1,
         "links": {
@@ -19,6 +21,7 @@
     },
     "ic": {
         "canonical_name": "Information und Codierung",
+        "canonical_abbr": "IC",
         "names": ["IC", "IuC", "Information und Codierung"],
         "semester": 1,
         "links": {
@@ -28,6 +31,7 @@
     },
     "lina": {
         "canonical_name": "Lineare Algebra",
+        "canonical_abbr": "LinA",
         "names": ["LinA", "LA", "Lineare Algebra"],
         "semester": 1,
         "links": {
@@ -36,6 +40,7 @@
     },
     "mod": {
         "canonical_name": "Modellierung",
+        "canonical_abbr": "Mod",
         "names": ["Mod", "Modellierung"],
         "semester": 1,
         "links": {
