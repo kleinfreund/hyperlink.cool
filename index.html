@@ -10,44 +10,108 @@
     <link rel="stylesheet" href="css/vlaume.css">
 
     <script>
-    (function() {
-        var courseData;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "data/courses.json", true);
-        xhr.onload = function(e) {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    courseData = JSON.parse(xhr.responseText);
-                    console.log(courseData.ds);
-                } else {
-                    console.error(xhr.statusText);
+    // Build a list of courses from JSON data
+    function buildCourseList() {
+        var courseList = document.createElement('ul');
+        courseList.setAttribute('class', 'course-list');
+        for (var course in window.courseData) {
+            if (!course.hasOwnProperty(course)) {
+                var current = window.courseData[course];
+                var htmlStr = '<li class="course  course--' + course + '">' + current.canonical_name + '<ul>';
+
+                for (var link in current.links) {
+                    if (!link.hasOwnProperty(link)) {
+                        htmlStr += '<li><a href="' + current.links[link] + '">' + link + '</a></li>';
+                    }
                 }
+
+                htmlStr += '</ul></li>';
+                courseList.innerHTML += htmlStr;
             }
-        };
-        xhr.onerror = function(e) {
-            console.error(xhr.statusText);
-        };
-        xhr.send(null);
-    })();
+        }
+        var courseFinder = document.getElementById('course-finder');
+        courseFinder.parentNode.insertBefore(courseList, courseFinder.nextSibling);
+    }
+
+    function arrayContainsSubstring(array, substring) {
+        var lowercaseArray = array.map(function(item) {
+            return item.toLowerCase();
+        })
+
+        for (var i = 0; i < lowercaseArray.length; i++) {
+            if (lowercaseArray[i].indexOf(substring.toLowerCase()) > -1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function filterCourseList(searchStr) {
+        var filteredKeys = [];
+        for (var course in window.courseData) {
+            if (!course.hasOwnProperty(course)) {
+                if (!arrayContainsSubstring(window.courseData[course].names, searchStr)) {
+                    filteredKeys.push(course);
+                }
+                // altNames = altNames.map(function(item) {
+                //     return item.toLowerCase();
+                // })
+
+                // for (var i = 0; i < altNames.length; i++) {
+                //     if (altNames[i].toLowerCase().indexOf(searchStr) === -1) {
+                //         filteredKeys.push(course);
+                //     }
+                // }
+            }
+        }
+        for (var i = 0; i < filteredKeys.length; i++) {
+            var elements = document.getElementsByClassName('course--' + filteredKeys[i]);
+            while(elements.length > 0){
+                elements[0].parentNode.removeChild(elements[0]);
+            }
+        }
+    }
+
+    window.courseData;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "data/courses.json", false);
+    xhr.onload = function(e) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                courseData = JSON.parse(xhr.responseText);
+            } else {
+                console.error(xhr.statusText);
+            }
+        }
+    };
+    xhr.onerror = function(e) {
+        console.error(xhr.statusText);
+    };
+    xhr.send(null);
 
     window.onload = function(e) {
+        buildCourseList();
+
         var input = document.getElementById('course-finder');
-        var output = document.getElementById('output');
 
         input.addEventListener("input", function(event) {
-            output.value = input.value;
+            var searchStr = input.value;
+            if (searchStr.length > 0) {
+                filterCourseList(searchStr);
+            }
         }, false);
     };
     </script>
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
 </head>
 <body>
     <main class="page-content">
         <div class="wrapper">
             <h1>vlau.me</h1>
-            <input id="course-finder" type="text" spellcheck="false" autofocus class="course-finder">
 
-            <h2>Output</h2>
-            <textarea id="output"></textarea>
+            <input id="course-finder" class="course-finder" type="text" spellcheck="false" autofocus>
         </div>
     </main>
 
