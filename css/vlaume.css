@@ -1,10 +1,46 @@
+/*
+red: #D11C00;
+red: #A80070;
+pink: #D60076;
+*/
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font: 1.25em Consolas, monospace;
+    color: #D11C00;
+    background-color: #3D0F3D;
+    font: 300 20px Ubuntu, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: #D15700;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: #9e4200;
+}
+
+input, textarea {
+    color: #D11C00;
+    background-color: #32003D;
+    font: 300 20px Ubuntu, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+input:focus {
+    outline-color: #9e4200;
 }
 
 .wrapper {
-    max-width: 800px;
+    max-width: 960px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -13,4 +49,33 @@ textarea {
     width: 100%;
     height: 200px;
     resize: vertical;
+    border: 0;
+}
+
+.site-foot {
+    margin-top: 10rem;
+    padding: 2rem;
+    color: #fff;
+    background-color: #32003D;
+}
+
+.course-finder {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 3rem;
+    border: 0;
+}
+
+.course-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.course {
+    background-color: #32003D;
+    padding: 10px 20px;
+}
+
+.course:not(:last-child) {
+    margin-bottom: 10px;
 }
