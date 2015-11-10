@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>vlau.me</title>
+
+    <!-- <link rel="icon" href="/img/icon.png"> -->
+    <link rel="stylesheet" href="css/vlaume.css">
+
+    <script>
+    (function() {
+        var courseData;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "data/courses.json", true);
+        xhr.onload = function(e) {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    courseData = JSON.parse(xhr.responseText);
+                    console.log(courseData.ds);
+                } else {
+                    console.error(xhr.statusText);
+                }
+            }
+        };
+        xhr.onerror = function(e) {
+            console.error(xhr.statusText);
+        };
+        xhr.send(null);
+    })();
+
+    window.onload = function(e) {
+        var input = document.getElementById('course-finder');
+        var output = document.getElementById('output');
+
+        input.addEventListener("input", function(event) {
+            output.value = input.value;
+        }, false);
+    };
+    </script>
+</head>
+<body>
+    <main class="page-content">
+        <div class="wrapper">
+            <h1>vlau.me</h1>
+            <input id="course-finder" type="text" spellcheck="false" autofocus class="course-finder">
+
+            <h2>Output</h2>
+            <textarea id="output"></textarea>
+        </div>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrapper">
+            <p>This is work-in-progress.</p>
+        </div>
+    </footer>
+</body>
+</html>

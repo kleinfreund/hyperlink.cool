@@ -1,0 +1,45 @@
+{
+    "ds": {
+        "canonical_name": "Diskrete Strukturen",
+        "names": ["DS", "Diskrete Strukturen"],
+        "semester": 1,
+        "links": {
+            "Vorlesungsfolien": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/",
+            "Übungsaufgaben": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/",
+            "Tutoriumsfolien": "http://webuser.uni-weimar.de/~lopa1693/materialien/master/master.html"
+        }
+    },
+    "eidi": {
+        "canonical_name": "Einführung in die Informatik",
+        "names": ["EidI", "EI", "Einführung in die Informatik"],
+        "semester": 1,
+        "links": {
+            "Interner Bereich": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
+        }
+    },
+    "ic": {
+        "canonical_name": "Information und Codierung",
+        "names": ["IC", "IuC", "Information und Codierung"],
+        "semester": 1,
+        "links": {
+            "Vorlesungsfolien": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/",
+            "Interner Bereich": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
+        }
+    },
+    "lina": {
+        "canonical_name": "Lineare Algebra",
+        "names": ["LinA", "LA", "Lineare Algebra"],
+        "semester": 1,
+        "links": {
+            "Übungsaufgaben": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
+        }
+    },
+    "mod": {
+        "canonical_name": "Modellierung",
+        "names": ["Mod", "Modellierung"],
+        "semester": 1,
+        "links": {
+            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=185"
+        }
+    }
+}
