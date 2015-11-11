@@ -1,0 +1,166 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*
+lila 3D0F3D
+lila 32003D
+yllw FAA700
+*/
+
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+    color: #FFE0E7;
+    background-color: #28143D;
+    font: 300 20px Ubuntu, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul, hr,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl,
+figure {
+    margin-bottom: 1.5rem;
+}
+
+ul, ol {
+    margin-left: 2rem;
+}
+
+a {
+    color: #8F2400;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+    color: #BD2F00;
+}
+
+input, textarea {
+    color: #fff;
+    font: 300 20px Ubuntu, Arial, sans-serif;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+    border: 0;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nav {
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.nav > li:not(:last-child) {
+    margin-right: 10px;
+}
+
+.nav > li,
+.nav > li > a {
+    display: inline-block;
+}
+
+.nav > li > a {
+    padding: 4px 10px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #8F2400;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus,
+.nav > li > a:active {
+    background-color: #BD2F00;
+    outline-color: #FFBD24;
+}
+
+.site-head {
+    margin-bottom: 5rem;
+    padding: 20px 5rem;
+}
+
+.site-foot {
+    padding: 2rem;
+}
+
+.site-foot p:last-child {
+    margin-bottom: 0;
+}
+
+.page-content {
+    margin-bottom: 5rem;
+}
+
+.list-filter {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 3rem;
+    border: 0;
+}
+
+input:hover,
+input:focus,
+input:active {
+    outline-color: #FFBD24;
+}
+
+.course-list {
+    margin-left: 0;
+    list-style: none;
+}
+
+.course-list ul {
+    margin-bottom: 0;
+}
+
+.list-filter,
+.list-item {
+    background-color: #1E0F2E;
+}
+
+.list-item {
+    position: relative;
+    padding: 20px;
+}
+
+.list-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.list-item:after {
+    content: attr(data-abbr);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.list-item__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
