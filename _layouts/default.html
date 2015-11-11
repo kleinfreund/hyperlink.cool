@@ -14,13 +14,16 @@ layout: compress
     <link rel="stylesheet" href="css/vlaume.css">
 
     <script src="js/vlaume.js"></script>
-    <script>listFilter('data/courses.json', 'list-filter');</script>
+    <script>listFilter('data/courses.json', 'filter-input');</script>
 
+    <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
 </head>
 <body>
     <header class="site-head">
-        <h1><a href="/" rel="home">{{ site.title }}</a></h1>
+        <div class="wrapper">
+            <h1 class="site-title"><a href="/" rel="home">{{ site.title }}</a></h1>
+        </div>
     </header>
 
     <main class="page-content">
@@ -31,7 +34,7 @@ layout: compress
 
     <footer class="site-foot">
         <div class="wrapper">
-            <p>This is work-in-progress.</p>
+            <p>Halt, halt, halt! Ich bin doch noch gar nicht fertig. Hier wird noch gebaut und hässlicher Prototyp-Code verwurstet. Schreibt mit doch ’ne <a href="mailto:{{ site.author.mail }}">Mail</a> wenn ihr Fragen habt. Gerne auch Code Reviews. Den Zwinker-Smiley spar ich mir.</p>
         </div>
     </footer>
 </body>
