@@ -1,0 +1,41 @@
+full_rebuild: true
+
+title: vlau.me
+url: http://vlau.me
+description: ''
+
+permalink: /:title
+
+exclude:
+  - 'node_modules'
+  - '*.sublime-workspace'
+
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  input: GFM
+  auto_ids: false
+
+sass:
+  style: compressed
+
+
+
+# ui_color: 000000
+
+# compress.html by Anatol Broder (http://jch.penibelst.de)
+compress_html:
+  clippings: all
+  comments: ["<!--", "-->"]
+  endings: all
+  ignore:
+    envs: [local]
+
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
