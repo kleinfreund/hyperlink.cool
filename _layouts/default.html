@@ -1,0 +1,38 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
+
+    {% if site.description %}<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% endif %}
+
+    <link rel="stylesheet" href="css/vlaume.css">
+
+    <script src="js/vlaume.js"></script>
+    <script>listFilter('data/courses.json', 'list-filter');</script>
+
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
+</head>
+<body>
+    <header class="site-head">
+        <h1><a href="/" rel="home">{{ site.title }}</a></h1>
+    </header>
+
+    <main class="page-content">
+        <div class="wrapper">
+            {{ content }}
+        </div>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrapper">
+            <p>This is work-in-progress.</p>
+        </div>
+    </footer>
+</body>
+</html>
