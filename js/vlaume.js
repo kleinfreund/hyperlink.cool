@@ -1,11 +1,12 @@
-function listFilter(jsonFile, filterId) {
+function listFilter(jsonFile, inputID) {
     // Variable that stores the course data from the JSON file
     var listData;
+    var listClass = 'course-list';
     var listItemClass = 'list-item';
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', jsonFile, false);
+    xhr.open('GET', jsonFile, true);
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -24,7 +25,12 @@ function listFilter(jsonFile, filterId) {
     window.onload = function(e) {
         buildList();
 
-        var input = document.getElementById(filterId);
+        var input = document.getElementById(inputID);
+        var firstItem = document.getElementById(listClass).firstElementChild;
+
+        if (firstItem.className.indexOf(listItemClass) > -1) {
+            firstItem.className += '  ' + listItemClass + '--active';
+        }
 
         var keyArray = []
         for (var key in listData) {
@@ -38,6 +44,36 @@ function listFilter(jsonFile, filterId) {
             // … and filter the course list
             filterCourseList(input.value);
         }, false);
+    };
+
+    window.onkeydown = function(e) {
+        e = e || window.event;
+
+        if ([13, 38, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+
+        var activeClass = listItemClass + '--active';
+        var activeItem = document.getElementsByClassName(activeClass)[0];
+        var targetItem;
+
+        if (e.keyCode === 13) {
+            // console.log('enter');
+        } else if (e.keyCode === 38) {
+            targetItem = activeItem.previousSibling;
+        } else if (e.keyCode === 40) {
+            targetItem = activeItem.nextSibling;
+        }
+        if (([38, 40].indexOf(e.keyCode) > -1) && targetItem !== null) {
+            if (targetItem.className.indexOf(listItemClass) > -1) {
+                activeItem.classList.remove(activeClass);
+                targetItem.className += '  ' + activeClass;
+                var offsetTop = window.scrollY + document.documentElement.clientHeight - targetItem.offsetTop;
+                if (offsetTop < 0) {
+                    targetItem.scrollIntoView(false);
+                }
+            }
+        }
     };
 
     // Build a course item that represents one course in the course list
@@ -59,8 +95,8 @@ function listFilter(jsonFile, filterId) {
     // Populate the course list
     function buildList() {
         var list = document.createElement('ul');
-        list.id = 'course-list';
-        list.className = 'course-list';
+        list.id = listClass;
+        list.className = listClass;
 
         for (var key in listData) {
             if (!key.hasOwnProperty(key)) {
@@ -68,8 +104,8 @@ function listFilter(jsonFile, filterId) {
             }
         }
 
-        var input = document.getElementById(filterId);
-        input.parentNode.insertBefore(list, input.nextSibling);
+        var filterContainer = document.getElementById('filter-container');
+        filterContainer.insertBefore(list, null);
     }
 
     // Check whether an array contains strings that contain `substring`
@@ -122,7 +158,21 @@ function listFilter(jsonFile, filterId) {
             // Check whether the course item already exists …
             if (document.getElementsByClassName(listItemClass + '--' + relatedKeys[i]).length === 0) {
                 // … and add it otherwise
-                buildListItem(document.getElementById('course-list'), relatedKey, listData[relatedKey]);
+                buildListItem(document.getElementById(listClass), relatedKey, listData[relatedKey]);
+            }
+        }
+
+        var firstItem = document.getElementById(listClass).firstElementChild;
+
+        if (firstItem !== null) {
+            if (firstItem.className.indexOf(listItemClass) > -1) {
+                var activeClass = listItemClass + '--active';
+                var activeItems = document.getElementsByClassName(activeClass);
+                for (var i = 0; i < activeItems.length; i++) {
+                    activeItems[i].classList.remove(activeClass);
+                }
+
+                firstItem.className += '  ' + activeClass;
             }
         }
     }
