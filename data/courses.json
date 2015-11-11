@@ -12,7 +12,7 @@
     },
     "eidi": {
         "title": "Einführung in die Informatik",
-        "canonical_abbr": "EidI",
+        "abbr": "EidI",
         "names": ["EidI", "EI", "Einführung in die Informatik"],
         "semester": 1,
         "links": {
@@ -21,7 +21,7 @@
     },
     "ic": {
         "title": "Information und Codierung",
-        "canonical_abbr": "IC",
+        "abbr": "IC",
         "names": ["IC", "IuC", "Information und Codierung"],
         "semester": 1,
         "links": {
@@ -31,20 +31,111 @@
     },
     "lina": {
         "title": "Lineare Algebra",
-        "canonical_abbr": "LinA",
+        "abbr": "LinA",
         "names": ["LinA", "LA", "Lineare Algebra"],
         "semester": 1,
         "links": {
-            "Übungsaufgaben": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
+            "Uni-Website": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
         }
     },
     "mod": {
         "title": "Modellierung",
-        "canonical_abbr": "Mod",
-        "names": ["Mod", "Modellierung"],
+        "abbr": "Mod",
+        "names": ["Mod", "Modellierung", "modelling"],
         "semester": 1,
         "links": {
             "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=185"
+        }
+    },
+    "ad": {
+        "title": "Algorithmen und Datenstrukturen",
+        "abbr": "AD",
+        "names": ["AD", "AlgoDat", "Algorithmen und Datenstrukturen", "Algorithms and Data Structures"],
+        "semester": 3,
+        "links": {
+            "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
+        }
+    },
+    "db": {
+        "title": "Datenbanken",
+        "abbr": "DB",
+        "names": ["DB", "Datenbanken", "databases"],
+        "semester": 3,
+        "links": {
+            "Uni-Website": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
+        }
+    },
+    "hci": {
+        "title": "Human Computer Interaction",
+        "abbr": "HCI",
+        "names": ["HCI", "Human Computer Interaction"],
+        "semester": 3,
+        "links": {
+            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=287"
+        }
+    },
+    "num": {
+        "title": "Numerik",
+        "abbr": "Num",
+        "names": ["Num", "Numerik"],
+        "semester": 3,
+        "links": {
+            "Uni-Website": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
+        }
+    },
+    "pvs": {
+        "title": "Parallele und verteilte Systeme",
+        "abbr": "PVS",
+        "names": ["PVS", "PuVS", "Parallele und verteilte Systeme", "parallel and distributed systems"],
+        "semester": 3,
+        "links": {
+            "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
+        }
+    },
+    "se": {
+        "title": "Software Engineering",
+        "abbr": "SE",
+        "names": ["SE", "Software Engineering", "Software-Entwurf"],
+        "semester": 3,
+        "links": {
+            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=218"
+        }
+    },
+    "mail": {
+        "title": "Webmail",
+        "abbr": "📧",
+        "names": ["Webmail", "Mail", "Unimail", "Uni-Mail"],
+        "semester": -1,
+        "links": {
+            "Webmail": "https://webmail.uni-weimar.de/"
+        }
+    },
+    "bison": {
+        "title": "Serviceportal für Studium und Lehre",
+        "abbr": "BISON",
+        "names": ["BISON", "Serviceportal"],
+        "semester": -1,
+        "links": {
+            "BISON": "http://www.uni-weimar.de/qisserver"
+        }
+    },
+    "pinboard": {
+        "title": "Pinnwände",
+        "abbr": "📌",
+        "names": ["Pinnwand", "Pinnwände", "Piazza"],
+        "semester": -1,
+        "links": {
+            "Pinnwände": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/",
+            "Piaza": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/bereich/piazza/"
+        }
+    },
+    "mensa": {
+        "title": "Mensa am Park – Speiseplan",
+        "abbr": "🍔",
+        "names": ["mensa", "Speiseplan"],
+        "semester": -1,
+        "links": {
+            "Mensa am Park": "http://www.stw-thueringen.de/english/dining-halls/facilities/weimar/mensa-am-park.html#accordion1"
         }
     }
 }
