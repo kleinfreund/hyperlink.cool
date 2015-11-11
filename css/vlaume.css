@@ -1,19 +1,35 @@
-/*
-red: #D11C00;
-red: #A80070;
-pink: #D60076;
-*/
-
 *, *:before, *:after {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
+html {
+    min-height: 100%;
+    overflow-y: scroll;
     color: #D11C00;
     background-color: #3D0F3D;
     font: 300 20px Ubuntu, Arial, sans-serif;
     line-height: 1.5;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul, hr,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl,
+figure {
+    margin-bottom: 1.5rem;
+}
+
+ul, ol {
+    margin-left: 2rem;
 }
 
 a {
@@ -33,16 +49,11 @@ input, textarea {
     background-color: #32003D;
     font: 300 20px Ubuntu, Arial, sans-serif;
     line-height: 1.5;
+    text-decoration: none;
 }
 
 input:focus {
     outline-color: #9e4200;
-}
-
-.wrapper {
-    max-width: 960px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 textarea {
@@ -52,6 +63,12 @@ textarea {
     border: 0;
 }
 
+.wrapper {
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .site-foot {
     margin-top: 10rem;
     padding: 2rem;
@@ -59,16 +76,21 @@ textarea {
     background-color: #32003D;
 }
 
-.course-finder {
+.course-filter {
     width: 100%;
+    margin-bottom: 10px;
     padding: 10px 20px;
     font-size: 3rem;
     border: 0;
 }
 
 .course-list {
-    padding-left: 0;
+    margin-left: 0;
     list-style: none;
+}
+
+.course-list ul {
+    margin-bottom: 0;
 }
 
 .course {
