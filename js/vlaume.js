@@ -6,7 +6,7 @@ function listFilter(jsonFile, inputID) {
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', jsonFile, true);
+    xhr.open('GET', jsonFile, false);
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -25,9 +25,7 @@ function listFilter(jsonFile, inputID) {
     window.onload = function(e) {
         buildList();
 
-        var input = document.getElementById(inputID);
         var firstItem = document.getElementById(listClass).firstElementChild;
-
         if (firstItem.className.indexOf(listItemClass) > -1) {
             firstItem.className += '  ' + listItemClass + '--active';
         }
@@ -37,6 +35,7 @@ function listFilter(jsonFile, inputID) {
             keyArray = keyArray.concat(listData[key].names);
         }
 
+        var input = document.getElementById(inputID);
         input.placeholder = keyArray[Math.floor(Math.random() * keyArray.length)];;
 
         // Watch the search field for input changes …
