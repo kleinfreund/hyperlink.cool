@@ -1,8 +1,7 @@
 function listFilter(jsonFile, filterId) {
     // Variable that stores the course data from the JSON file
     var listData;
-    var listItemClass = 'course';
-    var listItemClassPrefix = listItemClass + '--';
+    var listItemClass = 'list-item';
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
@@ -27,6 +26,13 @@ function listFilter(jsonFile, filterId) {
 
         var input = document.getElementById(filterId);
 
+        var keyArray = []
+        for (var key in listData) {
+            keyArray = keyArray.concat(listData[key].names);
+        }
+
+        input.placeholder = keyArray[Math.floor(Math.random() * keyArray.length)];;
+
         // Watch the search field for input changes …
         input.addEventListener('input', function(e) {
             // … and filter the course list
@@ -36,7 +42,10 @@ function listFilter(jsonFile, filterId) {
 
     // Build a course item that represents one course in the course list
     function buildListItem(list, key, value) {
-        var courseStr = '<li class="' + listItemClass + '  ' + listItemClassPrefix + key + '">' + value.title + '<ul>';
+        var courseStr = '<li class="' + listItemClass + '  ' + listItemClass + '--' + key
+            + '" data-abbr="' + value.abbr + '">'
+            + '<div class="' + listItemClass + '__title">' + value.title + '</div>'
+            + '<ul class="nav">';
 
         for (var link in value.links) {
             if (!link.hasOwnProperty(link)) {
@@ -100,7 +109,7 @@ function listFilter(jsonFile, filterId) {
         // Remove unrelated courses
         for (var i = 0; i < unrelatedKeys.length; i++) {
             // Check whether there are any course items …
-            var listItems = document.getElementsByClassName(listItemClassPrefix + unrelatedKeys[i]);
+            var listItems = document.getElementsByClassName(listItemClass + '--' + unrelatedKeys[i]);
             while (listItems.length > 0) {
                 // … and remove them
                 listItems[0].parentNode.removeChild(listItems[0]);
@@ -111,7 +120,7 @@ function listFilter(jsonFile, filterId) {
         for (var i = 0; i < relatedKeys.length; i++) {
             var relatedKey = relatedKeys[i]
             // Check whether the course item already exists …
-            if (document.getElementsByClassName(listItemClassPrefix + relatedKeys[i]).length === 0) {
+            if (document.getElementsByClassName(listItemClass + '--' + relatedKeys[i]).length === 0) {
                 // … and add it otherwise
                 buildListItem(document.getElementById('course-list'), relatedKey, listData[relatedKey]);
             }
