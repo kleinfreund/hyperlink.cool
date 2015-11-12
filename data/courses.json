@@ -50,7 +50,7 @@
     "ad": {
         "title": "Algorithmen und Datenstrukturen",
         "abbr": "AD",
-        "names": ["AD", "AlgoDat", "Algorithmen und Datenstrukturen", "Algorithms and Data Structures"],
+        "names": ["AD", "ADS", "AlgoDat", "Algorithmen und Datenstrukturen", "Algorithms and Data Structures"],
         "semester": 3,
         "links": {
             "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
