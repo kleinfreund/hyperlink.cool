@@ -48,36 +48,90 @@ function listFilter(jsonFile, inputID) {
     window.onkeydown = function(e) {
         e = e || window.event;
 
-        if ([13, 38, 40].indexOf(e.keyCode) > -1) {
+        // If `e.keyCode` is not in the array, abort mission right away
+        // `enter` – 13;   `esc` – 27;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
+        if ([13, 27, 37, 38, 39, 40].indexOf(e.keyCode) === -1) {
+            return;
+        }
+
+        var activeItemClass = listItemClass + '--active';
+        var activeLinkClass = listItemClass + '__link--active';
+        var activeListItems = document.getElementsByClassName(activeItemClass);
+        var activeLinkItems = document.getElementsByClassName(activeLinkClass);
+
+        // Determine in which element has the active state: list or link item?
+        if (activeListItems.length > 0 && activeLinkItems.length > 0) {
+            // Bad voodoo happened. This should not be possible.
+            console.log('Both list and link items have an active class. This should not happen.');
+        } else if (activeListItems.length > 0) {
+            // A list item is active
+            // Cancel on `←`, `→`, `Esc` key presses. We don’t need them here.
+            if ([27, 37, 39].indexOf(e.keyCode) > -1) {
+                return;
+            }
+
+            // Else, we don’t want the default interaction to trigger.
             e.preventDefault();
-        }
 
-        var activeClass = listItemClass + '--active';
-        var activeItem = document.getElementsByClassName(activeClass)[0];
-        var targetItem, offsetTop;
+            var activeItem = activeListItems[0];
+            var targetItem;
 
-        if (e.keyCode === 13) {
-            targetItem = activeItem;
-        } else if (e.keyCode === 38) {
-            targetItem = activeItem.previousSibling;
+            if (e.keyCode === 13) {
+                var linkItems = activeItem.getElementsByClassName(listItemClass + '__link');
+                activeItem.classList.remove(activeItemClass);
+                linkItems[0].className += '  ' + listItemClass + '__link--active';
+
+                // We’re done here
+                return;
+            } else if (e.keyCode === 38) {
+                targetItem = activeItem.previousSibling;
+            } else if (e.keyCode === 40) {
+                targetItem = activeItem.nextSibling;
+            }
 
             if (targetItem !== null) {
-                offsetTop = targetItem.offsetTop - window.scrollY;
-            }
-        } else if (e.keyCode === 40) {
-            targetItem = activeItem.nextSibling;
+                if (targetItem.className.indexOf(listItemClass) > -1) {
+                    activeItem.classList.remove(activeItemClass);
+                    targetItem.className += '  ' + activeItemClass;
 
+                    // List items have `tabindex="-1"` so they can get the focus without interupting
+                    // regular tabbing through links. This, conveniently, scrolls them into the viewport.
+                    targetItem.focus();
+                }
+            }
+        } else if (activeLinkItems.length > 0) {
+            // A link item is active, prevent the default interaction for the pressed key
+            e.preventDefault();
+
+            var activeItem = activeLinkItems[0];
+            var targetItem;
+
+            if (e.keyCode === 27) {
+                function findAncestor(el, cls) {
+                    while ((el = el.parentElement) && !el.classList.contains(cls));
+                    return el;
+                }
+
+                var parentListItem = findAncestor(activeLinkItems[0], listItemClass);
+                activeLinkItems[0].classList.remove(activeLinkClass);
+                parentListItem.className += '  ' + activeItemClass;
+
+                return;
+            } else if (e.keyCode === 13) {
+                window.open(activeLinkItems[0].href, '_blank');
+
+                return;
+            } else if ([37, 38].indexOf(e.keyCode) > -1) {
+                targetItem = activeItem.previousSibling;
+            } else if ([39, 40].indexOf(e.keyCode) > -1) {
+                targetItem = activeItem.nextSibling;
+            }
+
+            console.log(targetItem);
             if (targetItem !== null) {
-                offsetTop = window.scrollY + document.documentElement.clientHeight - targetItem.offsetTop;
-            }
-        }
-
-        if (([38, 40].indexOf(e.keyCode) > -1) && targetItem !== null) {
-            if (targetItem.className.indexOf(listItemClass) > -1) {
-                activeItem.classList.remove(activeClass);
-                targetItem.className += '  ' + activeClass;
-                if (offsetTop < 0) {
-                    targetItem.scrollIntoView(false);
+                if (targetItem.className.indexOf(listItemClass + '__link') > -1) {
+                    activeItem.classList.remove(activeLinkClass);
+                    targetItem.className += '  ' + activeLinkClass;
                 }
             }
         }
@@ -86,13 +140,14 @@ function listFilter(jsonFile, inputID) {
     // Build a course item that represents one course in the course list
     function buildListItem(list, key, value) {
         var courseStr = '<li class="' + listItemClass + '  ' + listItemClass + '--' + key
-            + '" data-abbr="' + value.abbr + '">'
+            + '" data-abbr="' + value.abbr
+            + '" tabindex="-1">'
             + '<div class="' + listItemClass + '__title">' + value.title + '</div>'
-            + '<ul class="nav">';
+            + '<nav class="nav  link-list">';
 
         for (var link in value.links) {
             if (!link.hasOwnProperty(link)) {
-                courseStr += '<li><a href="' + value.links[link] + '">' + link + '</a></li>';
+                courseStr += '<a class="' + listItemClass + '__link" href="' + value.links[link] + '">' + link + '</a>';
             }
         }
 
