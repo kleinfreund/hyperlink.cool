@@ -65,8 +65,8 @@ function listFilter(jsonFile, inputID) {
             console.log('Both list and link items have an active class. This should not happen.');
         } else if (activeListItems.length > 0) {
             // A list item is active
-            // Cancel on `←`, `→`, `Esc` key presses. We don’t need them here.
-            if ([27, 37, 39].indexOf(e.keyCode) > -1) {
+            // Cancel on `←`, and `Esc` key presses. We don’t need them here.
+            if ([27, 37].indexOf(e.keyCode) > -1) {
                 return;
             }
 
@@ -76,7 +76,7 @@ function listFilter(jsonFile, inputID) {
             var activeItem = activeListItems[0];
             var targetItem;
 
-            if (e.keyCode === 13) {
+            if ([13, 39].indexOf(e.keyCode) > -1) {
                 var linkItems = activeItem.getElementsByClassName(listItemClass + '__link');
                 activeItem.classList.remove(activeItemClass);
                 linkItems[0].className += '  ' + listItemClass + '__link--active';
@@ -106,7 +106,7 @@ function listFilter(jsonFile, inputID) {
             var activeItem = activeLinkItems[0];
             var targetItem;
 
-            if (e.keyCode === 27) {
+            if (e.keyCode === 27 || ([37, 38].indexOf(e.keyCode) > -1 && activeItem.previousElementSibling === null)) {
                 function findAncestor(el, cls) {
                     while ((el = el.parentElement) && !el.classList.contains(cls));
                     return el;
@@ -118,7 +118,8 @@ function listFilter(jsonFile, inputID) {
 
                 return;
             } else if (e.keyCode === 13) {
-                window.open(activeLinkItems[0].href, '_blank');
+                // window.open(activeLinkItems[0].href, '_blank');
+                location = activeLinkItems[0].href;
 
                 return;
             } else if ([37, 38].indexOf(e.keyCode) > -1) {
@@ -127,7 +128,6 @@ function listFilter(jsonFile, inputID) {
                 targetItem = activeItem.nextSibling;
             }
 
-            console.log(targetItem);
             if (targetItem !== null) {
                 if (targetItem.className.indexOf(listItemClass + '__link') > -1) {
                     activeItem.classList.remove(activeLinkClass);
