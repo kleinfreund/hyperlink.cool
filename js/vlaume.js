@@ -6,7 +6,7 @@ function listFilter(jsonFile, inputID) {
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', jsonFile, false);
+    xhr.open('GET', jsonFile, false );
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -54,20 +54,28 @@ function listFilter(jsonFile, inputID) {
 
         var activeClass = listItemClass + '--active';
         var activeItem = document.getElementsByClassName(activeClass)[0];
-        var targetItem;
+        var targetItem, offsetTop;
 
         if (e.keyCode === 13) {
-            // console.log('enter');
+            targetItem = activeItem;
         } else if (e.keyCode === 38) {
             targetItem = activeItem.previousSibling;
+
+            if (targetItem !== null) {
+                offsetTop = targetItem.offsetTop - window.scrollY;
+            }
         } else if (e.keyCode === 40) {
             targetItem = activeItem.nextSibling;
+
+            if (targetItem !== null) {
+                offsetTop = window.scrollY + document.documentElement.clientHeight - targetItem.offsetTop;
+            }
         }
+
         if (([38, 40].indexOf(e.keyCode) > -1) && targetItem !== null) {
             if (targetItem.className.indexOf(listItemClass) > -1) {
                 activeItem.classList.remove(activeClass);
                 targetItem.className += '  ' + activeClass;
-                var offsetTop = window.scrollY + document.documentElement.clientHeight - targetItem.offsetTop;
                 if (offsetTop < 0) {
                     targetItem.scrollIntoView(false);
                 }
