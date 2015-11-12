@@ -1,0 +1,34 @@
+/**
+ * Typography
+ */
+$font-family: Ubuntu, Helvetica, sans-serif;
+$font-weight--regular: 300;
+$font-weight--bold: 500;
+
+
+
+/**
+ * Colors
+ */
+$c-text: #ffe0e7;
+$c-text--dark: #aaa;
+$c-background: #28143d;
+$c-background--dark: darken($c-background, 5%);
+
+$c-ui: #8f2400;
+$c-ui--light: lighten($c-ui, 15%);
+
+$c-alt: #ffbd24;
+$c-alt--dark: darken($c-alt, 15%);
+
+$c-gray: #7e7e6f;
+$c-gray--dark: darken($c-gray, 30%);
+$c-grey: $c-gray;
+$c-grey--dark: $c-gray--dark;
+
+
+
+/**
+ * Misc
+ */
+$content-width: 960px;

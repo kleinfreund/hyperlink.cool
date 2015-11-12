@@ -1,0 +1,104 @@
+.filter-input-wrapper {
+    position: relative;
+    margin-bottom: $half-spacing-unit;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        width: 130px;
+        background: linear-gradient(to right, rgba(0,0,0,0) 0%, $c-background--dark 33%, $c-background--dark 100%);
+    }
+}
+
+
+
+.magnifying-glass-wrapper {
+    $width: 48px;
+    $width--desk: 64px;
+
+    position: absolute;
+    top: 50%;
+    margin-top: -$width / 2;
+    right: $half-spacing-unit;
+    z-index: 3;
+    width: $width;
+    height: $width;
+
+    @include media-query(desk) {
+        right: 30px;
+        margin-top: -$width--desk / 2;
+        width: $width--desk;
+        height: $width--desk;
+    }
+}
+
+.magnifying-glass {
+    fill: #fff;
+}
+
+.filter-input {
+    width: 100%;
+    padding: $half-spacing-unit $base-spacing-unit;
+    border: 0;
+    font-size: 2rem;
+    background-color: $c-background--dark;
+
+    @include media-query(desk) {
+        font-size: 3rem;
+    }
+}
+
+.course-list {
+    margin-left: 0;
+    list-style: none;
+}
+
+.list-item {
+    position: relative;
+    padding: $base-spacing-unit;
+    background-color: $c-background--dark;
+    // border-left: 5px solid $c-background--dark;
+
+    &:not(:last-child) {
+        margin-bottom: $half-spacing-unit;
+    }
+
+    &:after {
+        content: attr(data-abbr);
+        position: absolute;
+        top: $half-spacing-unit;
+        right: $base-spacing-unit;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.list-item__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.list-item__link {
+    position: relative;
+}
+
+@include media-query(desk) {
+    .list-item--active:before,
+    .list-item__link--active:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+        width: 4px;
+        overflow: hidden;
+        background-color: $c-alt;
+    }
+}

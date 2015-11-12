@@ -1,0 +1,8 @@
+.instruction-box {
+    @extend %vertical-rhythm;
+    display: none;
+
+    @include media-query(desk) {
+        display: block;
+    }
+}

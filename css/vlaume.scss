@@ -3,5 +3,16 @@
 ---
 @charset "utf-8";
 @import
-        "base"
+    "generic/vars",
+    "generic/defaults",
+    "generic/mixins",
+    "generic/normalize",
+    "generic/base",
+    "generic/typography",
+    "objects/nav",
+    "objects/instruction-box",
+    "layout/page",
+    "layout/site-head",
+    "layout/site-foot",
+    "layout/filter-list"
 ;

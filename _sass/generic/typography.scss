@@ -1,0 +1,155 @@
+html {
+    min-height: 100%;
+    overflow-y: scroll;
+    font: $font-weight--regular #{($base-font-size/16px)*1em}/#{$line-height-ratio} $font-family;
+    color: $c-text;
+    background-color: $c-background;
+}
+
+
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $font-weight--bold;
+}
+
+h1 {
+    @include font-size($h1-size);
+}
+
+h2 {
+    @include font-size($h2-size);
+}
+
+h3 {
+    @include font-size($h3-size);
+}
+
+h4 {
+    @include font-size($h4-size);
+}
+
+h5 {
+    @include font-size($h5-size);
+}
+
+h6 {
+    @include font-size($h6-size);
+}
+
+
+
+/**
+ * Lists
+ */
+dl, ol, ul {
+    margin-left: 2rem;
+}
+
+li {
+
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+dt {
+    font-weight: $font-weight--bold;
+}
+
+
+
+/**
+ * Quotations
+ */
+blockquote, q {
+    font-style: italic;
+}
+
+
+
+/**
+ * Links
+ */
+a {
+    color: $c-ui;
+    font-weight: $font-weight--bold;
+    text-decoration: none;
+
+    @include attention() {
+        color: $c-ui--light;
+    }
+}
+
+
+
+/**
+ * Code
+ */
+pre,
+code,
+kbd,
+samp {
+    font-family: $code-font-family;
+}
+
+code {
+    white-space: nowrap;
+}
+
+kbd {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 1px 2px;
+    padding: 1px 8px;
+    border: 1px solid $c-text--dark;
+    border-radius: 3px;
+    font-family: Consolas, monospace;
+}
+
+
+
+/**
+ * Forms
+ */
+input {
+    color: $c-text--dark;
+    font: $font-weight--regular #{($base-font-size/16px)*1em}/#{$line-height-ratio} $font-family;
+    line-height: 1.5;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+        outline: 0;
+        color: #fff;
+    }
+}
+
+
+
+/**
+ * The following input rulesets for input’s placeholder color need to stay
+ * separate or the complete ruleset would be ignored due to unknown selectors
+ *
+ * as per: http://stackoverflow.com/a/2610741/2036825
+ */
+// WebKit, Blink, Edge
+::-webkit-input-placeholder {
+    color: $c-text--dark;
+}
+
+// Mozilla Firefox 19+
+::-moz-placeholder {
+   color: $c-text--dark;
+   opacity: 1;
+}
+
+// Internet Explorer 10-11
+:-ms-input-placeholder {
+   color: $c-text--dark;
+}

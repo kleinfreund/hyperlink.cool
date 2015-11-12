@@ -1,0 +1,13 @@
+.site-head {
+    @include vertical-gap(bottom);
+}
+
+.site-title {
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 4rem;
+
+    @include media-query(desk) {
+        font-size: 5rem;
+    }
+}
