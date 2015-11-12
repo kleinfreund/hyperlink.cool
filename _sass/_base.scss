@@ -30,7 +30,8 @@ figure {
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl,
-figure {
+figure,
+%vertical-rhythm {
     margin-bottom: 1.5rem;
 }
 
@@ -67,8 +68,7 @@ textarea {
 kbd {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 2px;
-    margin-left: 2px;
+    margin: 1px 2px;
     padding: 1px 8px;
     border: 1px solid grey;
     border-radius: 3px;
@@ -97,12 +97,20 @@ kbd {
 }
 
 .nav > li:not(:last-child) {
-    margin-right: 10px;
+    margin-bottom: 10px;
+
+    @media only screen and (min-width: 960px) {
+        margin-right: 10px;
+    }
 }
 
 .nav > li,
 .nav > li > a {
-    display: inline-block;
+    display: block;
+
+    @media only screen and (min-width: 960px) {
+        display: inline-block;
+    }
 }
 
 .nav > li > a {
@@ -125,13 +133,14 @@ kbd {
 
 .site-title {
     padding: 10px 20px;
-    font-size: 5rem;
     text-align: center;
+    font-size: 4rem;
+
+    @media only screen and (min-width: 960px) {
+        font-size: 5rem;
+    }
 }
 
-.site-foot {
-    padding: 2rem;
-}
 
 .site-foot p:last-child {
     margin-bottom: 0;
@@ -141,9 +150,13 @@ kbd {
     margin-bottom: 5rem;
 }
 
-.info-box {
-    padding: 10px 20px;
-    text-align: center;
+.instruction-box {
+    @extend %vertical-rhythm;
+    display: none;
+
+    @media only screen and (min-width: 960px) {
+        display: block;
+    }
 }
 
 .filter-input-wrapper {
@@ -153,7 +166,7 @@ kbd {
 
 .filter-input-wrapper:before {
     content: "";
-    width: 150px;
+    width: 110px;
     position: absolute;
     top: 0;
     right: 0;
@@ -163,23 +176,38 @@ kbd {
     background: linear-gradient(to right, rgba(0,0,0,0) 0%, #1e0f2e 33%, #1e0f2e 100%);
 }
 
-.filter-input-wrapper:after {
-    content: "\26B2";
+.magnifying-glass-wrapper {
     position: absolute;
-    top: 0;
-    right: 20px;
+    top: 50%;
+    margin-top: -24px;
+    right: 10px;
     z-index: 3;
-    padding: 10px 20px;
-    transform: rotate(-45deg);
-    font-size: 3rem;
+    width: 48px;
+    height: 48px;
+
+    @media only screen and (min-width: 960px) {
+        right: 30px;
+        margin-top: -32px;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.magnifying-glass {
+    fill: #fff;
 }
 
 .filter-input {
     width: 100%;
     padding: 10px 20px;
-    font-size: 3rem;
     border: 0;
+    font-size: 2rem;
+
+    @media only screen and (min-width: 960px) {
+        font-size: 3rem;
+    }
 }
+
 
 .filter-input:hover,
 .filter-input:focus,
@@ -217,8 +245,10 @@ kbd {
     right: 20px;
 }
 
-.list-item--active {
-    border-left: 5px solid #FFBD24;
+@media only screen and (min-width: 960px) {
+    .list-item--active {
+        border-left: 5px solid #FFBD24;
+    }
 }
 
 .list-item__title {
