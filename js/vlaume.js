@@ -1,13 +1,12 @@
 function recordFilter(jsonFile, containerName, inputID) {
-    // Variable that stores the list data from the JSON file
-    var listData;
-
     // Some names that are repeatedly used as HTML class or ID names
     var listName = 'record-list';
     var itemName = 'record';
     var linkName = itemName + '__link';
+    var activeLinkName = linkName + '--active';
 
     // Get the JSON data by using a XML http request
+    var listData;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', jsonFile, false );
     xhr.onload = function(e) {
@@ -24,39 +23,54 @@ function recordFilter(jsonFile, containerName, inputID) {
     };
     xhr.send(null);
 
-    // Wait for the document to be ready
+
+
+    /**
+     * Before the record list can be build, the DOM has to be loaded so we can hook into the input.
+     */
     window.onload = function(e) {
-        var placeholderKeys = []
+        var placeholderKeys = [];
         for (var key in listData) {
             placeholderKeys = placeholderKeys.concat(listData[key].names);
         }
 
-        var inputElement = document.getElementById(inputID);
-        inputElement.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
+        var filterInput = document.getElementById(inputID);
+        filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
 
-        var keys = filterList(inputElement.value);
-        buildList(keys[0], keys[1]);
+        buildList(filterList(filterInput.value));
 
         // Watch the search field for input changes …
-        inputElement.addEventListener('input', function(e) {
-            // … and filter the course list
-            var keys = filterList(inputElement.value);
-            buildList(keys[0], keys[1]);
+        filterInput.addEventListener('input', function(e) {
+            // … and build a new record list according to the filter value
+            buildList(filterList(filterInput.value));
         }, false);
     };
 
+
+
+    /**
+     * @return  the closest ancestor of `element` with a class `className`
+     */
     function findAncestor(element, className) {
         while ((element = element.parentElement) && !element.classList.contains(className));
         return element;
     }
 
+
+
+    /**
+     * Listen to various key presses to enable arrow key navigation over the record links.
+     * Opening links is done by giving links focus which has the desired interaction by default
+     *
+     * Some keys and which keycodes they’re mapped to:
+     * `tab` – 9;   `enter` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
+     */
     window.onkeydown = function(e) {
         e = e || window.event;
 
         var list = document.getElementById(listName);
 
         // If `e.keyCode` is not in the array, abort mission right away
-        // `tab` – 9;   `enter` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
         if ([13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !list.hasChildNodes()) {
             return;
         }
@@ -69,7 +83,6 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
         }
 
-        var activeLinkName = linkName + '--active';
         var activeLink = list.getElementsByClassName(activeLinkName)[0];
 
         var targetLink;
@@ -85,13 +98,13 @@ function recordFilter(jsonFile, containerName, inputID) {
                 }
             }
 
-            if (previousLink === nextLink) {
+            if (!previousLink && !nextLink) {
                 return;
             }
 
-            if (e.keyCode === 37 && previousLink !== null) {
+            if (e.keyCode === 37 && previousLink) {
                 targetLink = previousLink;
-            } else if (e.keyCode === 39 && nextLink !== null) {
+            } else if (e.keyCode === 39 && nextLink) {
                 targetLink = nextLink;
             }
         } else if ([38, 40].indexOf(e.keyCode) > -1) {
@@ -99,18 +112,18 @@ function recordFilter(jsonFile, containerName, inputID) {
             var previousItem = activeItem.previousElementSibling;
             var nextItem = activeItem.nextElementSibling;
 
-            if (previousItem === nextItem) {
+            if (!previousItem && !nextItem) {
                 return;
             }
 
-            if (e.keyCode === 38 && previousItem !== null) {
+            if (e.keyCode === 38 && previousItem) {
                 targetLink = previousItem.getElementsByClassName(linkName)[0];
-            } else if (e.keyCode === 40 && nextItem !== null) {
+            } else if (e.keyCode === 40 && nextItem) {
                 targetLink = nextItem.getElementsByClassName(linkName)[0];
             }
         }
 
-        if (targetLink !== (null || undefined)) {
+        if (targetLink) {
             e.preventDefault();
 
             activeLink.classList.remove(activeLinkName);
@@ -122,102 +135,96 @@ function recordFilter(jsonFile, containerName, inputID) {
         }
     };
 
-    // Build a course item that represents one course in the course list
-    function buildListItem(list, key, value) {
-        var courseStr = '<li class="' + itemName + '  ' + itemName + '--' + key
-            + '" data-abbr="' + value.abbr + '">'
-            + '<div class="' + itemName + '__title">' + value.title + '</div>'
-            + '<nav class="nav  link-list">';
+
+
+    /**
+     * @return  a string that contains the HTML markup for a link item
+     */
+    function listItemStr(key, value) {
+        var str = '<li class="' + itemName + '" data-abbr="' + value.abbr + '">' +
+            '<div class="' + itemName + '__title">' + value.title + '</div>' +
+            '<nav class="nav  record-nav">';
 
         for (var link in value.links) {
-            if (!link.hasOwnProperty(link)) {
-                courseStr += '<a class="' + itemName + '__link" href="' + value.links[link] + '">' + link + '</a>';
-            }
+            str += '<a class="' + itemName + '__link" href="' + value.links[link] + '">' + link + '</a>';
         }
 
-        list.innerHTML += courseStr;
+        return str;
     }
 
-    // Populate the list
-    function buildList(relatedKeys, unrelatKeys) {
-        relatedKeys = relatedKeys || [];
-        unrelatKeys = unrelatKeys || [];
 
-        // Check if a list was build previously so we can reuse it
+
+    /**
+     * Build the record list containing elements belonging to keys in `relatedKeys`.
+     */
+    function buildList(relatedKeys) {
+        // Check if a list was build previously …
         var list = document.getElementById(listName);
-        if (list === null) {
-            // Create it otherwise
-            list = document.createElement('ul');
-            list.id = listName;
-            list.className = listName;
-        } else {
+        if (list) {
+            // … and remove its content
             list.innerHTML = '';
+        } else {
+            // … otherwise, create it
+            list = document.createElement('ul');
+            list.id = list.className = listName;
+            document.getElementById(containerName).insertBefore(list, null);
         }
 
         for (var key in listData) {
-            if (!key.hasOwnProperty(key)) {
-                if ((relatedKeys.length === 0 && unrelatKeys.length === 0) || relatedKeys.indexOf(key) > -1) {
-                    buildListItem(list, key, listData[key]);
-                }
+            if (relatedKeys.indexOf(key) > -1) {
+                list.innerHTML += listItemStr(key, listData[key]);
             }
         }
 
+        // If no list items were inserted, we need to stop here
         if (!list.hasChildNodes()) {
             return;
         }
 
         // Set the first child element in the list to active state
         var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
-        if (firstItem !== null) {
+        if (firstItem) {
             if (firstItem.className.indexOf(linkName) > -1) {
-                var activeClass = linkName + '--active';
-                var activeItems = list.getElementsByClassName(activeClass);
-                for (var i = 0; i < activeItems.length; i++) {
-                    activeItems[i].classList.remove(activeClass);
+                var activeItem = list.getElementsByClassName(activeLinkName)[0];
+                if (activeItem !== undefined) {
+                    activeItem.classList.remove(activeLinkName);
                 }
-
-                firstItem.className += '  ' + activeClass;
+                firstItem.className += '  ' + activeLinkName;
             }
         }
-
-        document.getElementById(containerName).insertBefore(list, null);
     }
 
-    // Check whether `array` contains strings that contain `substring`
+
+
+    /**
+     * Checks whether `array` contains strings that contain `substring`.
+     * @return  true if the substring was found, false otherwise.
+     */
     function arrayContainsSubstring(array, substring) {
         var lowercaseArray = array.map(function(item) {
             return item.toLowerCase();
-        })
-
+        });
         for (var i = 0; i < lowercaseArray.length; i++) {
             if (lowercaseArray[i].indexOf(substring.toLowerCase()) > -1) {
                 return true;
             }
         }
-
         return false;
     }
 
+
+
     /**
-     * Filters the list by splitting the list keys into related and unrelated ones.
-     * What’s related is determined by `listData[key].names`
-     *
-     * @return  A two-item array consisting of `relatedKeys` and `unrelatedKeys`
+     * Takes a string to search for in `listData` to create an array of related keys.
+     * @return  An array consisting of key strings which are related to `str`.
      */
-    function filterList(searchStr) {
-        // Separate related and unrelated course keys
-        var unrelatedKeys = [];
+    function filterList(str) {
         var relatedKeys = [];
         for (var key in listData) {
-            if (!key.hasOwnProperty(key)) {
-                if (arrayContainsSubstring(listData[key].names, searchStr)) {
-                    relatedKeys.push(key);
-                } else {
-                    unrelatedKeys.push(key);
-                }
+            if (arrayContainsSubstring(listData[key].names, str)) {
+                relatedKeys.push(key);
             }
         }
-
-        return [relatedKeys, unrelatedKeys];
+        return relatedKeys;
     }
 }
