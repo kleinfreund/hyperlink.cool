@@ -40,7 +40,7 @@
     fill: #fff;
 }
 
-.filter-input {
+.record-filter__input {
     width: 100%;
     padding: $half-spacing-unit $base-spacing-unit;
     border: 0;
@@ -52,12 +52,12 @@
     }
 }
 
-.course-list {
+.record-list {
     margin-left: 0;
     list-style: none;
 }
 
-.list-item {
+.record {
     position: relative;
     padding: $base-spacing-unit;
     background-color: $c-background--dark;
@@ -79,18 +79,18 @@
     }
 }
 
-.list-item__title {
+.record__title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.list-item__link {
+.record__link {
     position: relative;
 }
 
 @include media-query(desk) {
-    .list-item--active:before,
-    .list-item__link--active:before {
+    .record--active:before,
+    .record__link--active:before {
         content: "";
         position: absolute;
         top: 0;

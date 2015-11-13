@@ -14,7 +14,7 @@ layout: compress
     <link rel="stylesheet" href="css/vlaume.css">
 
     <script src="js/vlaume.js"></script>
-    <script>listFilter('data/courses.json', 'filter-input');</script>
+    <script>recordFilter('data/courses.json', 'record-filter', 'record-filter__input');</script>
 
     <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
@@ -39,13 +39,13 @@ layout: compress
             </noscript>
 
             <div class="instruction-box">
-                <kbd title="nach oben">↑</kbd>, <kbd title="nach unten">↓</kbd> navigiert,
+                <kbd title="nach links">←</kbd>, <kbd title="nach oben">↑</kbd>, <kbd title="nach rechts">→</kbd>, <kbd title="nach unten">↓</kbd> navigiert,
                 <kbd title="Eingabe">enter</kbd> öffnet Link.
             </div>
 
-            <div id="filter-container">
+            <div id="record-filter">
                 <div class="filter-input-wrapper">
-                    <input id="filter-input" class="filter-input" type="text" spellcheck="false" autofocus placeholder="eidi">
+                    <input id="record-filter__input" class="record-filter__input" type="text" spellcheck="false" autofocus placeholder="eidi">
                     <svg class="magnifying-glass-wrapper" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title desc">
                         <title id="title">Magnifying Glass</title>
                         <desc id="desc">A magnifying glass indicating the functionality of the input field.</desc>
