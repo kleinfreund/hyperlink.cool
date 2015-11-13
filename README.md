@@ -4,8 +4,10 @@ A website that tries to help the Computer Science and Media students from our un
 
 ## To Do / Problems
 
-- HTMLProofer to make sure links do not 404 too much.
-- On navigating away from the page while there is any input in the filter results in a divergence when going back via browser history: the list is not filtered from the get go
+- Build Pipeline:
+  - Compress JS on jekyll build (→ try Gulp again)
+  - HTMLProofer to make sure links do not 404 too much.
+- Consider utilizing `tab` key for also transferring active state, because a link with focus can be opened by clicking tab by default
 - Special cased handling of enter key press on mobile should just hide keyboard?
 - Listen for `tab` keypresses: If pressed, do not prevent the default (so focus still gets transferred to the next focusable item). Now also transfer the *active* state from item to another. This enables us to *activate* links by pressing enter after traversing through the list by tabbing.
 
@@ -15,4 +17,5 @@ A website that tries to help the Computer Science and Media students from our un
 - Refactor the CSS mess
 - Find out whether `window.open(link, '_blank');` is troublesome. **Answer:** It is, it triggers popup blockers so it’s not functional. Using `location = link` instead. I guess that’s the best for now.
 - Lack of order. The current implementation knows no order of the list items, so after reverting a filtered list to a former state, the order changes. That’s not good. **Solution:** Rebuild list everytime.
+- On navigating away from the page while there is any input in the filter results in a divergence when going back via browser history: the list is not filtered from the get go **Solution:** Fixed by the new filter/rebuild mechanism
 - `courses.json` is a bad name for the file since there are not only items for courses in it. **Solution:** `record-data.json` it is
