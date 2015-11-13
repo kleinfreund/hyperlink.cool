@@ -1,0 +1,25 @@
+{
+  "name": "vlau.me",
+  "version": "1.0.0",
+  "description": "Link Collection",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-uglify": "~1.5.1"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kleinfreund/vlau.me.git"
+  },
+  "author": "Philipp Rudloff",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kleinfreund/vlau.me/issues"
+  },
+  "homepage": "https://github.com/kleinfreund/vlau.me#readme"
+}
