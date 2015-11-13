@@ -5,6 +5,7 @@ function recordFilter(jsonFile, containerName, inputID) {
     // Some names that are repeatedly used as HTML class or ID names
     var listName = 'record-list';
     var itemName = 'record';
+    var linkName = itemName + '__link';
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
@@ -44,103 +45,87 @@ function recordFilter(jsonFile, containerName, inputID) {
         }, false);
     };
 
+    function findAncestor(element, className) {
+        while ((element = element.parentElement) && !element.classList.contains(className));
+        return element;
+    }
+
     window.onkeydown = function(e) {
         e = e || window.event;
 
+        var list = document.getElementById(listName);
+
         // If `e.keyCode` is not in the array, abort mission right away
-        // `enter` – 13;   `esc` – 27;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
-        if ([13, 27, 37, 38, 39, 40].indexOf(e.keyCode) === -1) {
+        // `tab` – 9;   `enter` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
+        if ([13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !list.hasChildNodes()) {
             return;
         }
 
-        var activeItemName = itemName + '--active';
-        var activeLinkName = itemName + '__link--active';
-        var activeItems = document.getElementsByClassName(activeItemName);
-        var activeLinks = document.getElementsByClassName(activeLinkName);
+        if (e.keyCode === 13) {
+            if (document.activeElement === document.getElementById(inputID)) {
+                document.activeElement.blur();
+            } else {
+                return;
+            }
+        }
 
-        // Determine in which element has the active state: list or link item?
-        if (activeItems.length > 0 && activeLinks.length > 0) {
-            // Bad voodoo happened. This should not be possible.
-            console.log('Both list and link items have an active class. This should not happen.');
-        } else if (activeItems.length > 0) {
-            // A list item is active
-            // Cancel on `←`, and `Esc` key presses. We don’t need them here.
-            if ([27, 37].indexOf(e.keyCode) > -1) {
+        var activeLinkName = linkName + '--active';
+        var activeLink = list.getElementsByClassName(activeLinkName)[0];
+
+        var targetLink;
+        if ([37, 39].indexOf(e.keyCode) > -1) {
+            var previousLink;
+            var nextLink;
+            var linkElements = list.getElementsByClassName(linkName);
+            for (var i = 0; i < linkElements.length; i++) {
+                if (activeLink === linkElements[i]) {
+                    previousLink = linkElements[i-1];
+                    nextLink = linkElements[i+1];
+                    break;
+                }
+            }
+
+            if (previousLink === nextLink) {
                 return;
             }
 
-            // Else, we don’t want the default interaction to trigger.
+            if (e.keyCode === 37 && previousLink !== null) {
+                targetLink = previousLink;
+            } else if (e.keyCode === 39 && nextLink !== null) {
+                targetLink = nextLink;
+            }
+        } else if ([38, 40].indexOf(e.keyCode) > -1) {
+            var activeItem = findAncestor(activeLink, itemName);
+            var previousItem = activeItem.previousElementSibling;
+            var nextItem = activeItem.nextElementSibling;
+
+            if (previousItem === nextItem) {
+                return;
+            }
+
+            if (e.keyCode === 38 && previousItem !== null) {
+                targetLink = previousItem.getElementsByClassName(linkName)[0];
+            } else if (e.keyCode === 40 && nextItem !== null) {
+                targetLink = nextItem.getElementsByClassName(linkName)[0];
+            }
+        }
+
+        if (targetLink !== (null || undefined)) {
             e.preventDefault();
 
-            var activeItem = activeItems[0];
-            var targetItem;
+            activeLink.classList.remove(activeLinkName);
+            targetLink.className += '  ' + activeLinkName;
 
-            if ([13, 39].indexOf(e.keyCode) > -1) {
-                var linkItems = activeItem.getElementsByClassName(itemName + '__link');
-                activeItem.classList.remove(activeItemName);
-                linkItems[0].className += '  ' + itemName + '__link--active';
-
-                // We’re done here
-                return;
-            } else if (e.keyCode === 38) {
-                targetItem = activeItem.previousSibling;
-            } else if (e.keyCode === 40) {
-                targetItem = activeItem.nextSibling;
-            }
-
-            if (targetItem !== null) {
-                if (targetItem.className.indexOf(itemName) > -1) {
-                    activeItem.classList.remove(activeItemName);
-                    targetItem.className += '  ' + activeItemName;
-
-                    // List items have `tabindex="-1"` so they can get the focus without interupting
-                    // regular tabbing through links. This, conveniently, scrolls them into the viewport.
-                    targetItem.focus();
-                }
-            }
-        } else if (activeLinks.length > 0) {
-            // A link item is active, prevent the default interaction for the pressed key
-            e.preventDefault();
-
-            var activeItem = activeLinks[0];
-            var targetItem;
-
-            if (e.keyCode === 27 || ([37, 38].indexOf(e.keyCode) > -1 && activeItem.previousElementSibling === null)) {
-                function findAncestor(el, cls) {
-                    while ((el = el.parentElement) && !el.classList.contains(cls));
-                    return el;
-                }
-
-                var parentListItem = findAncestor(activeLinks[0], itemName);
-                activeLinks[0].classList.remove(activeLinkName);
-                parentListItem.className += '  ' + activeItemName;
-
-                return;
-            } else if (e.keyCode === 13) {
-                // window.open(activeLinks[0].href, '_blank');
-                location = activeLinks[0].href;
-
-                return;
-            } else if ([37, 38].indexOf(e.keyCode) > -1) {
-                targetItem = activeItem.previousSibling;
-            } else if ([39, 40].indexOf(e.keyCode) > -1) {
-                targetItem = activeItem.nextSibling;
-            }
-
-            if (targetItem !== null) {
-                if (targetItem.className.indexOf(itemName + '__link') > -1) {
-                    activeItem.classList.remove(activeLinkName);
-                    targetItem.className += '  ' + activeLinkName;
-                }
-            }
+            // List items have `tabindex="-1"` so they can get the focus without interupting
+            // regular tabbing through links. This, conveniently, scrolls them into the viewport.
+            targetLink.focus();
         }
     };
 
     // Build a course item that represents one course in the course list
     function buildListItem(list, key, value) {
         var courseStr = '<li class="' + itemName + '  ' + itemName + '--' + key
-            + '" data-abbr="' + value.abbr
-            + '" tabindex="-1">'
+            + '" data-abbr="' + value.abbr + '">'
             + '<div class="' + itemName + '__title">' + value.title + '</div>'
             + '<nav class="nav  link-list">';
 
@@ -177,11 +162,15 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
         }
 
+        if (!list.hasChildNodes()) {
+            return;
+        }
+
         // Set the first child element in the list to active state
-        var firstItem = list.firstElementChild;
+        var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
         if (firstItem !== null) {
-            if (firstItem.className.indexOf(itemName) > -1) {
-                var activeClass = itemName + '--active';
+            if (firstItem.className.indexOf(linkName) > -1) {
+                var activeClass = linkName + '--active';
                 var activeItems = list.getElementsByClassName(activeClass);
                 for (var i = 0; i < activeItems.length; i++) {
                     activeItems[i].classList.remove(activeClass);
