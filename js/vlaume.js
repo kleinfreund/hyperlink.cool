@@ -144,11 +144,9 @@ function recordFilter(jsonFile, containerName, inputID) {
         var str = '<li class="' + itemName + '" data-abbr="' + value.abbr + '">' +
             '<div class="' + itemName + '__title">' + value.title + '</div>' +
             '<nav class="nav  record-nav">';
-
         for (var link in value.links) {
             str += '<a class="' + itemName + '__link" href="' + value.links[link] + '">' + link + '</a>';
         }
-
         return str;
     }
 
@@ -186,7 +184,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         if (firstItem) {
             if (firstItem.className.indexOf(linkName) > -1) {
                 var activeItem = list.getElementsByClassName(activeLinkName)[0];
-                if (activeItem !== undefined) {
+                if (activeItem) {
                     activeItem.classList.remove(activeLinkName);
                 }
                 firstItem.className += '  ' + activeLinkName;
