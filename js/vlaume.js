@@ -1,8 +1,10 @@
-function listFilter(jsonFile, inputID) {
-    // Variable that stores the course data from the JSON file
+function recordFilter(jsonFile, containerName, inputID) {
+    // Variable that stores the list data from the JSON file
     var listData;
-    var listClass = 'course-list';
-    var listItemClass = 'list-item';
+
+    // Some names that are repeatedly used as HTML class or ID names
+    var listName = 'record-list';
+    var itemName = 'record';
 
     // Get the JSON data by using a XML http request
     var xhr = new XMLHttpRequest();
@@ -23,25 +25,22 @@ function listFilter(jsonFile, inputID) {
 
     // Wait for the document to be ready
     window.onload = function(e) {
-        buildList();
-
-        var firstItem = document.getElementById(listClass).firstElementChild;
-        if (firstItem.className.indexOf(listItemClass) > -1) {
-            firstItem.className += '  ' + listItemClass + '--active';
-        }
-
-        var keyArray = []
+        var placeholderKeys = []
         for (var key in listData) {
-            keyArray = keyArray.concat(listData[key].names);
+            placeholderKeys = placeholderKeys.concat(listData[key].names);
         }
 
-        var input = document.getElementById(inputID);
-        input.placeholder = keyArray[Math.floor(Math.random() * keyArray.length)];;
+        var inputElement = document.getElementById(inputID);
+        inputElement.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
+
+        var keys = filterList(inputElement.value);
+        buildList(keys[0], keys[1]);
 
         // Watch the search field for input changes …
-        input.addEventListener('input', function(e) {
+        inputElement.addEventListener('input', function(e) {
             // … and filter the course list
-            filterCourseList(input.value);
+            var keys = filterList(inputElement.value);
+            buildList(keys[0], keys[1]);
         }, false);
     };
 
@@ -54,16 +53,16 @@ function listFilter(jsonFile, inputID) {
             return;
         }
 
-        var activeItemClass = listItemClass + '--active';
-        var activeLinkClass = listItemClass + '__link--active';
-        var activeListItems = document.getElementsByClassName(activeItemClass);
-        var activeLinkItems = document.getElementsByClassName(activeLinkClass);
+        var activeItemName = itemName + '--active';
+        var activeLinkName = itemName + '__link--active';
+        var activeItems = document.getElementsByClassName(activeItemName);
+        var activeLinks = document.getElementsByClassName(activeLinkName);
 
         // Determine in which element has the active state: list or link item?
-        if (activeListItems.length > 0 && activeLinkItems.length > 0) {
+        if (activeItems.length > 0 && activeLinks.length > 0) {
             // Bad voodoo happened. This should not be possible.
             console.log('Both list and link items have an active class. This should not happen.');
-        } else if (activeListItems.length > 0) {
+        } else if (activeItems.length > 0) {
             // A list item is active
             // Cancel on `←`, and `Esc` key presses. We don’t need them here.
             if ([27, 37].indexOf(e.keyCode) > -1) {
@@ -73,13 +72,13 @@ function listFilter(jsonFile, inputID) {
             // Else, we don’t want the default interaction to trigger.
             e.preventDefault();
 
-            var activeItem = activeListItems[0];
+            var activeItem = activeItems[0];
             var targetItem;
 
             if ([13, 39].indexOf(e.keyCode) > -1) {
-                var linkItems = activeItem.getElementsByClassName(listItemClass + '__link');
-                activeItem.classList.remove(activeItemClass);
-                linkItems[0].className += '  ' + listItemClass + '__link--active';
+                var linkItems = activeItem.getElementsByClassName(itemName + '__link');
+                activeItem.classList.remove(activeItemName);
+                linkItems[0].className += '  ' + itemName + '__link--active';
 
                 // We’re done here
                 return;
@@ -90,20 +89,20 @@ function listFilter(jsonFile, inputID) {
             }
 
             if (targetItem !== null) {
-                if (targetItem.className.indexOf(listItemClass) > -1) {
-                    activeItem.classList.remove(activeItemClass);
-                    targetItem.className += '  ' + activeItemClass;
+                if (targetItem.className.indexOf(itemName) > -1) {
+                    activeItem.classList.remove(activeItemName);
+                    targetItem.className += '  ' + activeItemName;
 
                     // List items have `tabindex="-1"` so they can get the focus without interupting
                     // regular tabbing through links. This, conveniently, scrolls them into the viewport.
                     targetItem.focus();
                 }
             }
-        } else if (activeLinkItems.length > 0) {
+        } else if (activeLinks.length > 0) {
             // A link item is active, prevent the default interaction for the pressed key
             e.preventDefault();
 
-            var activeItem = activeLinkItems[0];
+            var activeItem = activeLinks[0];
             var targetItem;
 
             if (e.keyCode === 27 || ([37, 38].indexOf(e.keyCode) > -1 && activeItem.previousElementSibling === null)) {
@@ -112,14 +111,14 @@ function listFilter(jsonFile, inputID) {
                     return el;
                 }
 
-                var parentListItem = findAncestor(activeLinkItems[0], listItemClass);
-                activeLinkItems[0].classList.remove(activeLinkClass);
-                parentListItem.className += '  ' + activeItemClass;
+                var parentListItem = findAncestor(activeLinks[0], itemName);
+                activeLinks[0].classList.remove(activeLinkName);
+                parentListItem.className += '  ' + activeItemName;
 
                 return;
             } else if (e.keyCode === 13) {
-                // window.open(activeLinkItems[0].href, '_blank');
-                location = activeLinkItems[0].href;
+                // window.open(activeLinks[0].href, '_blank');
+                location = activeLinks[0].href;
 
                 return;
             } else if ([37, 38].indexOf(e.keyCode) > -1) {
@@ -129,9 +128,9 @@ function listFilter(jsonFile, inputID) {
             }
 
             if (targetItem !== null) {
-                if (targetItem.className.indexOf(listItemClass + '__link') > -1) {
-                    activeItem.classList.remove(activeLinkClass);
-                    targetItem.className += '  ' + activeLinkClass;
+                if (targetItem.className.indexOf(itemName + '__link') > -1) {
+                    activeItem.classList.remove(activeLinkName);
+                    targetItem.className += '  ' + activeLinkName;
                 }
             }
         }
@@ -139,38 +138,63 @@ function listFilter(jsonFile, inputID) {
 
     // Build a course item that represents one course in the course list
     function buildListItem(list, key, value) {
-        var courseStr = '<li class="' + listItemClass + '  ' + listItemClass + '--' + key
+        var courseStr = '<li class="' + itemName + '  ' + itemName + '--' + key
             + '" data-abbr="' + value.abbr
             + '" tabindex="-1">'
-            + '<div class="' + listItemClass + '__title">' + value.title + '</div>'
+            + '<div class="' + itemName + '__title">' + value.title + '</div>'
             + '<nav class="nav  link-list">';
 
         for (var link in value.links) {
             if (!link.hasOwnProperty(link)) {
-                courseStr += '<a class="' + listItemClass + '__link" href="' + value.links[link] + '">' + link + '</a>';
+                courseStr += '<a class="' + itemName + '__link" href="' + value.links[link] + '">' + link + '</a>';
             }
         }
 
         list.innerHTML += courseStr;
     }
 
-    // Populate the course list
-    function buildList() {
-        var list = document.createElement('ul');
-        list.id = listClass;
-        list.className = listClass;
+    // Populate the list
+    function buildList(relatedKeys, unrelatKeys) {
+        relatedKeys = relatedKeys || [];
+        unrelatKeys = unrelatKeys || [];
+
+        // Check if a list was build previously so we can reuse it
+        var list = document.getElementById(listName);
+        if (list === null) {
+            // Create it otherwise
+            list = document.createElement('ul');
+            list.id = listName;
+            list.className = listName;
+        } else {
+            list.innerHTML = '';
+        }
 
         for (var key in listData) {
             if (!key.hasOwnProperty(key)) {
-                buildListItem(list, key, listData[key]);
+                if ((relatedKeys.length === 0 && unrelatKeys.length === 0) || relatedKeys.indexOf(key) > -1) {
+                    buildListItem(list, key, listData[key]);
+                }
             }
         }
 
-        var filterContainer = document.getElementById('filter-container');
-        filterContainer.insertBefore(list, null);
+        // Set the first child element in the list to active state
+        var firstItem = list.firstElementChild;
+        if (firstItem !== null) {
+            if (firstItem.className.indexOf(itemName) > -1) {
+                var activeClass = itemName + '--active';
+                var activeItems = list.getElementsByClassName(activeClass);
+                for (var i = 0; i < activeItems.length; i++) {
+                    activeItems[i].classList.remove(activeClass);
+                }
+
+                firstItem.className += '  ' + activeClass;
+            }
+        }
+
+        document.getElementById(containerName).insertBefore(list, null);
     }
 
-    // Check whether an array contains strings that contain `substring`
+    // Check whether `array` contains strings that contain `substring`
     function arrayContainsSubstring(array, substring) {
         var lowercaseArray = array.map(function(item) {
             return item.toLowerCase();
@@ -186,11 +210,12 @@ function listFilter(jsonFile, inputID) {
     }
 
     /**
-     * Filters the course list by removing all list items that are not related
-     * to `searchStr`.
-     * What’s related is determined by `listData[course].names`
+     * Filters the list by splitting the list keys into related and unrelated ones.
+     * What’s related is determined by `listData[key].names`
+     *
+     * @return  A two-item array consisting of `relatedKeys` and `unrelatedKeys`
      */
-    function filterCourseList(searchStr) {
+    function filterList(searchStr) {
         // Separate related and unrelated course keys
         var unrelatedKeys = [];
         var relatedKeys = [];
@@ -204,38 +229,6 @@ function listFilter(jsonFile, inputID) {
             }
         }
 
-        // Remove unrelated courses
-        for (var i = 0; i < unrelatedKeys.length; i++) {
-            // Check whether there are any course items …
-            var listItems = document.getElementsByClassName(listItemClass + '--' + unrelatedKeys[i]);
-            while (listItems.length > 0) {
-                // … and remove them
-                listItems[0].parentNode.removeChild(listItems[0]);
-            }
-        }
-
-        // Add missing courses
-        for (var i = 0; i < relatedKeys.length; i++) {
-            var relatedKey = relatedKeys[i]
-            // Check whether the course item already exists …
-            if (document.getElementsByClassName(listItemClass + '--' + relatedKeys[i]).length === 0) {
-                // … and add it otherwise
-                buildListItem(document.getElementById(listClass), relatedKey, listData[relatedKey]);
-            }
-        }
-
-        var firstItem = document.getElementById(listClass).firstElementChild;
-
-        if (firstItem !== null) {
-            if (firstItem.className.indexOf(listItemClass) > -1) {
-                var activeClass = listItemClass + '--active';
-                var activeItems = document.getElementsByClassName(activeClass);
-                for (var i = 0; i < activeItems.length; i++) {
-                    activeItems[i].classList.remove(activeClass);
-                }
-
-                firstItem.className += '  ' + activeClass;
-            }
-        }
+        return [relatedKeys, unrelatedKeys];
     }
 }
