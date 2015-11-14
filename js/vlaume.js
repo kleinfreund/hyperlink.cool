@@ -8,7 +8,7 @@ function recordFilter(jsonFile, containerName, inputID) {
     // Get the JSON data by using a XML http request
     var listData;
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', jsonFile, false );
+    xhr.open('GET', jsonFile, false);
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -58,6 +58,19 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
 
+    function focusableElements() {
+        var elements = document.getElementsByTagName('*');
+        var focusable = [];
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].tabIndex > -1 && elements[i].offsetParent !== null) {
+                focusable.push(elements[i]);
+            }
+        }
+        return focusable;
+    }
+
+
+
     /**
      * Listen to various key presses to enable arrow key navigation over the record links.
      * Opening links is done by giving links focus which has the desired interaction by default
@@ -71,21 +84,45 @@ function recordFilter(jsonFile, containerName, inputID) {
         var list = document.getElementById(listName);
 
         // If `e.keyCode` is not in the array, abort mission right away
-        if ([13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !list.hasChildNodes()) {
+        if ([9, 13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !list.hasChildNodes()) {
             return;
         }
+
+        var activeLink = list.getElementsByClassName(activeLinkName)[0];
 
         if (e.keyCode === 13) {
             if (document.activeElement === document.getElementById(inputID)) {
                 document.activeElement.blur();
+                activeLink.focus();
             } else {
                 return;
             }
         }
 
-        var activeLink = list.getElementsByClassName(activeLinkName)[0];
+        var targetElement;
 
-        var targetLink;
+        if (e.keyCode === 9) {
+            // If there is only one item, the default is fine.
+            if (list.length === 1) {
+                return;
+            }
+
+            var elements = focusableElements();
+            var activeElement = document.activeElement;
+
+            // Determine which element is the one that will receive focus
+            for (var el = 0; el < elements.length; el++) {
+                if (elements[el] === activeElement) {
+                    if (e.shiftKey && elements[el-1]) {
+                        targetElement = elements[el-1];
+                    } else if (elements[el+1]) {
+                        targetElement = elements[el+1];
+                    }
+                    break;
+                }
+            }
+        }
+
         if ([37, 39].indexOf(e.keyCode) > -1) {
             var previousLink;
             var nextLink;
@@ -103,9 +140,9 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
 
             if (e.keyCode === 37 && previousLink) {
-                targetLink = previousLink;
+                targetElement = previousLink;
             } else if (e.keyCode === 39 && nextLink) {
-                targetLink = nextLink;
+                targetElement = nextLink;
             }
         } else if ([38, 40].indexOf(e.keyCode) > -1) {
             var activeItem = findAncestor(activeLink, itemName);
@@ -117,21 +154,20 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
 
             if (e.keyCode === 38 && previousItem) {
-                targetLink = previousItem.getElementsByClassName(linkName)[0];
+                targetElement = previousItem.getElementsByClassName(linkName)[0];
             } else if (e.keyCode === 40 && nextItem) {
-                targetLink = nextItem.getElementsByClassName(linkName)[0];
+                targetElement = nextItem.getElementsByClassName(linkName)[0];
             }
+
         }
 
-        if (targetLink) {
-            e.preventDefault();
-
+        if (targetElement && targetElement.classList.contains(linkName)) {
+            if ([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+                targetElement.focus();
+            }
             activeLink.classList.remove(activeLinkName);
-            targetLink.className += '  ' + activeLinkName;
-
-            // List items have `tabindex="-1"` so they can get the focus without interupting
-            // regular tabbing through links. This, conveniently, scrolls them into the viewport.
-            targetLink.focus();
+            targetElement.className += '  ' + activeLinkName;
         }
     };
 
