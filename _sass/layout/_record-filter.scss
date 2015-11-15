@@ -68,7 +68,7 @@
     }
 
     &:after {
-        content: attr(data-abbr);
+        content: "\2F" attr(data-key);
         position: absolute;
         top: $half-spacing-unit;
         right: $base-spacing-unit;

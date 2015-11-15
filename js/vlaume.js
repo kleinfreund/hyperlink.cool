@@ -177,7 +177,7 @@ function recordFilter(jsonFile, containerName, inputID) {
      * @return  a string that contains the HTML markup for a link item
      */
     function listItemStr(key, value) {
-        var str = '<li class="' + itemName + '" data-abbr="' + value.abbr + '">' +
+        var str = '<li class="' + itemName + '" data-key="' + key + '">' +
             '<div class="' + itemName + '__title">' + value.title + '</div>' +
             '<nav class="nav  record-nav">';
         for (var link in value.links) {
