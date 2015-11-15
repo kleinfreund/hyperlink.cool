@@ -25,14 +25,14 @@
         "names": ["IC", "IuC", "Information und Codierung"],
         "semester": 1,
         "links": {
-            "Vorlesungsfolien": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/",
+            "Uni-Website": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/",
             "Interner Bereich": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
         }
     },
     "lina": {
         "title": "Lineare Algebra",
         "abbr": "LinA",
-        "names": ["LinA", "LA", "Lineare Algebra"],
+        "names": ["LinA", "LA", "LinAlg", "Lineare Algebra"],
         "semester": 1,
         "links": {
             "Uni-Website": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
