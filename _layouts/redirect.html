@@ -15,29 +15,32 @@ layout: compress
         {% endfor %}
     {% endif %}
 {% endfor %}
-{{ redirect_url }}
 <!DOCTYPE html>
-<meta charset=utf-8>
-<title>Redirecting …</title>
-<link rel=canonical href="{{ redirect_url }}">
-<meta http-equiv=refresh content="0; url={{ redirect_url }}">
-<style>
-body {
-    max-width: 800px;
-    margin: 100px auto;
-    font-size: large;
-    font-family: Consolas, monospace;
-    color: {{ site.color.text }};
-    background-color: {{ site.color.background }};
-}
-a {
-    color: {{ site.color.ui }};
-}
-</style>
-<body>
-    <h1>Redirecting to …</h1>
-    <p><a href="{{ redirect_url }}">{{ redirect_url }}/</a></p>
-    <p style="position: absolute; right: 100px; bottom: 50px;">ᕕ[ ᐛ ]ᕗ</p>
-</body>
-<script>location='{{ redirect_url }}';</script>
+<html lang="en">
+    <head>
+        <meta charset=utf-8>
+        <title>Redirecting …</title>
+        <link rel=canonical href="{{ redirect_url }}">
+        <meta http-equiv=refresh content="0; url={{ redirect_url }}">
+        <style>
+        body {
+            max-width: 800px;
+            margin: 100px auto;
+            font-size: large;
+            font-family: Consolas, monospace;
+            color: {{ site.color.text }};
+            background-color: {{ site.color.background }};
+        }
+        a {
+            color: {{ site.color.ui }};
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Redirecting to …</h1>
+        <p><a href="{{ redirect_url }}">{{ redirect_url }}/</a></p>
+        <p style="position: absolute; right: 100px; bottom: 50px;">ᕕ[ ᐛ ]ᕗ</p>
+    </body>
+    <script>location='{{ redirect_url }}';</script>
+</html>
 
