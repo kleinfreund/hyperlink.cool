@@ -6,6 +6,9 @@ description: ''
 
 permalink: /:title
 
+include:
+  - '_data'
+
 exclude:
   - 'node_modules'
   - '*.sublime-workspace'
