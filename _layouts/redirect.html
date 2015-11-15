@@ -1,0 +1,43 @@
+---
+layout: compress
+---
+{% for record in site.data.records %}
+    {% if page.key == record[0] %}
+        {% if page.index %}
+            {% assign link_index = page.index %}
+        {% else %}
+            {% assign link_index = 0 %}
+        {% endif %}
+        {% for link in record[1].links %}
+            {% if forloop.index0 == link_index %}
+                {% assign redirect_url = link[1] %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{{ redirect_url }}
+<!DOCTYPE html>
+<meta charset=utf-8>
+<title>Redirecting …</title>
+<link rel=canonical href="{{ redirect_url }}">
+<meta http-equiv=refresh content="0; url={{ redirect_url }}">
+<style>
+body {
+    max-width: 800px;
+    margin: 100px auto;
+    font-size: large;
+    font-family: Consolas, monospace;
+    color: {{ site.color.text }};
+    background-color: {{ site.color.background }};
+}
+a {
+    color: {{ site.color.ui }};
+}
+</style>
+<body>
+    <h1>Redirecting to …</h1>
+    <p><a href="{{ redirect_url }}">{{ redirect_url }}/</a></p>
+    <p style="position: absolute; right: 100px; bottom: 50px;">ᕕ[ ᐛ ]ᕗ</p>
+</body>
+<script>location='{{ redirect_url }}';</script>
+
