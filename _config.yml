@@ -22,7 +22,10 @@ sass:
 
 
 
-# ui_color: 000000
+color:
+  text: ffe0e7
+  background: 28143d
+  ui: 8f2400
 
 author:
   mail: 'phrudloff@gmail.com'
@@ -42,3 +45,8 @@ defaults:
       path: ""
     values:
       layout: "default"
+  -
+    scope:
+      path: "redirects"
+    values:
+      layout: "redirect"
