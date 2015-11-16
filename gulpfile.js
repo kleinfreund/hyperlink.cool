@@ -1,22 +1,21 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 
 var paths = {
-    scripts: ['./js/*.js']
+    scripts: ['./js/*.js', '!./js/*.min.js']
 };
 
-gulp.task('scripts', function() {
+gulp.task('js', function() {
     return gulp.src(paths.scripts)
-        .pipe(uglify())
         .pipe(concat('vlaume.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('js'));
 });
 
-// Rerun the task when a file changes
 gulp.task('watch', function() {
-    gulp.watch(['./js/**/*.js', '!./js/vlaume.min.js'], ['scripts']);
+    gulp.watch(['./js/**/*.js'], ['js']);
 });
 
-// The default task (called when you run `gulp` from cli)
-gulp.task('default', ['scripts', 'watch']);
+gulp.task('default', ['js', 'watch']);
