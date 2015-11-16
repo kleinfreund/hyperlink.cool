@@ -1,3 +1,11 @@
+.js-disabled {
+
+    .filter-input-wrapper,
+    .instruction-box {
+        display: none !important;
+    }
+}
+
 .filter-input-wrapper {
     position: relative;
     margin-bottom: $half-spacing-unit;

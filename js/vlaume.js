@@ -29,6 +29,11 @@ function recordFilter(jsonFile, containerName, inputID) {
      * Before the record list can be build, the DOM has to be loaded so we can hook into the input.
      */
     window.onload = function(e) {
+        if (document.body.classList.contains('js-disabled')) {
+            document.body.classList.remove('js-disabled');
+            document.body.className += ' js-enabled';
+        }
+
         var placeholderKeys = [];
         for (var key in listData) {
             placeholderKeys = placeholderKeys.concat(listData[key].names);
@@ -36,8 +41,6 @@ function recordFilter(jsonFile, containerName, inputID) {
 
         var filterInput = document.getElementById(inputID);
         filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
-
-        buildList(filterList(filterInput.value));
 
         // Watch the search field for input changes …
         filterInput.addEventListener('input', function(e) {

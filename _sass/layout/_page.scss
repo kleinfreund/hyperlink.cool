@@ -26,3 +26,12 @@
 .page-content {
     @include vertical-gap(bottom);
 }
+
+.note {
+    @extend %vertical-rhythm;
+    padding: $half-spacing-unit $base-spacing-unit;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}

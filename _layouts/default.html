@@ -13,13 +13,17 @@ layout: compress
 
     <link rel="stylesheet" href="css/vlaume.css">
 
+    {% if jekyll.environment == 'local' %}
+    <script src="js/vlaume.js"></script>
+    {% else %}
     <script src="js/vlaume.min.js"></script>
+    {% endif %}
     <script>recordFilter('_data/records.json', 'record-filter', 'record-filter__input');</script>
 
     <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
 </head>
-<body>
+<body class="js-disabled">
     <header class="site-head">
         <div class="wrapper">
             <h1 class="site-title"><a href="/" rel="home">{{ site.title }}</a></h1>
@@ -31,11 +35,10 @@ layout: compress
             {{ content }}
 
             <noscript>
-                <h2>Ouh, JavaScript ist deaktiviert!</h2>
-
-                <p>Und jetzt? Ohne JavaScript funktioniert die Seite leider nicht. Wenn du es aktivierst und die Seite neu lädst, dann wird es klappen.</p>
-
-                <p>Es sei denn, der Programmierer hat einen schlechten Job gemacht. Dann vielleicht auch nicht. Wir drücken die Daumen.</p>
+                <div class="note">
+                    <h2>Ouh, JavaScript ist deaktiviert!</h2>
+                    <p>Was heißt das? Nicht viel, du wirst die Einträge unten nur nicht filtern können.</p>
+                </div>
             </noscript>
 
             <div class="instruction-box">
@@ -52,6 +55,19 @@ layout: compress
                         <use class="magnifying-glass" xlink:href="#magnifying-glass"></use>
                     </svg>
                 </div>
+
+                <ul id="record-list" class="record-list">
+                {% for record in site.data.records %}
+                    <li class="record" data-key="{{ record[0] }}">
+                        <div class="record__title">{{ record[1].title }}</div>
+                        <nav class="nav  record-nav">
+                        {% for link in record[1].links %}
+                            <a class="record__link" href="{{ link[1] }}">{{ link[0] }}</a>
+                        {% endfor %}
+                        </nav>
+                    </li>
+                {% endfor %}
+                </ul>
             </div>
         </div>
     </main>
