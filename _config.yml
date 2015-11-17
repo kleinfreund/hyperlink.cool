@@ -2,7 +2,7 @@ full_rebuild: true
 
 title: vlau.me
 url: http://vlau.me
-description: ''
+description: 'vlau.me is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.'
 
 permalink: /:title
 
