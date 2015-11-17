@@ -71,6 +71,50 @@
             }
         ]
     },
+    "est": {
+        "key": "est",
+        "title": "Elektrotechnik und Systemtheorie",
+        "abbr": "EST",
+        "alt_names": ["ET"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
+            },
+            {
+                "title": "Interner Bereich",
+                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/est/est-index.html"
+            }
+        ]
+    },
+    "mr": {
+        "key": "mr",
+        "title": "Medienrecht",
+        "abbr": "MR",
+        "alt_names": [],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/medienrecht/"
+            }
+        ]
+    },
+    "prog": {
+        "key": "prog",
+        "title": "Programmiersprachen",
+        "abbr": "MR",
+        "alt_names": ["Programming Languages"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2015/vorlesung-programmiersprachen/"
+            },
+            {
+                "title": "Interner Bereich (VPN)",
+                "url": "https://uranus6.medien.uni-weimar.de/trac/plse"
+            }
+        ]
+    },
     "ad": {
         "key": "ad",
         "title": "Algorithmen und Datenstrukturen",
