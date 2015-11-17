@@ -28,11 +28,11 @@ layout: compress
             margin: 100px auto;
             font-size: large;
             font-family: Consolas, monospace;
-            color: {{ site.color.text }};
-            background-color: {{ site.color.background }};
+            color: {{ site.color.text | prepend: '#' }};
+            background-color: {{ site.color.background | prepend: '#' }};
         }
         a {
-            color: {{ site.color.ui }};
+            color: {{ site.color.ui | prepend: '#' }};
         }
         </style>
     </head>
