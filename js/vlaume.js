@@ -33,7 +33,6 @@ function recordFilter(jsonFile, containerName, inputID) {
         // Removing the `js-disabled` class makes them visible again.
         if (document.body.classList.contains('js-disabled')) {
             document.body.classList.remove('js-disabled');
-            document.body.className += ' js-enabled';
         }
 
         var placeholderKeys = [];
@@ -46,7 +45,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
 
         if (filterInput.value.length > 0) {
-            buildList(filterList(filterInput.value));
+            buildRecordList(filterList(filterInput.value));
         }
 
         setActiveClass();
@@ -54,7 +53,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         // Watch the search field for input changes …
         filterInput.addEventListener('input', function(e) {
             // … and build a new record list according to the filter value
-            buildList(filterList(filterInput.value));
+            buildRecordList(filterList(filterInput.value));
         }, false);
     };
 
@@ -70,6 +69,11 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
 
+    /**
+     * @brief  Iterates over all current DOM elements to create an array of elements that are
+     *         focusable (i.e. they’re visible and have a tabIndex greater -1)
+     * @return  an array with focusable elements
+     */
     function focusableElements() {
         var elements = document.getElementsByTagName('*');
         var focusable = [];
@@ -93,14 +97,14 @@ function recordFilter(jsonFile, containerName, inputID) {
     window.onkeydown = function(e) {
         e = e || window.event;
 
-        var list = document.getElementById(listName);
+        var recordList = document.getElementById(listName);
 
         // If `e.keyCode` is not in the array, abort mission right away
-        if ([9, 13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !list.hasChildNodes()) {
+        if ([9, 13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !recordList.hasChildNodes()) {
             return;
         }
 
-        var activeLink = list.getElementsByClassName(activeLinkName)[0];
+        var activeLink = recordList.getElementsByClassName(activeLinkName)[0];
 
         if (e.keyCode === 13) {
             if (document.activeElement === document.getElementById(inputID)) {
@@ -115,7 +119,7 @@ function recordFilter(jsonFile, containerName, inputID) {
 
         if (e.keyCode === 9) {
             // If there is only one item, the default is fine.
-            if (list.length === 1) {
+            if (recordList.length === 1) {
                 return;
             }
 
@@ -138,7 +142,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         if ([37, 39].indexOf(e.keyCode) > -1) {
             var previousLink;
             var nextLink;
-            var linkElements = list.getElementsByClassName(linkName);
+            var linkElements = recordList.getElementsByClassName(linkName);
             for (var i = 0; i < linkElements.length; i++) {
                 if (activeLink === linkElements[i]) {
                     previousLink = linkElements[i-1];
@@ -186,16 +190,21 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
     /**
-     * @return  a string that contains the HTML markup for a link item
+     * @return  a string that contains the HTML markup for a record
      */
-    function listItemStr(key, value) {
-        var str = '<li class="' + itemName + '" data-key="' + key + '">' +
-            '<div class="' + itemName + '__title">' + value.title + '</div>' +
-            '<nav class="nav  record-nav">';
-        for (var i = 0; i < value.links.length; i++) {
-            var link = value.links[i];
-            str += '<a class="' + itemName + '__link" href="' + link.url + '">' + link.title + '</a>';
+    function recordStr(key, value) {
+        var str = '<li class="' + itemName + '" data-key="' + value.key + '">' +
+            '<div class="' + itemName + '__title">' + value.title + '</div>';
+
+        if (value.links.length > 0) {
+            str += '<nav class="nav  record-nav">';
+            for (var i = 0; i < value.links.length; i++) {
+                var link = value.links[i];
+                str += '<a class="' + itemName + '__link" href="' + link.url + '">' +
+                    link.title + '</a>';
+            }
         }
+
         return str;
     }
 
@@ -204,7 +213,7 @@ function recordFilter(jsonFile, containerName, inputID) {
     /**
      * Build the record list containing elements belonging to keys in `relatedKeys`.
      */
-    function buildList(relatedKeys) {
+    function buildRecordList(relatedKeys) {
         // Check if a list was build previously …
         var list = document.getElementById(listName);
         if (list) {
@@ -218,14 +227,8 @@ function recordFilter(jsonFile, containerName, inputID) {
         }
 
         for (var i = 0; i < relatedKeys.length; i++) {
-            list.innerHTML += listItemStr(relatedKeys[i], listData[relatedKeys[i]]);
+            list.innerHTML += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
         }
-
-        // for (var key in listData) {
-        //     if (relatedKeys.indexOf(key) > -1) {
-        //         list.innerHTML += listItemStr(key, listData[key]);
-        //     }
-        // }
 
         // If no list items were inserted, we need to stop here
         if (!list.hasChildNodes()) {
@@ -255,24 +258,6 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
     /**
-     * Checks whether `array` contains strings that contain `substring`.
-     * @return  true if the substring was found, false otherwise.
-     */
-    function arrayContainsSubstring(array, substring) {
-        var lowercaseArray = array.map(function(item) {
-            return item.toLowerCase();
-        });
-        for (var i = 0; i < lowercaseArray.length; i++) {
-            if (lowercaseArray[i].indexOf(substring.toLowerCase()) > -1) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-    /**
      * Takes a string to search for in `listData` to create an array of related keys.
      * @return  An array consisting of key strings which are related to `str`.
      */
@@ -295,16 +280,5 @@ function recordFilter(jsonFile, containerName, inputID) {
         };
         var fuse = new Fuse(recordObjects, options);
         return fuse.search(str);
-
-        // var relatedKeys = [];
-        // for (var key in listData) {
-        //     var value = listData[key];
-        //     var relatedNames = value.alt_names.concat(value.title, value.abbr);
-        //     if (arrayContainsSubstring(relatedNames, str)) {
-        //         relatedKeys.push(key);
-        //     }
-        // }
-
-        // return relatedKeys;
     }
 }
