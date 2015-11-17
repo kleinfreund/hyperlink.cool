@@ -4,10 +4,11 @@ A website that tries to help the Computer Science and Media students from our un
 
 ## To Do / Problems
 
-- Build Pipeline:
-  - Compress JS on jekyll build (→ try Gulp again)
-  - HTMLProofer to make sure links do not 404 too much.
-- Matching of the search tearm with an item knows no priority.
+- Gulp:
+  - Build site with Jekyll (also handles Sass)
+  - Local server
+  - Watch for changes and repeat
+  - Something like HTMLProofer to detect dead links
 
 ## Done
 
@@ -21,3 +22,5 @@ A website that tries to help the Computer Science and Media students from our un
 - Accessing the first item in a list is difficult **Fixed** by moving the focus on enter to the first element
 - Consider utilizing `tab` key for also transferring active state, because a link with focus can be opened by clicking tab by default
 - Listen for `tab` keypresses: If pressed, do not prevent the default (so focus still gets transferred to the next focusable item). Now also transfer the *active* state from item to another. This enables us to *activate* links by pressing enter after traversing through the list by tabbing.
+- Navigating away from the page and returning via browser history does not filter list. **Fixed**
+- Fuzzy Search **Added Fuse.js**
