@@ -15,8 +15,10 @@ $c-text--dark: #aaa;
 $c-background: #28143d;
 $c-background--dark: darken($c-background, 5%);
 
-$c-ui: #8f2400;
+// $c-ui: #8f2400;
+$c-ui: #dc3700;
 $c-ui--light: lighten($c-ui, 15%);
+$c-ui--dark: darken($c-ui, 15%);
 
 $c-alt: #ffbd24;
 $c-alt--dark: darken($c-alt, 15%);

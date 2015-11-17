@@ -80,7 +80,7 @@ a {
     text-decoration: none;
 
     @include attention() {
-        color: $c-ui--light;
+        color: $c-ui--dark;
     }
 }
 

@@ -17,10 +17,10 @@
     padding: 4px $half-spacing-unit;
     border-radius: 3px;
     color: #fff;
-    background-color: $c-ui;
+    background-color: $c-ui--dark;
 
     @include attention() {
-        background-color: $c-ui--light;
+        background-color: $c-ui;
         outline-color: $c-alt;
     }
 }
