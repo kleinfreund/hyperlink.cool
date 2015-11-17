@@ -1,26 +1,34 @@
 # vlau.me
 
-A website that tries to help the Computer Science and Media students from our university with the hassle of remembering all the different links for their courses by eliminating that necessity.
+[vlau.me](http://vlau.me/) is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.
 
-## To Do / Problems
+## Contributing
 
-- Gulp:
-  - Build site with Jekyll (also handles Sass)
-  - Local server
-  - Watch for changes and repeat
-  - Something like HTMLProofer to detect dead links
+If you want to add your own course, please go ahead and edit the [records.json](https://github.com/kleinfreund/vlau.me/blob/gh-pages/_data/records.json) file and file a pull request.
 
-## Done
+An example record looks something like this:
 
-- BIG IDEA: Additionally of setting `list-item--active`(or instead), transfer `:focus` state. This *might* actually also scroll them into view!!!! OH MY GOD.
-- Refactor the CSS mess
-- Find out whether `window.open(link, '_blank');` is troublesome. **Answer:** It is, it triggers popup blockers so it’s not functional. Using `location = link` instead. I guess that’s the best for now.
-- Lack of order. The current implementation knows no order of the list items, so after reverting a filtered list to a former state, the order changes. That’s not good. **Solution:** Rebuild list everytime.
-- On navigating away from the page while there is any input in the filter results in a divergence when going back via browser history: the list is not filtered from the get go **Solution:** Fixed by the new filter/rebuild mechanism
-- `courses.json` is a bad name for the file since there are not only items for courses in it. **Solution:** `record-data.json` it is
-- Special cased handling of enter key press on mobile should just hide keyboard **Fixed** by *blurring* the input field (i.e. removing the focus)
-- Accessing the first item in a list is difficult **Fixed** by moving the focus on enter to the first element
-- Consider utilizing `tab` key for also transferring active state, because a link with focus can be opened by clicking tab by default
-- Listen for `tab` keypresses: If pressed, do not prevent the default (so focus still gets transferred to the next focusable item). Now also transfer the *active* state from item to another. This enables us to *activate* links by pressing enter after traversing through the list by tabbing.
-- Navigating away from the page and returning via browser history does not filter list. **Fixed**
-- Fuzzy Search **Added Fuse.js**
+```json
+"eidi": {
+    "key": "eidi",
+    "title": "Einführung in die Informatik",
+    "abbr": "EidI",
+    "alt_names": ["EI"],
+    "links": [
+        {
+            "title": "Interner Bereich",
+            "url": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
+        }
+    ]
+}
+```
+
+If you rather not edit the file yourself, you may as well [open a new issue](https://github.com/kleinfreund/vlau.me/issues/new). Please remember to add all the necessary information about the course or whatever you want me to add.
+
+## To Do
+
+- Gulp tasks for …:
+  - Building the site with Jekyll (also handles Sass)
+  - previewing the site via a local server
+  - watching the directory for changes
+  - detecting dead links with something like HTMLProofer
