@@ -99,6 +99,7 @@
     background-color: $c-ui--dark;
 
     @include attention() {
+        color: #fff;
         background-color: $c-ui;
         outline-color: $c-alt;
     }
