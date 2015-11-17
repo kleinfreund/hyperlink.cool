@@ -1,126 +1,198 @@
 {
     "ds": {
+        "key": "ds",
         "title": "Diskrete Strukturen",
         "abbr": "DS",
         "alt_names": [],
-        "links": {
-            "Vorlesungsfolien": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/",
-            "Übungsaufgaben": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/",
-            "Tutoriumsfolien": "http://webuser.uni-weimar.de/~lopa1693/materialien/master/master.html"
-        }
+        "links": [
+            {
+                "title": "Vorlesungsfolien",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/"
+            },
+            {
+                "title": "Übungsaufgaben",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/"
+            },
+            {
+                "title": "Tutoriumsfolien",
+                "url": "http://webuser.uni-weimar.de/~lopa1693/materialien/master/master.html"
+            }
+        ]
     },
     "eidi": {
+        "key": "eidi",
         "title": "Einführung in die Informatik",
         "abbr": "EidI",
         "alt_names": ["EI"],
-        "links": {
-            "Interner Bereich": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
-        }
+        "links": [
+            {
+                "title": "Interner Bereich",
+                "url": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
+            }
+        ]
     },
     "ic": {
+        "key": "ic",
         "title": "Information und Codierung",
         "abbr": "IC",
         "alt_names": ["IuC"],
-        "links": {
-            "Uni-Website": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/",
-            "Interner Bereich": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
+            },
+            {
+                "title": "Interner Bereich",
+                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
+            }
+        ]
     },
     "lina": {
+        "key": "lina",
         "title": "Lineare Algebra",
         "abbr": "LinA",
         "alt_names": ["LA", "LinAlg"],
-        "links": {
-            "Uni-Website": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
+            }
+        ]
     },
     "mod": {
+        "key": "mod",
         "title": "Modellierung",
         "abbr": "Mod",
         "alt_names": ["modelling"],
-        "links": {
-            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=185"
-        }
+        "links": [
+            {
+                "title": "Moodle-Kurs",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=185"
+            }
+        ]
     },
     "ad": {
+        "key": "ad",
         "title": "Algorithmen und Datenstrukturen",
         "abbr": "AD",
         "alt_names": ["ADS", "AlgoDat", "Algorithms and Data Structures"],
-        "links": {
-            "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
+            }
+        ]
     },
     "db": {
+        "key": "db",
         "title": "Datenbanken",
         "abbr": "DB",
         "alt_names": ["databases"],
-        "links": {
-            "Uni-Website": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
+            }
+        ]
     },
     "hci": {
+        "key": "hci",
         "title": "Human Computer Interaction",
         "abbr": "HCI",
         "alt_names": [],
-        "links": {
-            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=287"
-        }
+        "links": [
+            {
+                "title": "Moodle-Kurs",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=287"
+            }
+        ]
     },
     "num": {
+        "key": "num",
         "title": "Numerik",
         "abbr": "Num",
         "alt_names": [],
-        "links": {
-            "Uni-Website": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
+            }
+        ]
     },
     "pvs": {
+        "key": "pvs",
         "title": "Parallele und verteilte Systeme",
         "abbr": "PVS",
         "alt_names": ["PuVS", "parallel and distributed systems"],
-        "links": {
-            "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
-        }
+        "links": [
+            {
+                "title": "Uni-Website",
+                "url": "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
+            }
+        ]
     },
     "se": {
+        "key": "se",
         "title": "Software Engineering",
         "abbr": "SE",
         "alt_names": ["Software-Entwurf"],
-        "links": {
-            "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=218"
-        }
+        "links": [
+            {
+                "title": "Moodle-Kurs",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=218"
+            }
+        ]
     },
     "mail": {
+        "key": "mail",
         "title": "Webmail",
-        "abbr": "📧",
-        "alt_names": ["Mail", "Unimail", "Uni-Mail"],
-        "links": {
-            "Webmail": "https://webmail.uni-weimar.de/"
-        }
+        "abbr": "Mail",
+        "alt_names": ["Mail", "Uni-Mail"],
+        "links": [
+            {
+                "title": "Webmail",
+                "url": "https://webmail.uni-weimar.de/"
+            }
+        ]
     },
     "bison": {
-        "title": "Serviceportal für Studium und Lehre",
+        "key": "bison",
+        "title": "BISON",
         "abbr": "BISON",
         "alt_names": [],
-        "links": {
-            "BISON": "http://www.uni-weimar.de/qisserver"
-        }
+        "links": [
+            {
+                "title": "BISON",
+                "url": "http://www.uni-weimar.de/qisserver"
+            }
+        ]
     },
     "pinboard": {
+        "key": "pinboard",
         "title": "Pinnwände",
-        "abbr": "📌",
+        "abbr": "Pin",
         "alt_names": ["Pinnwand", "Piazza"],
-        "links": {
-            "Pinnwände": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/",
-            "Piazza": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/bereich/piazza/"
-        }
+        "links": [
+            {
+                "title": "Pinnwände",
+                "url": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/"
+            },
+            {
+                "title": "Piazza",
+                "url": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/bereich/piazza/"
+            }
+        ]
     },
     "mensa": {
+        "key": "mensa",
         "title": "Mensa am Park – Speiseplan",
-        "abbr": "🍔",
+        "abbr": "Mensa",
         "alt_names": [],
-        "links": {
-            "Mensa am Park": "http://www.stw-thueringen.de/english/dining-halls/facilities/weimar/mensa-am-park.html#accordion1"
-        }
+        "links": [
+            {
+                "title": "Mensa am Park",
+                "url": "http://www.stw-thueringen.de/english/dining-halls/facilities/weimar/mensa-am-park.html#accordion1"
+            }
+        ]
     }
 }

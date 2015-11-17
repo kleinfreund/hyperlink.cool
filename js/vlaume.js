@@ -192,8 +192,9 @@ function recordFilter(jsonFile, containerName, inputID) {
         var str = '<li class="' + itemName + '" data-key="' + key + '">' +
             '<div class="' + itemName + '__title">' + value.title + '</div>' +
             '<nav class="nav  record-nav">';
-        for (var link in value.links) {
-            str += '<a class="' + itemName + '__link" href="' + value.links[link] + '">' + link + '</a>';
+        for (var i = 0; i < value.links.length; i++) {
+            var link = value.links[i];
+            str += '<a class="' + itemName + '__link" href="' + link.url + '">' + link.title + '</a>';
         }
         return str;
     }
@@ -216,11 +217,15 @@ function recordFilter(jsonFile, containerName, inputID) {
             document.getElementById(containerName).insertBefore(list, null);
         }
 
-        for (var key in listData) {
-            if (relatedKeys.indexOf(key) > -1) {
-                list.innerHTML += listItemStr(key, listData[key]);
-            }
+        for (var i = 0; i < relatedKeys.length; i++) {
+            list.innerHTML += listItemStr(relatedKeys[i], listData[relatedKeys[i]]);
         }
+
+        // for (var key in listData) {
+        //     if (relatedKeys.indexOf(key) > -1) {
+        //         list.innerHTML += listItemStr(key, listData[key]);
+        //     }
+        // }
 
         // If no list items were inserted, we need to stop here
         if (!list.hasChildNodes()) {
@@ -272,14 +277,34 @@ function recordFilter(jsonFile, containerName, inputID) {
      * @return  An array consisting of key strings which are related to `str`.
      */
     function filterList(str) {
-        var relatedKeys = [];
-        for (var key in listData) {
-            var value = listData[key];
-            var relatedNames = value.alt_names.concat(value.title, value.abbr);
-            if (arrayContainsSubstring(relatedNames, str)) {
-                relatedKeys.push(key);
+        if (str.length === 0) {
+            var allKeys = [];
+            for (var key in listData) {
+                allKeys.push(key);
             }
+            return allKeys;
         }
-        return relatedKeys;
+
+        var recordObjects = [];
+        for (var objectKey in listData) {
+            recordObjects.push(listData[objectKey]);
+        }
+        var options = {
+            keys: ['abbr', 'title', 'alt_names', 'links.title'],
+            id: 'key'
+        };
+        var fuse = new Fuse(recordObjects, options);
+        return fuse.search(str);
+
+        // var relatedKeys = [];
+        // for (var key in listData) {
+        //     var value = listData[key];
+        //     var relatedNames = value.alt_names.concat(value.title, value.abbr);
+        //     if (arrayContainsSubstring(relatedNames, str)) {
+        //         relatedKeys.push(key);
+        //     }
+        // }
+
+        // return relatedKeys;
     }
 }
