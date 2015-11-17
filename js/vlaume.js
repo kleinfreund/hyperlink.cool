@@ -38,7 +38,8 @@ function recordFilter(jsonFile, containerName, inputID) {
 
         var placeholderKeys = [];
         for (var key in listData) {
-            placeholderKeys = placeholderKeys.concat(listData[key].names);
+            var value = listData[key];
+            placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.alt_names);
         }
 
         var filterInput = document.getElementById(inputID);
@@ -273,7 +274,9 @@ function recordFilter(jsonFile, containerName, inputID) {
     function filterList(str) {
         var relatedKeys = [];
         for (var key in listData) {
-            if (arrayContainsSubstring(listData[key].names, str)) {
+            var value = listData[key];
+            var relatedNames = value.alt_names.concat(value.title, value.abbr);
+            if (arrayContainsSubstring(relatedNames, str)) {
                 relatedKeys.push(key);
             }
         }

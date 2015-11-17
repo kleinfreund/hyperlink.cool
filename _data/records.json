@@ -2,8 +2,7 @@
     "ds": {
         "title": "Diskrete Strukturen",
         "abbr": "DS",
-        "names": ["DS", "Diskrete Strukturen"],
-        "semester": 1,
+        "alt_names": [],
         "links": {
             "Vorlesungsfolien": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/",
             "Übungsaufgaben": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/",
@@ -13,8 +12,7 @@
     "eidi": {
         "title": "Einführung in die Informatik",
         "abbr": "EidI",
-        "names": ["EidI", "EI", "Einführung in die Informatik"],
-        "semester": 1,
+        "alt_names": ["EI"],
         "links": {
             "Interner Bereich": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
         }
@@ -22,8 +20,7 @@
     "ic": {
         "title": "Information und Codierung",
         "abbr": "IC",
-        "names": ["IC", "IuC", "Information und Codierung"],
-        "semester": 1,
+        "alt_names": ["IuC"],
         "links": {
             "Uni-Website": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/",
             "Interner Bereich": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
@@ -32,8 +29,7 @@
     "lina": {
         "title": "Lineare Algebra",
         "abbr": "LinA",
-        "names": ["LinA", "LA", "LinAlg", "Lineare Algebra"],
-        "semester": 1,
+        "alt_names": ["LA", "LinAlg"],
         "links": {
             "Uni-Website": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
         }
@@ -41,8 +37,7 @@
     "mod": {
         "title": "Modellierung",
         "abbr": "Mod",
-        "names": ["Mod", "Modellierung", "modelling"],
-        "semester": 1,
+        "alt_names": ["modelling"],
         "links": {
             "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=185"
         }
@@ -50,8 +45,7 @@
     "ad": {
         "title": "Algorithmen und Datenstrukturen",
         "abbr": "AD",
-        "names": ["AD", "ADS", "AlgoDat", "Algorithmen und Datenstrukturen", "Algorithms and Data Structures"],
-        "semester": 3,
+        "alt_names": ["ADS", "AlgoDat", "Algorithms and Data Structures"],
         "links": {
             "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
         }
@@ -59,8 +53,7 @@
     "db": {
         "title": "Datenbanken",
         "abbr": "DB",
-        "names": ["DB", "Datenbanken", "databases"],
-        "semester": 3,
+        "alt_names": ["databases"],
         "links": {
             "Uni-Website": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
         }
@@ -68,8 +61,7 @@
     "hci": {
         "title": "Human Computer Interaction",
         "abbr": "HCI",
-        "names": ["HCI", "Human Computer Interaction"],
-        "semester": 3,
+        "alt_names": [],
         "links": {
             "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=287"
         }
@@ -77,8 +69,7 @@
     "num": {
         "title": "Numerik",
         "abbr": "Num",
-        "names": ["Num", "Numerik"],
-        "semester": 3,
+        "alt_names": [],
         "links": {
             "Uni-Website": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
         }
@@ -86,8 +77,7 @@
     "pvs": {
         "title": "Parallele und verteilte Systeme",
         "abbr": "PVS",
-        "names": ["PVS", "PuVS", "Parallele und verteilte Systeme", "parallel and distributed systems"],
-        "semester": 3,
+        "alt_names": ["PuVS", "parallel and distributed systems"],
         "links": {
             "Uni-Website": "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
         }
@@ -95,8 +85,7 @@
     "se": {
         "title": "Software Engineering",
         "abbr": "SE",
-        "names": ["SE", "Software Engineering", "Software-Entwurf"],
-        "semester": 3,
+        "alt_names": ["Software-Entwurf"],
         "links": {
             "Moodle-Kurs": "https://moodle.uni-weimar.de/course/view.php?id=218"
         }
@@ -104,8 +93,7 @@
     "mail": {
         "title": "Webmail",
         "abbr": "📧",
-        "names": ["Webmail", "Mail", "Unimail", "Uni-Mail"],
-        "semester": -1,
+        "alt_names": ["Mail", "Unimail", "Uni-Mail"],
         "links": {
             "Webmail": "https://webmail.uni-weimar.de/"
         }
@@ -113,8 +101,7 @@
     "bison": {
         "title": "Serviceportal für Studium und Lehre",
         "abbr": "BISON",
-        "names": ["BISON", "Serviceportal"],
-        "semester": -1,
+        "alt_names": [],
         "links": {
             "BISON": "http://www.uni-weimar.de/qisserver"
         }
@@ -122,8 +109,7 @@
     "pinboard": {
         "title": "Pinnwände",
         "abbr": "📌",
-        "names": ["Pinnwand", "Pinnwände", "Piazza"],
-        "semester": -1,
+        "alt_names": ["Pinnwand", "Piazza"],
         "links": {
             "Pinnwände": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/",
             "Piazza": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/bereich/piazza/"
@@ -132,8 +118,7 @@
     "mensa": {
         "title": "Mensa am Park – Speiseplan",
         "abbr": "🍔",
-        "names": ["mensa", "Speiseplan"],
-        "semester": -1,
+        "alt_names": [],
         "links": {
             "Mensa am Park": "http://www.stw-thueringen.de/english/dining-halls/facilities/weimar/mensa-am-park.html#accordion1"
         }
