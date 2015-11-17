@@ -27,7 +27,7 @@ layout: compress
 <body class="js-disabled">
     <header class="site-head">
         <div class="wrapper">
-            <h1 class="site-title"><a href="/" rel="home">{{ site.title }}</a></h1>
+            <h1 class="site-title"><a href="/" title="Zur vlau.me!" rel="home">{{ site.title }}</a></h1>
         </div>
     </header>
 
@@ -38,13 +38,13 @@ layout: compress
             <noscript>
                 <div class="note">
                     <h2>Ouh, JavaScript ist deaktiviert!</h2>
-                    <p>Was heißt das? Nicht viel, du wirst die Einträge unten nur nicht filtern können.</p>
+                    <p>Was heißt das? Nicht viel, du wirst die Einträge unten nur nicht filtern können. Viel Spaß!</p>
                 </div>
             </noscript>
 
             <div class="instruction-box">
-                <kbd title="nach links">←</kbd>, <kbd title="nach oben">↑</kbd>, <kbd title="nach rechts">→</kbd>, <kbd title="nach unten">↓</kbd> navigiert,
-                <kbd title="Eingabe">enter</kbd> öffnet Link.
+                Navigation mit <kbd title="Nach links">←</kbd>, <kbd title="Nach oben">↑</kbd>, <kbd title="Nach rechts">→</kbd>, <kbd title="Nach unten">↓</kbd> oder <kbd title="Tab">↹</kbd>.<br>
+                <kbd title="Eingabe">Enter</kbd> öffnet einen Link, mit <kbd title="Steuerung">Strg</kbd> sogar in neuem Tab.
             </div>
 
             <div id="record-filter">
@@ -75,7 +75,7 @@ layout: compress
 
     <footer class="site-foot">
         <div class="wrapper">
-            <p>Die Website <a href="/">vlau.me</a> wurde erstellt von <a href="{{ site.author.website }}">Philipp Rudloff</a>. Code liegt auf <a href="https://github.com/kleinfreund/vlau.me">GitHub</a>. Erstellt mit <a href="http://jekyllrb.com/">Jekyll</a>. Fuzzy Search by <a href="https://github.com/krisk/Fuse">Fuse</a>.</p>
+            <p>Die Website <a href="/" title="Zur vlau.me!" rel="home">vlau.me</a> wurde von <a href="{{ site.author.website }}" title="Mondbasis von Philipp Rudloff">Philipp Rudloff</a> mit <a href="http://jekyllrb.com/" title="Simple, blog-aware static site generator">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/vlau.me" title="GitHub-Repository von vlau.me">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT" title="Zur Website der Open Source Initiative">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse" title="GitHub-Repository der Fuzzy Search-Implementierung">Fuse</a> von Kirollos Risk.</p>
         </div>
     </footer>
 
