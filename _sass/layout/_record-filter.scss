@@ -69,18 +69,17 @@
     position: relative;
     padding: $base-spacing-unit;
     background-color: $c-background--dark;
-    // border-left: 5px solid $c-background--dark;
 
     &:not(:last-child) {
         margin-bottom: $half-spacing-unit;
     }
 
-    &:after {
-        content: "\2F" attr(data-key);
-        position: absolute;
-        top: $half-spacing-unit;
-        right: $base-spacing-unit;
-    }
+    // &:after {
+    //     content: "\2F" attr(data-key);
+    //     position: absolute;
+    //     top: $half-spacing-unit;
+    //     right: $base-spacing-unit;
+    // }
 
     &:focus {
         outline: 0;
@@ -94,6 +93,15 @@
 
 .record__link {
     position: relative;
+    padding: 4px $half-spacing-unit;
+    border-radius: 3px;
+    color: #fff;
+    background-color: $c-ui--dark;
+
+    @include attention() {
+        background-color: $c-ui;
+        outline-color: $c-alt;
+    }
 }
 
 .record__link--active:focus {
@@ -101,16 +109,19 @@
 }
 
 @include media-query(desk) {
-    .record--active:before,
-    .record__link--active:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 3;
-        width: 4px;
-        overflow: hidden;
-        background-color: $c-alt;
+    .record--active,
+    .record__link--active {
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 3;
+            width: 4px;
+            overflow: hidden;
+            background-color: $c-alt;
+        }
     }
 }
