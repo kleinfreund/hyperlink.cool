@@ -29,6 +29,8 @@ function recordFilter(jsonFile, containerName, inputID) {
      * Before the record list can be build, the DOM has to be loaded so we can hook into the input.
      */
     window.onload = function(e) {
+        // Some things that are only usable when JavaScript is enabled are hidden by default.
+        // Removing the `js-disabled` class makes them visible again.
         if (document.body.classList.contains('js-disabled')) {
             document.body.classList.remove('js-disabled');
             document.body.className += ' js-enabled';
@@ -41,6 +43,12 @@ function recordFilter(jsonFile, containerName, inputID) {
 
         var filterInput = document.getElementById(inputID);
         filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
+
+        if (filterInput.value.length > 0) {
+            buildList(filterList(filterInput.value));
+        }
+
+        setActiveClass();
 
         // Watch the search field for input changes …
         filterInput.addEventListener('input', function(e) {
@@ -219,6 +227,13 @@ function recordFilter(jsonFile, containerName, inputID) {
         }
 
         // Set the first child element in the list to active state
+        setActiveClass();
+    }
+
+
+
+    function setActiveClass() {
+        var list = document.getElementById(listName);
         var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
         if (firstItem) {
             if (firstItem.className.indexOf(linkName) > -1) {
