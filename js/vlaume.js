@@ -38,7 +38,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         var placeholderKeys = [];
         for (var key in listData) {
             var value = listData[key];
-            placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.alt_names);
+            placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.keywords);
         }
 
         var filterInput = document.getElementById(inputID);
@@ -275,7 +275,7 @@ function recordFilter(jsonFile, containerName, inputID) {
             recordObjects.push(listData[objectKey]);
         }
         var options = {
-            keys: ['abbr', 'title', 'alt_names', 'links.title'],
+            keys: ['abbr', 'title', 'keywords', 'persons', 'links.title'],
             id: 'key'
         };
         var fuse = new Fuse(recordObjects, options);

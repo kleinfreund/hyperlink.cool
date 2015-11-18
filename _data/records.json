@@ -3,7 +3,8 @@
         "key": "ds",
         "title": "Diskrete Strukturen",
         "abbr": "DS",
-        "alt_names": [],
+        "keywords": [],
+        "persons": ["Stefan Luchs", "Jakob Wenzel", "Tim Weißker"],
         "links": [
             {
                 "title": "Vorlesungsfolien",
@@ -23,7 +24,8 @@
         "key": "eidi",
         "title": "Einführung in die Informatik",
         "abbr": "EidI",
-        "alt_names": ["EI"],
+        "keywords": ["EI"],
+        "persons": ["Matthias Hagen", "Andreas Jakoby"],
         "links": [
             {
                 "title": "Interner Bereich",
@@ -35,7 +37,8 @@
         "key": "ic",
         "title": "Information und Codierung",
         "abbr": "IC",
-        "alt_names": ["IuC"],
+        "keywords": ["IuC"],
+        "persons": ["Günther Schatter", "Lars Meyer"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -51,7 +54,8 @@
         "key": "lina",
         "title": "Lineare Algebra",
         "abbr": "LinA",
-        "alt_names": ["LA", "LinAlg"],
+        "keywords": ["LA", "LinAlg"],
+        "persons": ["Klaus Gürlebeck", "Friederike Luther"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -63,7 +67,8 @@
         "key": "mod",
         "title": "Modellierung",
         "abbr": "Mod",
-        "alt_names": ["modelling"],
+        "keywords": ["modelling"],
+        "persons": ["Eva Hornecker", "Julian Fietkau", "Patrick Tobias Fischer", "Jakob Herpel", "Christian Paffrath"],
         "links": [
             {
                 "title": "Moodle-Kurs",
@@ -75,7 +80,8 @@
         "key": "est",
         "title": "Elektrotechnik und Systemtheorie",
         "abbr": "EST",
-        "alt_names": ["ET"],
+        "keywords": ["ET"],
+        "persons": ["Günther Schatter", "Lars Meyer"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -91,7 +97,8 @@
         "key": "mr",
         "title": "Medienrecht",
         "abbr": "MR",
-        "alt_names": [],
+        "keywords": [],
+        "persons": ["Harald Vinke"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -103,7 +110,8 @@
         "key": "prog",
         "title": "Programmiersprachen",
         "abbr": "Prog",
-        "alt_names": ["Programming Languages"],
+        "keywords": ["Programming Languages"],
+        "persons": [],
         "links": [
             {
                 "title": "Uni-Website",
@@ -119,7 +127,8 @@
         "key": "ad",
         "title": "Algorithmen und Datenstrukturen",
         "abbr": "AD",
-        "alt_names": ["ADS", "AlgoDat", "Algorithms and Data Structures"],
+        "keywords": ["ADS", "AlgoDat", "Algorithms and Data Structures"],
+        "persons": ["Charles Wüthrich", "Banafsheh Azari"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -131,7 +140,8 @@
         "key": "db",
         "title": "Datenbanken",
         "abbr": "DB",
-        "alt_names": ["databases"],
+        "keywords": ["databases"],
+        "persons": ["Benno Stein", "Johannes Kiesel", "Henning Wachsmuth"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -143,7 +153,8 @@
         "key": "hci",
         "title": "Human Computer Interaction",
         "abbr": "HCI",
-        "alt_names": [],
+        "keywords": [],
+        "persons": ["Eva Hornecker", "Julian Fietkau", "Patrick Tobias Fischer"],
         "links": [
             {
                 "title": "Moodle-Kurs",
@@ -155,7 +166,8 @@
         "key": "num",
         "title": "Numerik",
         "abbr": "Num",
-        "alt_names": [],
+        "keywords": [],
+        "persons": ["Klaus Gürlebeck", "Friederike Luther"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -167,7 +179,8 @@
         "key": "pvs",
         "title": "Parallele und verteilte Systeme",
         "abbr": "PVS",
-        "alt_names": ["PuVS", "parallel and distributed systems"],
+        "keywords": ["PuVS", "parallel and distributed systems"],
+        "persons": ["Volker Rodehorst", "Jens Kersten"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -179,7 +192,8 @@
         "key": "se",
         "title": "Software Engineering",
         "abbr": "SE",
-        "alt_names": ["Software-Entwurf"],
+        "keywords": ["Software-Entwurf"],
+        "persons": ["Florian Echtler", "Philipp Seltmann"],
         "links": [
             {
                 "title": "Moodle-Kurs",
@@ -191,7 +205,8 @@
         "key": "mail",
         "title": "Webmail",
         "abbr": "Mail",
-        "alt_names": ["Mail", "Uni-Mail"],
+        "keywords": ["Mail", "Uni-Mail"],
+        "persons": [],
         "links": [
             {
                 "title": "Webmail",
@@ -203,7 +218,8 @@
         "key": "bison",
         "title": "BISON",
         "abbr": "BISON",
-        "alt_names": [],
+        "keywords": [],
+        "persons": [],
         "links": [
             {
                 "title": "BISON",
@@ -215,7 +231,8 @@
         "key": "pinboard",
         "title": "Pinnwände",
         "abbr": "Pin",
-        "alt_names": ["Pinnwand", "Piazza"],
+        "keywords": ["Pinnwand", "Piazza"],
+        "persons": [],
         "links": [
             {
                 "title": "Pinnwände",
@@ -231,7 +248,8 @@
         "key": "mensa",
         "title": "Mensa am Park – Speiseplan",
         "abbr": "Mensa",
-        "alt_names": [],
+        "keywords": [],
+        "persons": [],
         "links": [
             {
                 "title": "Mensa am Park",
