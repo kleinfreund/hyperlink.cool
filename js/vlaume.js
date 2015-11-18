@@ -48,13 +48,20 @@ function recordFilter(jsonFile, containerName, inputID) {
             buildRecordList(filterList(filterInput.value));
         }
 
-        setActiveClass();
+        var recordList = document.getElementById(listName);
+        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
 
         // Watch the search field for input changes …
         filterInput.addEventListener('input', function(e) {
             // … and build a new record list according to the filter value
             buildRecordList(filterList(filterInput.value));
         }, false);
+
+        document.addEventListener('focus', function(e) {
+            if (document.activeElement) {
+                setActiveClass(document.activeElement);
+            }
+        }, true);
     };
 
 
@@ -236,21 +243,21 @@ function recordFilter(jsonFile, containerName, inputID) {
         }
 
         // Set the first child element in the list to active state
-        setActiveClass();
+        var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
+        setActiveClass(firstItem);
     }
 
 
 
-    function setActiveClass() {
-        var list = document.getElementById(listName);
-        var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
-        if (firstItem) {
-            if (firstItem.className.indexOf(linkName) > -1) {
-                var activeItem = list.getElementsByClassName(activeLinkName)[0];
+    function setActiveClass(element) {
+        if (element) {
+            if (element.className.indexOf(linkName) > -1) {
+                var recordList = document.getElementById(listName);
+                var activeItem = recordList.getElementsByClassName(activeLinkName)[0];
                 if (activeItem) {
                     activeItem.classList.remove(activeLinkName);
                 }
-                firstItem.className += '  ' + activeLinkName;
+                element.className += '  ' + activeLinkName;
             }
         }
     }
