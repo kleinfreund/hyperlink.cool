@@ -10,7 +10,7 @@ layout: compress
         {% endif %}
         {% for link in record[1].links %}
             {% if forloop.index0 == link_index %}
-                {% assign redirect_url = link[1] %}
+                {% assign redirect_url = link.url %}
             {% endif %}
         {% endfor %}
     {% endif %}
