@@ -102,7 +102,7 @@
     "prog": {
         "key": "prog",
         "title": "Programmiersprachen",
-        "abbr": "MR",
+        "abbr": "Prog",
         "alt_names": ["Programming Languages"],
         "links": [
             {
