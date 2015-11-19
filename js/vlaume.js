@@ -45,7 +45,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
 
         if (filterInput.value.length > 0) {
-            buildRecordList(filterList(filterInput.value));
+            buildRecordList(filterKeys(filterInput.value));
         }
 
         var recordList = document.getElementById(listName);
@@ -54,7 +54,7 @@ function recordFilter(jsonFile, containerName, inputID) {
         // Watch the search field for input changes …
         filterInput.addEventListener('input', function(e) {
             // … and build a new record list according to the filter value
-            buildRecordList(filterList(filterInput.value));
+            buildRecordList(filterKeys(filterInput.value));
         }, false);
 
         document.addEventListener('focus', function(e) {
@@ -63,34 +63,6 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
         }, true);
     };
-
-
-
-    /**
-     * @return  the closest ancestor of `element` with a class `className`
-     */
-    function findAncestor(element, className) {
-        while ((element = element.parentElement) && !element.classList.contains(className));
-        return element;
-    }
-
-
-
-    /**
-     * @brief  Iterates over all current DOM elements to create an array of elements that are
-     *         focusable (i.e. they’re visible and have a tabIndex greater -1)
-     * @return  an array with focusable elements
-     */
-    function focusableElements() {
-        var elements = document.getElementsByTagName('*');
-        var focusable = [];
-        for (var i = 0; i < elements.length; i++) {
-            if (elements[i].tabIndex > -1 && elements[i].offsetParent !== null) {
-                focusable.push(elements[i]);
-            }
-        }
-        return focusable;
-    }
 
 
 
@@ -197,6 +169,64 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
     /**
+     * Takes a string to search for in `listData` to create an array of related keys.
+     * @return  An array consisting of key strings which are related to `str`.
+     */
+    function filterKeys(str) {
+        if (str.length === 0) {
+            var allKeys = [];
+            for (var key in listData) {
+                allKeys.push(key);
+            }
+            return allKeys;
+        }
+
+        var recordObjects = [];
+        for (var objectKey in listData) {
+            recordObjects.push(listData[objectKey]);
+        }
+        var options = {
+            keys: ['abbr', 'title', 'keywords', 'persons', 'links.title'],
+            id: 'key'
+        };
+        var fuse = new Fuse(recordObjects, options);
+        return fuse.search(str);
+    }
+
+
+
+    /**
+     * Build the record list containing elements belonging to keys in `relatedKeys`.
+     */
+    function buildRecordList(relatedKeys) {
+        // Check if a list was build previously …
+        var recordList = document.getElementById(listName);
+        if (recordList) {
+            // … and remove its content
+            recordList.innerHTML = '';
+        } else {
+            // … otherwise, create it
+            recordList = document.createElement('ul');
+            recordList.id = recordList.className = listName;
+            document.getElementById(containerName).insertBefore(recordList, null);
+        }
+
+        for (var i = 0; i < relatedKeys.length; i++) {
+            recordList.innerHTML += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
+        }
+
+        // If no list items were inserted, we need to stop here
+        if (!recordList.hasChildNodes()) {
+            return;
+        }
+
+        // Set the first child element in the list to active state
+        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
+    }
+
+
+
+    /**
      * @return  a string that contains the HTML markup for a record
      */
     function recordStr(key, value) {
@@ -218,37 +248,8 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
     /**
-     * Build the record list containing elements belonging to keys in `relatedKeys`.
+     * @brief  Moves the active class to the given element
      */
-    function buildRecordList(relatedKeys) {
-        // Check if a list was build previously …
-        var list = document.getElementById(listName);
-        if (list) {
-            // … and remove its content
-            list.innerHTML = '';
-        } else {
-            // … otherwise, create it
-            list = document.createElement('ul');
-            list.id = list.className = listName;
-            document.getElementById(containerName).insertBefore(list, null);
-        }
-
-        for (var i = 0; i < relatedKeys.length; i++) {
-            list.innerHTML += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
-        }
-
-        // If no list items were inserted, we need to stop here
-        if (!list.hasChildNodes()) {
-            return;
-        }
-
-        // Set the first child element in the list to active state
-        var firstItem = list.firstElementChild.getElementsByClassName(linkName)[0];
-        setActiveClass(firstItem);
-    }
-
-
-
     function setActiveClass(element) {
         if (element) {
             if (element.className.indexOf(linkName) > -1) {
@@ -265,27 +266,28 @@ function recordFilter(jsonFile, containerName, inputID) {
 
 
     /**
-     * Takes a string to search for in `listData` to create an array of related keys.
-     * @return  An array consisting of key strings which are related to `str`.
+     * @return  the closest ancestor of `element` that has a class `className`
      */
-    function filterList(str) {
-        if (str.length === 0) {
-            var allKeys = [];
-            for (var key in listData) {
-                allKeys.push(key);
-            }
-            return allKeys;
-        }
+    function findAncestor(element, className) {
+        while ((element = element.parentElement) && !element.classList.contains(className));
+        return element;
+    }
 
-        var recordObjects = [];
-        for (var objectKey in listData) {
-            recordObjects.push(listData[objectKey]);
+
+
+    /**
+     * @brief  Iterates over all current DOM elements to create an array of elements that are
+     *         focusable (i.e. they’re visible and have a tabIndex greater -1)
+     * @return  an array containing all currently focusable elements in the DOM
+     */
+    function focusableElements() {
+        var elements = document.getElementsByTagName('*');
+        var focusable = [];
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].tabIndex > -1 && elements[i].offsetParent !== null) {
+                focusable.push(elements[i]);
+            }
         }
-        var options = {
-            keys: ['abbr', 'title', 'keywords', 'persons', 'links.title'],
-            id: 'key'
-        };
-        var fuse = new Fuse(recordObjects, options);
-        return fuse.search(str);
+        return focusable;
     }
 }
