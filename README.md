@@ -13,7 +13,8 @@ An example record looks something like this:
     "key": "eidi",
     "title": "Einführung in die Informatik",
     "abbr": "EidI",
-    "alt_names": ["EI"],
+    "keywords": ["EI"],
+    "persons": ["Matthias Hagen"],
     "links": [
         {
             "title": "Interner Bereich",
