@@ -256,5 +256,18 @@
                 "url": "http://www.stw-thueringen.de/deutsch/mensen/einrichtungen/weimar/mensa-am-park.html#accordion1"
             }
         ]
-    }
+    },
+    "opac": {
+    "key": "opac",
+    "title": "Katalog der Universitätsbibliothek",
+    "abbr": "opac",
+    "keywords": ["ub", "opac", "bibliothek", "katalog", "bibliothekskatalog"], 
+    "persons": [],
+    "links": [
+        {
+            "title": "Katalog der Universitätsbibliothek",
+            "url": "https://opac.lbs-weimar.gbv.de/DB=1/"
+        }
+    ]
+}
 }
