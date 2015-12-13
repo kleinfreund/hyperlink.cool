@@ -1,0 +1,56 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>404!!1 – {{ site.title }}</title>
+
+    {% if site.description %}<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% endif %}
+
+    <link rel="stylesheet" href="css/vlaume.css">
+
+    {% if jekyll.environment == 'local' %}
+    <script src="js/fuse.js"></script>
+    <script src="js/vlaume.js"></script>
+    {% else %}
+    <script src="js/vlaume.min.js"></script>
+    {% endif %}
+    <script>recordFilter('_data/records.json', 'record-filter', 'record-filter__input');</script>
+
+    <link rel="icon" href="img/icon.png">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
+</head>
+<body class="js-disabled">
+    <header class="site-head">
+        <div class="wrapper">
+            <h1 class="site-title"><a href="/" title="Zur vlau.me!" rel="home">{{ site.title }}</a></h1>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="wrapper">
+            <h2>Fehler 404 – Seite nicht gefunden</h2>
+            <p>Huppsies! Wo wolltest du denn hin? Kehr mal lieber wieder um. Hier hab ich nichts für dich.</p>
+        </div>
+    </main>
+
+    <footer class="site-foot">
+        <div class="wrapper">
+            <p>Wenn dir ein Link oder Kurs fehlt, dann kannst du ihn selbst eintragen. Wie das geht, erfährst du auf <a href="https://github.com/kleinfreund/vlau.me#contributing" title="Beschreibung, wie ein neuer Eintrag auf der Seite hinzugefügt werden kann (Englisch)">dieser Seite</a>.</p>
+            <p>Die Website <a href="/" title="Zur vlau.me!" rel="home">vlau.me</a> wurde von <a href="{{ site.author.website }}" title="Mondbasis von Philipp Rudloff">Philipp Rudloff</a> mit <a href="http://jekyllrb.com/" title="Simple, blog-aware static site generator">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/vlau.me" title="GitHub-Repository von vlau.me">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT" title="Zur Website der Open Source Initiative">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse" title="GitHub-Repository der Fuzzy Search-Implementierung">Fuse</a> von Kirollos Risk.</p>
+        </div>
+    </footer>
+
+    <svg width="0" height="0" hidden>
+        <defs>
+            <g id="magnifying-glass">
+                <path d="M53.546 49.511L39.145 35.109C40.94 32.523 42 29.387 42 26c0-8.836-7.163-16-16-16 -8.836 0-16 7.164-16 16 0 8.837 7.164 16 16 16 3.644 0 6.992-1.231 9.682-3.283l14.329 14.329L53.546 49.511zM26 37.5c-6.351 0-11.5-5.148-11.5-11.5 0-6.351 5.149-11.5 11.5-11.5 6.352 0 11.5 5.149 11.5 11.5C37.5 32.352 32.352 37.5 26 37.5z"/>
+            </g>
+        </defs>
+    </svg>
+</body>
+</html>
