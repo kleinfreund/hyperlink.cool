@@ -7,6 +7,7 @@ description: 'vlau.me is a searchable link collection for my fellow Computer Sci
 permalink: /:title
 
 include:
+  - '.htaccess'
   - '_data'
 
 exclude:
@@ -39,8 +40,8 @@ compress_html:
   clippings: all
   comments: ["<!--", "-->"]
   endings: all
-  ignore:
-    envs: [local]
+#  ignore:
+#    envs: [local]
 
 
 defaults:
