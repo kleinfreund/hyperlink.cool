@@ -8,6 +8,8 @@ function recordFilter(jsonFile, containerName, inputID) {
     // Get the JSON data by using a XML http request
     var listData;
     var xhr = new XMLHttpRequest();
+    // The request needs to be synchronous for now because on slow connections the DOM is ready
+    // before it fetches everything from the json file
     xhr.open('GET', jsonFile, false);
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
@@ -28,7 +30,7 @@ function recordFilter(jsonFile, containerName, inputID) {
     /**
      * Before the record list can be build, the DOM has to be loaded so we can hook into the input.
      */
-    window.onload = function(e) {
+    document.addEventListener("DOMContentLoaded", function(e) {
         // Some things that are only usable when JavaScript is enabled are hidden by default.
         // Removing the `js-disabled` class makes them visible again.
         if (document.body.classList.contains('js-disabled')) {
@@ -62,7 +64,7 @@ function recordFilter(jsonFile, containerName, inputID) {
                 setActiveClass(document.activeElement);
             }
         }, true);
-    };
+    });
 
 
 
@@ -73,19 +75,19 @@ function recordFilter(jsonFile, containerName, inputID) {
      * Some keys and which keycodes they’re mapped to:
      * `tab` – 9;   `enter` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
      */
-    window.onkeydown = function(e) {
+    document.addEventListener("keydown", function(e) {
         e = e || window.event;
-
+        var key = e.keyCode;
         var recordList = document.getElementById(listName);
 
         // If `e.keyCode` is not in the array, abort mission right away
-        if ([9, 13, 37, 38, 39, 40].indexOf(e.keyCode) === -1 || !recordList.hasChildNodes()) {
+        if ([9, 13, 37, 38, 39, 40].indexOf(key) === -1 || !recordList.hasChildNodes()) {
             return;
         }
 
         var activeLink = recordList.getElementsByClassName(activeLinkName)[0];
 
-        if (e.keyCode === 13) {
+        if (key === 13) {
             if (document.activeElement === document.getElementById(inputID)) {
                 document.activeElement.blur();
                 activeLink.focus();
@@ -96,7 +98,7 @@ function recordFilter(jsonFile, containerName, inputID) {
 
         var targetElement;
 
-        if (e.keyCode === 9) {
+        if (key === 9) {
             // If there is only one item, the default is fine.
             if (recordList.length === 1) {
                 return;
@@ -118,7 +120,7 @@ function recordFilter(jsonFile, containerName, inputID) {
             }
         }
 
-        if ([37, 39].indexOf(e.keyCode) > -1) {
+        if ([37, 39].indexOf(key) > -1) {
             var previousLink;
             var nextLink;
             var linkElements = recordList.getElementsByClassName(linkName);
@@ -134,12 +136,12 @@ function recordFilter(jsonFile, containerName, inputID) {
                 return;
             }
 
-            if (e.keyCode === 37 && previousLink) {
+            if (key === 37 && previousLink) {
                 targetElement = previousLink;
-            } else if (e.keyCode === 39 && nextLink) {
+            } else if (key === 39 && nextLink) {
                 targetElement = nextLink;
             }
-        } else if ([38, 40].indexOf(e.keyCode) > -1) {
+        } else if ([38, 40].indexOf(key) > -1) {
             var activeItem = findAncestor(activeLink, itemName);
             var previousItem = activeItem.previousElementSibling;
             var nextItem = activeItem.nextElementSibling;
@@ -148,23 +150,23 @@ function recordFilter(jsonFile, containerName, inputID) {
                 return;
             }
 
-            if (e.keyCode === 38 && previousItem) {
+            if (key === 38 && previousItem) {
                 targetElement = previousItem.getElementsByClassName(linkName)[0];
-            } else if (e.keyCode === 40 && nextItem) {
+            } else if (key === 40 && nextItem) {
                 targetElement = nextItem.getElementsByClassName(linkName)[0];
             }
 
         }
 
         if (targetElement && targetElement.classList.contains(linkName)) {
-            if ([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            if ([37, 38, 39, 40].indexOf(key) > -1) {
                 e.preventDefault();
                 targetElement.focus();
             }
             activeLink.classList.remove(activeLinkName);
             targetElement.className += '  ' + activeLinkName;
         }
-    };
+    });
 
 
 
