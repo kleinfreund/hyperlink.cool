@@ -1,7 +1,7 @@
 full_rebuild: true
 
 title: vlau.me
-url: http://vlau.me
+url: https://vlau.me
 description: 'vlau.me is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.'
 
 permalink: /:title
@@ -33,7 +33,7 @@ color:
 
 author:
   mail: 'phrudloff@gmail.com'
-  website: 'http://hey.kleinfreund.de'
+  website: 'https://kleinfreund.de'
 
 # compress.html by Anatol Broder (http://jch.penibelst.de)
 compress_html:
