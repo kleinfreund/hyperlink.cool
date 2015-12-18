@@ -11,18 +11,26 @@ layout: compress
 
     {% if site.description %}<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% endif %}
 
-    <link rel="stylesheet" href="css/vlaume.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
 
     {% if jekyll.environment == 'local' %}
-    <script src="js/fuse.js"></script>
-    <script src="js/vlaume.js"></script>
+        <script src="/js/fuse.js"></script>
+        <script src="/js/vlaume.js"></script>
+        <link rel="stylesheet" href="/css/vlaume.css">
     {% else %}
-    <script src="js/vlaume.min.js"></script>
+        <script src="/js/vlaume.min.js"></script>
+        <!-- Inline complete stylesheet for one less blocking request -->
+        <style>
+            {% capture scss_include %}
+                {% include vlaume.scss %}
+            {% endcapture %}
+
+            {{ scss_include | scssify }}
+        </style>
     {% endif %}
     <script>recordFilter('_data/records.json', 'record-filter', 'record-filter__input');</script>
 
-    <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
+    <link rel="icon" href="/img/icon.png">
 </head>
 <body class="js-disabled">
     <header class="site-head">
