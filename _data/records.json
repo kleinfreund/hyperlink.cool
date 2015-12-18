@@ -4,18 +4,21 @@
         "title": "Diskrete Strukturen",
         "abbr": "DS",
         "keywords": ["1. Semester"],
-        "persons": ["Stefan Luchs", "Jakob Wenzel", "Tim Weißker"],
+        "persons": ["Stefan Lucks", "Jakob Wenzel", "Tim Weißker"],
         "links": [
             {
                 "title": "Vorlesungsfolien",
+                "key": "ds",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/"
             },
             {
                 "title": "Übungsaufgaben",
+                "key": "dsu",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/"
             },
             {
                 "title": "Tutoriumsfolien",
+                "key": "dst",
                 "url": "http://webuser.uni-weimar.de/~lopa1693/materialien/master/master.html"
             }
         ]
@@ -29,6 +32,7 @@
         "links": [
             {
                 "title": "Interner Bereich",
+                "key": "eidi",
                 "url": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
             }
         ]
@@ -42,10 +46,12 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "ic",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
             },
             {
                 "title": "Interner Bereich",
+                "key": "ici",
                 "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
             }
         ]
@@ -59,6 +65,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "lina",
                 "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
             }
         ]
@@ -72,6 +79,7 @@
         "links": [
             {
                 "title": "Moodle-Kurs",
+                "key": "mod",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=185"
             }
         ]
@@ -85,10 +93,12 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "est",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
             },
             {
                 "title": "Interner Bereich",
+                "key": "esti",
                 "url": "http://www.uni-weimar.de/medien/schatter/doc/material/est/est-index.html"
             }
         ]
@@ -102,6 +112,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "mr",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/medienrecht/"
             }
         ]
@@ -115,10 +126,12 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "prog",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2015/vorlesung-programmiersprachen/"
             },
             {
                 "title": "Interner Bereich (VPN)",
+                "key": "progi",
                 "url": "https://uranus6.medien.uni-weimar.de/trac/plse"
             }
         ]
@@ -132,6 +145,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "ad",
                 "url": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
             }
         ]
@@ -145,6 +159,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "db",
                 "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
             }
         ]
@@ -158,6 +173,7 @@
         "links": [
             {
                 "title": "Moodle-Kurs",
+                "key": "hci",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=287"
             }
         ]
@@ -171,6 +187,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "num",
                 "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
             }
         ]
@@ -184,6 +201,7 @@
         "links": [
             {
                 "title": "Uni-Website",
+                "key": "pvs",
                 "url": "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
             }
         ]
@@ -197,6 +215,7 @@
         "links": [
             {
                 "title": "Moodle-Kurs",
+                "key": "se",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=218"
             }
         ]
@@ -210,6 +229,7 @@
         "links": [
             {
                 "title": "Webmail",
+                "key": "mail",
                 "url": "https://webmail.uni-weimar.de/"
             }
         ]
@@ -223,6 +243,7 @@
         "links": [
             {
                 "title": "BISON",
+                "key": "bison",
                 "url": "http://www.uni-weimar.de/qisserver"
             }
         ]
@@ -236,10 +257,12 @@
         "links": [
             {
                 "title": "Pinnwände",
+                "key": "pin",
                 "url": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/"
             },
             {
                 "title": "Piazza",
+                "key": "piazza",
                 "url": "http://www.uni-weimar.de/de/universitaet/aktuell/pinnwaende/bereich/piazza/"
             }
         ]
@@ -253,21 +276,23 @@
         "links": [
             {
                 "title": "Mensa am Park",
+                "key": "mensa",
                 "url": "http://www.stw-thueringen.de/deutsch/mensen/einrichtungen/weimar/mensa-am-park.html#accordion1"
             }
         ]
     },
     "opac": {
-    "key": "opac",
-    "title": "Katalog der Universitätsbibliothek",
-    "abbr": "opac",
-    "keywords": ["ub", "opac", "bibliothek", "katalog", "bibliothekskatalog"], 
-    "persons": [],
-    "links": [
-        {
-            "title": "Katalog der Universitätsbibliothek",
-            "url": "https://opac.lbs-weimar.gbv.de/DB=1/"
-        }
-    ]
-}
+        "key": "opac",
+        "title": "Katalog der Universitätsbibliothek",
+        "abbr": "opac",
+        "keywords": ["ub", "opac", "bibliothek", "katalog", "bibliothekskatalog"],
+        "persons": [],
+        "links": [
+            {
+                "title": "Katalog der Universitätsbibliothek",
+                "key": "opac",
+                "url": "https://opac.lbs-weimar.gbv.de/DB=1/"
+            }
+        ]
+    }
 }
