@@ -19,7 +19,7 @@
             {
                 "title": "Tutoriumsfolien",
                 "key": "dst",
-                "url": "http://webuser.uni-weimar.de/~lopa1693/materialien/master/master.html"
+                "url": "http://webuser.uni-weimar.de/~lopa1693/master/index.html"
             }
         ]
     },
@@ -217,6 +217,34 @@
                 "title": "Moodle-Kurs",
                 "key": "se",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=218"
+            }
+        ]
+    },
+    "web": {
+        "key": "web",
+        "title": "Webtechnologie Grundlagen",
+        "abbr": "WEB",
+        "keywords": ["4. Semester", ""],
+        "persons": ["Benno Stein"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "web",
+                "url": "http://www.uni-weimar.de/en/media/chairs/webis/teaching/lecturenotes/#web-technology"
+            }
+        ]
+    },
+    "km": {
+        "key": "km",
+        "title": "Kryptographie und Mediensicherheit",
+        "abbr": "KM",
+        "keywords": ["4. Semester", "Kryptografie"],
+        "persons": ["Stefan Lucks", "Eik List", "Jakob Wenzel"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "km",
+                "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2016/"
             }
         ]
     },
