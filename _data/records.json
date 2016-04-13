@@ -133,6 +133,25 @@
                 "title": "Interner Bereich (VPN)",
                 "key": "progi",
                 "url": "https://uranus6.medien.uni-weimar.de/trac/plse"
+            },
+            {
+                "title": "Moodle",
+                "key": "progm",
+                "url": "https://moodle.uni-weimar.de/course/index.php?categoryid=1000"
+            }
+        ]
+    },
+    "st": {
+        "key": "st",
+        "title": "Stochastik",
+        "abbr": "ST",
+        "keywords": ["2. Semester"],
+        "persons": ["Rainer Illge"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "st",
+                "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
             }
         ]
     },
@@ -230,7 +249,7 @@
             {
                 "title": "Uni-Website",
                 "key": "web",
-                "url": "http://www.uni-weimar.de/en/media/chairs/webis/teaching/lecturenotes/#web-technology"
+                "url": "http://www.uni-weimar.de/en/media/chairs/webis/teaching/ss-2016/web-technology/"
             }
         ]
     },
