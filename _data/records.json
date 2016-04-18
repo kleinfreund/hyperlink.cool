@@ -122,7 +122,7 @@
         "title": "Programmiersprachen",
         "abbr": "Prog",
         "keywords": ["2. Semester", "Programming Languages"],
-        "persons": [],
+        "persons": ["Bernd Bröhlich", "Andreas Bernstein", "André Schollmeyer", "Manuel Hartmann", "Philipp Rudloff"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -137,7 +137,21 @@
             {
                 "title": "Moodle",
                 "key": "progm",
-                "url": "https://moodle.uni-weimar.de/course/index.php?categoryid=1000"
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=745"
+            }
+        ]
+    },
+    "fsub": {
+        "key": "fsub",
+        "title": "Formale Sprachen und Berechenbarkeit",
+        "abbr": "fsub",
+        "keywords": ["2. Semester", "Formal Languages"],
+        "persons": ["Andreas Jakoby"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "fsub",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=673"
             }
         ]
     },
