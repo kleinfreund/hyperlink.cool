@@ -1,0 +1,442 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kinecting</title>
+<style>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font: 1.5em/1.5 Verdana, sans-serif;
+}
+
+body {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+a {
+    color: #a40;
+    text-decoration: none;
+    border-bottom: 2px solid;
+}
+
+.page-content {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.tos,
+section:not(:last-child) {
+    margin-bottom: 5rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 4px 10px;
+    border: 1px solid;
+}
+
+.kinect-twenties td,
+.kinect-fifties td,
+.kinect-others td {
+    border-top: 3px solid;
+}
+
+hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border-top: 3px dashed #000;
+}
+
+code {
+    color: #820;
+    font-family: Consolas, Monaco, monospace;
+}
+
+pre {
+    padding: 10px;
+    white-space: pre-line;
+    border-radius: 4px;
+    background-color: #000;
+}
+
+pre > code {
+    position: relative;
+    counter-increment: line;
+    color: #fff;
+}
+
+pre > code::before {
+    content: counter(line);
+    position: absolute;
+    color: gray;
+    right: calc(100% + 20px);
+    line-height: 1.3;
+}
+
+figure {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+figure > pre {
+    margin-bottom: 5px;
+}
+
+figcaption {
+    font-size: smaller;
+}
+
+.info {
+    position: relative;
+    color: #444;
+    font-style: italic;
+}
+
+.info::before {
+    content: "\2f" "\21" "\5C" "\A0";
+    position: absolute;
+    right: 100%;
+    color: #820;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<main class="page-content">
+    <h1>USING KINECT</h1>
+
+    <ul class="tos">
+        <li><a href="#kinect-ips-and-serial-numbers">Kinect ID’s and Serial Numbers</a></li>
+        <li><a href="#directories">Directories</a></li>
+        <li><a href="#starting-kinect-live-servers">Starting Kinect Live Servers</a></li>
+        <li><a href="#running-recorded-kinect-demos">Running Recorded Kinect Demos</a></li>
+        <li><a href="#record-scene">Record Scene</a></li>
+        <li><a href="#play-scene">Play Scene</a></li>
+    </ul>
+
+    <section id="kinect-ips-and-serial-numbers">
+        <h2><a href="#kinect-ips-and-serial-numbers">Kinect ID’s and Serial Numbers</a></h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Serial Number</th>
+            </tr>
+            <tr class="kinect-twenties">
+                <td>23</td>
+                <td>179625534347</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>110356534447</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>007688634347</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>084864534447</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>049678134347</td>
+            </tr>
+            <tr class="kinect-fifties">
+                <td>50</td>
+                <td>011312650647</td>
+            </tr>
+            <tr>
+                <td>51</td>
+                <td>011482550647</td>
+            </tr>
+            <tr>
+                <td>52</td>
+                <td>012086450647</td>
+            </tr>
+            <tr>
+                <td>53</td>
+                <td>016215650647</td>
+            </tr>
+            <tr>
+                <td>54</td>
+                <td>012126250647</td>
+            </tr>
+            <tr class="kinect-others">
+                <td>30</td>
+                <td>505545442542</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td>505527442542</td>
+            </tr>
+            <tr>
+                <td>41</td>
+                <td>501411241942</td>
+            </tr>
+            <tr>
+                <td>42</td>
+                <td>505573342542</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="calibrating-a-kinect">
+        <h2><a href="calibrating-a-kinect">Calibrating a Kinect</a></h2>
+
+        <p class="info">In the following commands, you need to replace the ID’s and serial numbers according to the table above.</p>
+
+        <p>Check if the Kinect is detected by the kernel and also whether a Microsoft device is connected via USB. <code>dmesg</code> will also show you the serial number.</p>
+
+        <figure>
+<pre><code>dmesg | grep SerialNumber:</code>
+<code>lsusb | grep Microsoft</code></pre>
+            <figcaption>Keep in mind that <code>dmesg</code> shows result via a log file, so older entries might not be accurate (e.g. when unplugging a Kinect, its entry will still show up).</figcaption>
+        </figure>
+
+        <p>Place the checkerboard in front of the Kinect you want to calibrate. Start the initializing script.</p>
+
+<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 50 /opt/kinect-resources/calib_3dvc/23_init 6</code></pre>
+
+        <p>Next is the sweeping step. Grab your best sweeping assistant and let they do their job.</p>
+
+<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 1000 /tmp/23_sweep 6</code></pre>
+
+        <p>Finally, execute the calibration.</p>
+
+<pre><code>./calibrate_batch.sh 23</code></pre>
+
+
+
+        <hr>
+
+
+
+        <p>Alternatively, I wrote a shell script to combine the four calibration steps. Try it out, have not tested it yet.</p>
+
+<pre><code>cd /home/ranu2619/dev</code>
+<code>./calibrate.sh 23</code></pre>
+    </section>
+
+    <section id="directories">
+        <h2><a href="#directories">Directories</a></h2>
+
+        <h3>Live Kinect Server</h3>
+
+        <figure>
+<pre><code>cd /opt/kinect-resources/</code>
+<code>./protonect.sh ...</code></pre>
+            <figcaption>The <code>protonect.sh</code> shell script is here</figcaption>
+        </figure>
+
+        <h3>Play &amp; Record Streams</h3>
+
+        <figure>
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code>
+<code>./play ...</code>
+<code>./record ...</code></pre>
+            <figcaption>The <code>play</code> and <code>record</code> binaries are here</figcaption>
+        </figure>
+
+        <h3>Guacamole Demos</h3>
+
+<pre><code>cd /opt/guacamole/master/examples/video3d</code>
+<code>./example-video3d surface{_KINECTID}+.ks</code></pre>
+
+        <h3>Avango Demos</h3>
+
+        <figure>
+<pre><code>cd /opt/avango/master/examples/video3d</code>
+<code>./start.sh surface{_KINECTID}+.ks</code></pre>
+            <figcaption>The <code>start.sh</code> shell script is here</figcaption>
+        </figure>
+    </section>
+
+
+
+    <section id="starting-kinect-live-servers">
+        <h2><a href="#starting-kinect-live-servers">Starting Kinect Live Servers</a></h2>
+
+
+
+        <h3>Start live Kinect server on eris …</h3>
+
+        <p>… for <code>/opt/kinect-resources/calib_3dvc/surface_50_51_54.ks</code>.</p>
+
+        <figure>
+<pre><code>while true; do ./protonect.sh 011312650647 011482550647 012126250647 -s 141.54.147.37:7000; echo "restarting kinect server"; sleep 3; done</code></pre>
+            <figcaption>Loops the command because eventually all RAM is used. This restarts the command essentially.</figcaption>
+        </figure>
+
+        <figure>
+<pre><code>./protonect.sh 011312650647 011482550647 012126250647 -s 141.54.147.37:7000</code></pre>
+            <figcaption>Same command without the loop</figcaption>
+        </figure>
+
+        <h4>Run Guacamole Example</h4>
+
+<pre><code>./example-video3d /opt/kinect-resources/calib_3dvc/surface_50_51_54.ks</code></pre>
+
+        <h4>Run Avango Example</h4>
+
+<pre><code>./start.sh  /opt/kinect-resources/calib_3dvc/surface_50_51_54.ks</code></pre>
+
+
+
+        <hr>
+
+
+
+        <h3>Start live Kinect server on charon …</h3>
+
+        <p>… for <code>/opt/kinect-resources/calib_3dvc/surface_23.ks</code>.</p>
+
+        <figure>
+<pre><code>while true; do ./protonect.sh 179625534347 -s 141.54.147.33:7000 -f; echo "restarting kinect server"; sleep 3; done</code></pre>
+            <figcaption>Loops the command because eventually all RAM is used. This restarts the command essentially.</figcaption>
+        </figure>
+
+        <figure>
+<pre><code>./protonect.sh 179625534347 -s 141.54.147.33:7000 -f</code></pre>
+            <figcaption>Same command without the loop</figcaption>
+        </figure>
+
+        <h4>Run Guacamole Example</h4>
+
+<pre><code>./example-video3d /opt/kinect-resources/calib_3dvc/surface_23.ks</code></pre>
+
+        <h4>Run Avango Example</h4>
+
+<pre><code>./start.sh  /opt/kinect-resources/calib_3dvc/surface_23.ks</code></pre>
+
+
+
+        <hr>
+
+
+
+        <p>… for <code>/opt/kinect-resources/calib_3dvc/surface_23_24.ks</code>.</p>
+
+        <figure>
+<pre><code>while true; do ./protonect.sh 179625534347 110356534447 -s 141.54.147.33:7000; echo "restarting kinect server"; sleep 3; done</code></pre>
+            <figcaption>Loops the command because eventually all RAM is used. This restarts the command essentially.</figcaption>
+        </figure>
+
+        <figure>
+<pre><code>./protonect.sh 179625534347 110356534447 -s 141.54.147.33:7000</code></pre>
+            <figcaption>Same command without the loop</figcaption>
+        </figure>
+
+        <h4>Run Guacamole Example</h4>
+
+<pre><code>./example-video3d /opt/kinect-resources/calib_3dvc/surface_23_24.ks</code></pre>
+
+        <h4>Run Avango Example</h4>
+
+<pre><code>./start.sh /opt/kinect-resources/calib_3dvc/surface_23_24.ks</code></pre>
+    </section>
+
+
+
+    <section id="running-recorded-kinect-demos">
+        <h2><a href="#running-recorded-kinect-demos">Running Recorded Kinect Demos</a></h2>
+
+        <h3>Steppo</h3>
+
+<pre><code>./play -c -f 20 -k 4 ../../../../recordings/steppo_standing/steppo_standing.stream 127.0.0.1:7000</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/steppo_standing/steppo_standing_localhost.ks</code>
+<code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/steppo_standing/steppo_standing_localhost.ks</code></pre>
+
+        <h3>Steppdance</h3>
+
+<pre><code>./play -c -f 20 -k 4 ../../../../recordings/stepptanz/stepptanz.stream 127.0.0.1:7000</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/stepptanz/stepptanz_localhost.ks</code>
+<code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/stepptanz/stepptanz_localhost.ks</code></pre>
+
+        <h3>Actors</h3>
+
+<pre><code>./play -c -f 20 -k 4 ../../../../recordings/actors/actors.stream 127.0.0.1:7000</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/actors/actors_localhost.ks</code>
+<code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/actors/actors_localhost.ks</code></pre>
+    </section>
+
+
+
+    <section id="record-scene">
+        <h2>Record a scene <em>dance</em> on Kinect server charon from Kinect's 23 and 24</h2>
+
+        <p>Create a directory where you want the recording to be saved.</p>
+
+<pre><code>mkdir dance</code></pre>
+
+        <p>Open another terminal window. Navigate to <code>rgbd-framework</code> and <code>kinect-resources</code>. In the second terminal window, start a kinect server on charon.</p>
+
+        <figure>
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code></pre>
+            <figcaption>Terminal window 1.</figcaption>
+        </figure>
+
+        <figure>
+<pre><code>cd /opt/kinect-resources</code>
+<code>./protonect.sh 179625534347 110356534447 -s 141.54.147.33:7000</code></pre>
+            <figcaption>Terminal window 2.</figcaption>
+        </figure>
+
+        <p>Back in terminal window 1, start the recording. The <code>-w</code> argument causes the script to wait 200 frames before starting to record. The <code>-n</code> argument is the time in seconds it will record.</p>
+
+        <figure>
+<pre><code>./record -k 2 -n 20 -w 200 -c /path_to/dance/dance.stream  141.54.147.33:7000</code></pre>
+            <figcaption>Terminal window 1.</figcaption>
+        </figure>
+
+        <p>Copy the calibration files to the <code>dance</code> directory.</p>
+
+        <figure>
+<pre><code>cd /opt/kinect-resources/calib_3dvc/</code>
+<code>./copy_calibs_of_kinect_to.sh 23 /path_to/dance</code>
+<code>./copy_calibs_of_kinect_to.sh 24 /path_to/dance</code></pre>
+            <figcaption>Terminal window 1.</figcaption>
+        </figure>
+
+        <p>Finally, copy a new <code>surface.ks</code> file into the <code>dance</code> directory.</p>
+
+        <figure>
+<pre><code>cp /opt/kinect-resources/calib_3dvc/surface_23_24.ks /path_to/dance/dance_charon.ks</code></pre>
+            <figcaption>Terminal window 1.</figcaption>
+        </figure>
+    </section>
+
+
+
+    <section id="play-scene">
+        <h2>Play scene <em>dance</em> on Kinect server charon</h2>
+
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code></pre>
+
+        <p>Open a second terminal window with this directory by hitting <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>.</p>
+
+<pre><code>./play -c -f 20 -k 2 /path_to/dance/dance.stream 141.54.147.33:7000</code>
+<code>./example-video3d /path_to/dance/dance_charon.ks</code>
+<code>./start.sh /path_to/dance/dance_charon.ks</code></pre>
+<!-- <code>cd /opt/guacamole/master/examples/video3d</code> -->
+<!-- <code>cd /opt/avango/master/examples/video3d</code> -->
+    </section>
+</main>
+
+</body>
+</html>
