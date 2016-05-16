@@ -29,6 +29,39 @@ a {
     border-bottom: 2px solid;
 }
 
+h1 {
+    font-size: 72px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    margin-top: 3em;
+    border-bottom: 5px dotted #a40;
+}
+
+.anchor {
+    display: inline-block;
+    margin-left: -60px;
+    border-bottom: 0;
+    line-height: 1;
+}
+
+.anchor > span {
+    visibility: hidden;
+}
+
+h1:hover > .anchor > span,
+h2:hover > .anchor > span,
+h3:hover > .anchor > span,
+h4:hover > .anchor > span,
+h5:hover > .anchor > span,
+h6:hover > .anchor > span {
+    visibility: visible;
+}
+
 .page-content {
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -58,7 +91,7 @@ hr {
     margin-top: 2rem;
     margin-bottom: 2rem;
     border: 0;
-    border-top: 3px dashed #000;
+    border-top: 5px dotted #000;
 }
 
 code {
@@ -129,8 +162,11 @@ figcaption {
         <li><a href="#play-scene">Play Scene</a></li>
     </ul>
 
-    <section id="kinect-ips-and-serial-numbers">
-        <h2><a href="#kinect-ips-and-serial-numbers">Kinect ID’s and Serial Numbers</a></h2>
+    <section>
+        <h2>
+            <a id="kinect-ips-and-serial-numbers" class="anchor" href="#kinect-ips-and-serial-numbers" aria-hidden="true"><span>#</span></a>
+            Kinect ID’s and Serial Numbers
+        </h2>
 
         <table>
             <tr>
@@ -196,8 +232,11 @@ figcaption {
         </table>
     </section>
 
-    <section id="calibrating-a-kinect">
-        <h2><a href="calibrating-a-kinect">Calibrating a Kinect</a></h2>
+    <section>
+        <h2>
+            <a id="calibrating-a-kinect" class="anchor" href="calibrating-a-kinect" aria-hidden="true"><span>#</span></a>
+            Calibrating a Kinect
+        </h2>
 
         <p class="info">In the following commands, you need to replace the ID’s and serial numbers according to the table above.</p>
 
@@ -206,7 +245,7 @@ figcaption {
         <figure>
 <pre><code>dmesg | grep SerialNumber:</code>
 <code>lsusb | grep Microsoft</code></pre>
-            <figcaption>Keep in mind that <code>dmesg</code> shows result via a log file, so older entries might not be accurate (e.g. when unplugging a Kinect, its entry will still show up).</figcaption>
+            <figcaption>Keep in mind that <code>dmesg</code> shows results via a log file, so older entries might not be accurate (e.g. when unplugging a Kinect, its entry will still show up).</figcaption>
         </figure>
 
         <p>Place the checkerboard in front of the Kinect you want to calibrate. Start the initializing script.</p>
@@ -223,9 +262,6 @@ figcaption {
 
 
 
-        <hr>
-
-
 
         <p>Alternatively, I wrote a shell script to combine the four calibration steps. Try it out, have not tested it yet.</p>
 
@@ -234,7 +270,10 @@ figcaption {
     </section>
 
     <section id="directories">
-        <h2><a href="#directories">Directories</a></h2>
+        <h2>
+            <a id="directories" class="anchor" href="directories" aria-hidden="true"><span>#</span></a>
+            Directories
+        </h2>
 
         <h3>Live Kinect Server</h3>
 
@@ -269,8 +308,11 @@ figcaption {
 
 
 
-    <section id="starting-kinect-live-servers">
-        <h2><a href="#starting-kinect-live-servers">Starting Kinect Live Servers</a></h2>
+    <section>
+        <h2>
+            <a id="starting-kinect-live-servers" class="anchor" href="starting-kinect-live-servers" aria-hidden="true"><span>#</span></a>
+            Starting Kinect Live Servers
+        </h2>
 
 
 
@@ -296,9 +338,6 @@ figcaption {
 
 <pre><code>./start.sh  /opt/kinect-resources/calib_3dvc/surface_50_51_54.ks</code></pre>
 
-
-
-        <hr>
 
 
 
@@ -354,31 +393,68 @@ figcaption {
 
 
     <section id="running-recorded-kinect-demos">
-        <h2><a href="#running-recorded-kinect-demos">Running Recorded Kinect Demos</a></h2>
+        <h2>
+            <a id="running-recorded-kinect-demos" class="anchor" href="running-recorded-kinect-demos" aria-hidden="true"><span>#</span></a>
+            Running Recorded Kinect Demos
+        </h2>
 
         <h3>Steppo</h3>
 
-<pre><code>./play -c -f 20 -k 4 ../../../../recordings/steppo_standing/steppo_standing.stream 127.0.0.1:7000</code>
-<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/steppo_standing/steppo_standing_localhost.ks</code>
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code>
+<code>./play -c -f 20 -k 4 ../../../../recordings/steppo_standing/steppo_standing.stream 127.0.0.1:7000</code></pre>
+
+        <h4>Start Guacamole Demo</h4>
+
+<pre><code>cd /opt/guacamole/master/examples/video3d</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/steppo_standing/steppo_standing_localhost.ks</code></pre>
+
+        <h4>Start Avango Demo</h4>
+
+<pre><code>cd /opt/avango/master/examples/video3d</code>
 <code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/steppo_standing/steppo_standing_localhost.ks</code></pre>
+
+
 
         <h3>Steppdance</h3>
 
-<pre><code>./play -c -f 20 -k 4 ../../../../recordings/stepptanz/stepptanz.stream 127.0.0.1:7000</code>
-<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/stepptanz/stepptanz_localhost.ks</code>
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code>
+<code>./play -c -f 20 -k 4 ../../../../recordings/stepptanz/stepptanz.stream 127.0.0.1:7000</code></pre>
+
+        <h4>Start Guacamole Demo</h4>
+
+<pre><code>cd /opt/guacamole/master/examples/video3d</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/stepptanz/stepptanz_localhost.ks</code></pre>
+
+        <h4>Start Avango Demo</h4>
+
+<pre><code>cd /opt/avango/master/examples/video3d</code>
 <code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/stepptanz/stepptanz_localhost.ks</code></pre>
+
+
 
         <h3>Actors</h3>
 
-<pre><code>./play -c -f 20 -k 4 ../../../../recordings/actors/actors.stream 127.0.0.1:7000</code>
-<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/actors/actors_localhost.ks</code>
+<pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code>
+<code>./play -c -f 20 -k 4 ../../../../recordings/actors/actors.stream 127.0.0.1:7000</code></pre>
+
+        <h4>Start Guacamole Demo</h4>
+
+<pre><code>cd /opt/guacamole/master/examples/video3d</code>
+<code>./example-video3d /opt/kinect-resources/rgbd-framework/recordings/actors/actors_localhost.ks</code></pre>
+
+        <h4>Start Avango Demo</h4>
+
+<pre><code>cd /opt/avango/master/examples/video3d</code>
 <code>./start.sh /opt/kinect-resources/rgbd-framework/recordings/actors/actors_localhost.ks</code></pre>
     </section>
 
 
 
     <section id="record-scene">
-        <h2>Record a scene <em>dance</em> on Kinect server charon from Kinect's 23 and 24</h2>
+        <h2>
+            <a id="record-scene" class="anchor" href="record-scene" aria-hidden="true"><span>#</span></a>
+            Record a scene <em>dance</em> on Kinect server charon from Kinect's 23 and 24
+        </h2>
 
         <p>Create a directory where you want the recording to be saved.</p>
 
@@ -424,7 +500,10 @@ figcaption {
 
 
     <section id="play-scene">
-        <h2>Play scene <em>dance</em> on Kinect server charon</h2>
+        <h2>
+            <a id="play-scene" class="anchor" href="play-scene" aria-hidden="true"><span>#</span></a>
+            Play scene <em>dance</em> on Kinect server charon
+        </h2>
 
 <pre><code>cd /opt/kinect-resources/rgbd-framework/rgbd-calib/build/build/Release</code></pre>
 
