@@ -283,13 +283,13 @@
     },
     "mail": {
         "key": "mail",
-        "title": "Webmail",
+        "title": "Uni-Mail",
         "abbr": "Mail",
-        "keywords": ["Mail", "Uni-Mail"],
+        "keywords": [],
         "persons": [],
         "links": [
             {
-                "title": "Webmail",
+                "title": "Uni-Mail",
                 "key": "mail",
                 "url": "https://webmail.uni-weimar.de/"
             }
