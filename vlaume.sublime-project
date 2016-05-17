@@ -1,15 +1,45 @@
 {
+    "build_systems":
+    [
+        {
+            "linux":
+            {
+                "cmd":
+                [
+                    "xdg-open",
+                    "http://127.0.0.1:4000/"
+                ]
+            },
+            "name": "Open local server",
+            "osx":
+            {
+                "cmd":
+                [
+                    "open",
+                    "http://127.0.0.1:4000/"
+                ]
+            },
+            "windows":
+            {
+                "cmd":
+                [
+                    "start",
+                    "http://127.0.0.1:4000/"
+                ]
+            }
+        }
+    ],
     "folders":
     [
         {
+            "file_exclude_patterns":
+            [
+                ".jekyll-metadata"
+            ],
             "folder_exclude_patterns":
             [
                 "_site",
                 "static"
-            ],
-            "file_exclude_patterns":
-            [
-                ".jekyll-metadata"
             ],
             "name": "vlau.me",
             "path": "/"
@@ -18,20 +48,5 @@
     "settings":
     {
         "tab_size": 4
-    },
-    "build_systems":
-    [
-        {
-            "name": "Open local server",
-            "osx": {
-                "cmd": ["open", "http://127.0.0.1:4000/"]
-            },
-            "linux": {
-                "cmd": ["xdg-open", "http://127.0.0.1:4000/"]
-            },
-            "windows": {
-                "cmd": ["start", "http://127.0.0.1:4000/"]
-            }
-        }
-    ]
+    }
 }
