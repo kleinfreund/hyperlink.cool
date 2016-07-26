@@ -154,12 +154,27 @@ figcaption {
     <h1>USING KINECT</h1>
 
     <ul class="tos">
-        <li><a href="#kinect-ips-and-serial-numbers">Kinect ID’s and Serial Numbers</a></li>
-        <li><a href="#directories">Directories</a></li>
-        <li><a href="#starting-kinect-live-servers">Starting Kinect Live Servers</a></li>
-        <li><a href="#running-recorded-kinect-demos">Running Recorded Kinect Demos</a></li>
-        <li><a href="#record-scene">Record Scene</a></li>
-        <li><a href="#play-scene">Play Scene</a></li>
+        <li>
+            <a href="#kinect-ips-and-serial-numbers">Kinect ID’s and Serial Numbers</a>
+        </li>
+        <li>
+            <a href="#directories">Directories</a>
+        </li>
+        <li>
+            <a href="#calibrating-a-kinect">Calibrating a Kinect</a>
+        </li>
+        <li>
+            <a href="#starting-kinect-live-servers">Starting Kinect Live Servers</a>
+        </li>
+        <li>
+            <a href="#running-recorded-kinect-demos">Running Recorded Kinect Demos</a>
+        </li>
+        <li>
+            <a href="#record-scene">Record Scene</a>
+        </li>
+        <li>
+            <a href="#play-scene">Play Scene</a>
+        </li>
     </ul>
 
     <section>
@@ -232,46 +247,11 @@ figcaption {
         </table>
     </section>
 
-    <section>
-        <h2>
-            <a id="calibrating-a-kinect" class="anchor" href="calibrating-a-kinect" aria-hidden="true"><span>#</span></a>
-            Calibrating a Kinect
-        </h2>
 
-        <p class="info">In the following commands, you need to replace the ID’s and serial numbers according to the table above.</p>
-
-        <p>Check if the Kinect is detected by the kernel and also whether a Microsoft device is connected via USB. <code>dmesg</code> will also show you the serial number.</p>
-
-        <figure>
-<pre><code>dmesg | grep SerialNumber:</code>
-<code>lsusb | grep Microsoft</code></pre>
-            <figcaption>Keep in mind that <code>dmesg</code> shows results via a log file, so older entries might not be accurate (e.g. when unplugging a Kinect, its entry will still show up).</figcaption>
-        </figure>
-
-        <p>Place the checkerboard in front of the Kinect you want to calibrate. Start the initializing script.</p>
-
-<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 50 /opt/kinect-resources/calib_3dvc/23_init 6</code></pre>
-
-        <p>Next is the sweeping step. Grab your best sweeping assistant and let they do their job.</p>
-
-<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 1000 /tmp/23_sweep 6</code></pre>
-
-        <p>Finally, execute the calibration.</p>
-
-<pre><code>./calibrate_batch.sh 23</code></pre>
-
-
-
-
-        <p>Alternatively, I wrote a shell script to combine the four calibration steps. Try it out, have not tested it yet.</p>
-
-<pre><code>cd /home/ranu2619/dev</code>
-<code>./calibrate.sh 23</code></pre>
-    </section>
 
     <section id="directories">
         <h2>
-            <a id="directories" class="anchor" href="directories" aria-hidden="true"><span>#</span></a>
+            <a id="directories" class="anchor" href="#directories" aria-hidden="true"><span>#</span></a>
             Directories
         </h2>
 
@@ -310,7 +290,44 @@ figcaption {
 
     <section>
         <h2>
-            <a id="starting-kinect-live-servers" class="anchor" href="starting-kinect-live-servers" aria-hidden="true"><span>#</span></a>
+            <a id="calibrating-a-kinect" class="anchor" href="#calibrating-a-kinect" aria-hidden="true"><span>#</span></a>
+            Calibrating a Kinect
+        </h2>
+
+        <p class="info">In the following commands, you need to replace the ID’s and serial numbers according to the table above.</p>
+
+        <p>Check if the Kinect is detected by the kernel and also whether a Microsoft device is connected via USB. <code>dmesg</code> will also show you the serial number.</p>
+
+        <figure>
+<pre><code>dmesg | grep SerialNumber:</code>
+<code>lsusb | grep Microsoft</code></pre>
+            <figcaption>Keep in mind that <code>dmesg</code> shows results via a log file, so older entries might not be accurate (e.g. when unplugging a Kinect, its entry will still show up).</figcaption>
+        </figure>
+
+        <p>Place the checkerboard in front of the Kinect you want to calibrate. Start the initializing script.</p>
+
+<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 50 /opt/kinect-resources/calib_3dvc/23_init 6</code></pre>
+
+        <p>Next is the sweeping step. Grab your best sweeping assistant and let they do their job.</p>
+
+<pre><code>./protonect.sh 179625534347 -a 5000 -s 141.54.147.33:7000 -y 1000 /tmp/23_sweep 6</code></pre>
+
+        <p>Finally, execute the calibration.</p>
+
+<pre><code>./calibrate_batch.sh 23</code></pre>
+
+        <hr>
+
+        <p>Alternatively, I wrote a Python script to combine the four calibration steps. Try it out, have not tested it yet.</p>
+
+<pre><code>python3 /home/ranu2619/dev/kinecting/kinecting.py calibrate 23</code></pre>
+    </section>
+
+
+
+    <section>
+        <h2>
+            <a id="starting-kinect-live-servers" class="anchor" href="#starting-kinect-live-servers" aria-hidden="true"><span>#</span></a>
             Starting Kinect Live Servers
         </h2>
 
@@ -394,7 +411,7 @@ figcaption {
 
     <section id="running-recorded-kinect-demos">
         <h2>
-            <a id="running-recorded-kinect-demos" class="anchor" href="running-recorded-kinect-demos" aria-hidden="true"><span>#</span></a>
+            <a id="running-recorded-kinect-demos" class="anchor" href="#running-recorded-kinect-demos" aria-hidden="true"><span>#</span></a>
             Running Recorded Kinect Demos
         </h2>
 
@@ -452,7 +469,7 @@ figcaption {
 
     <section id="record-scene">
         <h2>
-            <a id="record-scene" class="anchor" href="record-scene" aria-hidden="true"><span>#</span></a>
+            <a id="record-scene" class="anchor" href="#record-scene" aria-hidden="true"><span>#</span></a>
             Record a scene <em>dance</em> on Kinect server charon from Kinect's 23 and 24
         </h2>
 
@@ -501,7 +518,7 @@ figcaption {
 
     <section id="play-scene">
         <h2>
-            <a id="play-scene" class="anchor" href="play-scene" aria-hidden="true"><span>#</span></a>
+            <a id="play-scene" class="anchor" href="#play-scene" aria-hidden="true"><span>#</span></a>
             Play scene <em>dance</em> on Kinect server charon
         </h2>
 

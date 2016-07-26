@@ -37,6 +37,22 @@
             }
         ]
     },
+        "analysis": {
+        "key": "analysis",
+        "title": "Analysis",
+        "abbr": "ANAL",
+        "keywords": ["2. Semester", "Anal"],
+        "persons": ["Prof. Dr. rer. nat. habil. Klaus Gürlebeck
+", "Dipl.-Math. Friederike Luther"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "Analysis",
+                "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/
+"
+            }
+        ]
+    },
     "ic": {
         "key": "ic",
         "title": "Information und Codierung",
