@@ -12,14 +12,6 @@
   "scripts": {
     "test": "gulp"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kleinfreund/vlau.me.git"
-  },
   "author": "Philipp Rudloff",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/kleinfreund/vlau.me/issues"
-  },
-  "homepage": "https://github.com/kleinfreund/vlau.me#readme"
+  "license": "UNLICENSED"
 }
