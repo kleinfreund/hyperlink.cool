@@ -18,6 +18,7 @@ layout: compress
         <script src="/js/vlaume.js"></script>
         <link rel="stylesheet" href="/css/vlaume.css">
     {% else %}
+        <script src="/js/fuse.min.js"></script>
         <script src="/js/vlaume.min.js"></script>
         <!-- Inline complete stylesheet for one less blocking request -->
         <style>
@@ -28,7 +29,10 @@ layout: compress
             {{ scss_include | scssify }}
         </style>
     {% endif %}
-    <script>recordFilter('_data/records.json', 'record-filter', 'record-filter__input');</script>
+    <script>
+        init('_data/records.json', 'record-filter', 'record-filter__input');
+        // recordFilter('_data/records.json', 'record-filter', 'record-filter__input');
+    </script>
 
     <link rel="icon" href="/img/icon.png">
 </head>
@@ -77,6 +81,7 @@ layout: compress
                     </li>
                 {% endfor %}
                 </ul>
+
             </div>
         </div>
     </main>

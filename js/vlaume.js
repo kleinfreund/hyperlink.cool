@@ -1,70 +1,107 @@
-function recordFilter(jsonFile, containerName, inputID) {
+"use strict";
+
+var listData;
+var containerName;
+var inputID;
+
+function getJSON(jsonFile) {
+    if ( window.Promise ) {
+        return new Promise( function(resolve, reject) {
+            // Get the JSON data by using a XML http request
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', jsonFile);
+            xhr.addEventListener('load', function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        resolve(JSON.parse(xhr.responseText));
+                    } else {
+                        reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText));
+                    }
+                }
+            });
+            xhr.addEventListener('error', function() {
+                reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText));
+            });
+            xhr.send(null);
+        });
+    } else {
+        console.log('Your browser does not support promises.')
+    }
+}
+
+function init(jsonFile, containerName_, inputID_) {
+    containerName = containerName_;
+    inputID = inputID_;
+    getJSON(jsonFile).then(function(data) {
+        listData = data;
+    }, function(error) {
+        console.error(error);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    /**
+     * If some content is hidden via CSS, the js-disabled HTML class is set on
+     * the body. Remove it, so potentially interactive elements become usable.
+     */
+    if (document.body.classList.contains('js-disabled')) {
+        document.body.classList.remove('js-disabled');
+    }
+
+    let loop = function() {
+        // Check if listData is available …
+        if (listData) {
+            // … if so, start the record filter
+            recordFilter()
+        } else {
+            // … if not, check again in 100ms
+            window.setTimeout(loop, 100);
+        }
+    }
+    loop();
+});
+
+function recordFilter() {
     // Some names that are repeatedly used as HTML class or ID names
     var listName = 'record-list';
     var itemName = 'record';
     var linkName = itemName + '__link';
     var activeLinkName = linkName + '--active';
 
-    // Get the JSON data by using a XML http request
-    var listData;
-    var xhr = new XMLHttpRequest();
-    // The request needs to be synchronous for now because on slow connections the DOM is ready
-    // before it fetches everything from the json file
-    xhr.open('GET', jsonFile, false);
-    xhr.onload = function(e) {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                listData = JSON.parse(xhr.responseText);
-            } else {
-                console.error(xhr.statusText);
-            }
-        }
-    };
-    xhr.onerror = function(e) {
-        console.error(xhr.statusText);
-    };
-    xhr.send(null);
+    var placeholderKeys = [];
+    for (var key in listData) {
+        var value = listData[key];
+        placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.keywords);
+    }
+
+    var filterInput = document.getElementById(inputID);
+    filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
+
+    if (filterInput.value.length > 0) {
+        buildRecordList(filterKeys(filterInput.value));
+    }
+
+    var recordList = document.getElementById(listName);
+    setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
 
 
 
-    /**
-     * Before the record list can be build, the DOM has to be loaded so we can hook into the input.
-     */
-    document.addEventListener("DOMContentLoaded", function(e) {
-        // Some things that are only usable when JavaScript is enabled are hidden by default.
-        // Removing the `js-disabled` class makes them visible again.
-        if (document.body.classList.contains('js-disabled')) {
-            document.body.classList.remove('js-disabled');
-        }
-
-        var placeholderKeys = [];
-        for (var key in listData) {
-            var value = listData[key];
-            placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.keywords);
-        }
-
-        var filterInput = document.getElementById(inputID);
-        filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
-
-        if (filterInput.value.length > 0) {
+    var timer;
+    // Watch the search field for input changes …
+    filterInput.addEventListener('input', function(e) {
+        // … and build a new record list according to the filter value
+        // buildRecordList(filterKeys(filterInput.value));
+        timer && clearTimeout(timer);
+        timer = setTimeout(function() {
             buildRecordList(filterKeys(filterInput.value));
+        }, 150);
+    }, false);
+
+    document.addEventListener('focus', function(e) {
+        if (document.activeElement) {
+            setActiveClass(document.activeElement);
         }
-
-        var recordList = document.getElementById(listName);
-        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
-
-        // Watch the search field for input changes …
-        filterInput.addEventListener('input', function(e) {
-            // … and build a new record list according to the filter value
-            buildRecordList(filterKeys(filterInput.value));
-        }, false);
-
-        document.addEventListener('focus', function(e) {
-            if (document.activeElement) {
-                setActiveClass(document.activeElement);
-            }
-        }, true);
-    });
+    }, true);
 
 
 
