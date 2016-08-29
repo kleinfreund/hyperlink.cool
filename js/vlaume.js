@@ -4,6 +4,16 @@ var listData;
 var containerName;
 var inputID;
 
+function init(jsonFile, containerName_, inputID_) {
+    containerName = containerName_;
+    inputID = inputID_;
+    getJSON(jsonFile).then(function(data) {
+        listData = data;
+    }, function(error) {
+        console.error(error);
+    });
+}
+
 function getJSON(jsonFile) {
     if ( window.Promise ) {
         return new Promise( function(resolve, reject) {
@@ -27,16 +37,6 @@ function getJSON(jsonFile) {
     } else {
         console.log('Your browser does not support promises.')
     }
-}
-
-function init(jsonFile, containerName_, inputID_) {
-    containerName = containerName_;
-    inputID = inputID_;
-    getJSON(jsonFile).then(function(data) {
-        listData = data;
-    }, function(error) {
-        console.error(error);
-    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -82,7 +82,9 @@ function recordFilter() {
     }
 
     var recordList = document.getElementById(listName);
-    setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
+    if (recordList.firstElementChild != null) {
+        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
+    }
 
 
 
@@ -250,8 +252,13 @@ function recordFilter() {
             document.getElementById(containerName).insertBefore(recordList, null);
         }
 
+        var recordListStr = '';
         for (var i = 0; i < relatedKeys.length; i++) {
-            recordList.innerHTML += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
+            recordListStr += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
+        }
+
+        if (recordListStr) {
+            recordList.innerHTML = recordListStr;
         }
 
         // If no list items were inserted, we need to stop here
@@ -280,6 +287,8 @@ function recordFilter() {
                     link.title + '</a>';
             }
         }
+
+        str += '</nav></li>'
 
         return str;
     }
