@@ -15,15 +15,15 @@ layout: compress
 
     {% if jekyll.environment == 'local' %}
         <script src="/js/fuse.js"></script>
-        <script src="/js/vlaume.js"></script>
-        <link rel="stylesheet" href="/css/vlaume.css">
+        <script src="/js/hyperlink.cool.js"></script>
+        <link rel="stylesheet" href="/css/hyperlink.cool.css">
     {% else %}
         <script src="/js/fuse.min.js"></script>
-        <script src="/js/vlaume.min.js"></script>
+        <script src="/js/hyperlink.cool.min.js"></script>
         <!-- Inline complete stylesheet for one less blocking request -->
         <style>
             {% capture scss_include %}
-                {% include vlaume.scss %}
+                {% include hyperlink.cool.scss %}
             {% endcapture %}
 
             {{ scss_include | scssify }}
@@ -39,7 +39,7 @@ layout: compress
 <body class="js-disabled">
     <header class="site-head">
         <div class="wrapper">
-            <h1 class="site-title"><a href="/" title="Zur vlau.me!" rel="home">{{ site.title }}</a></h1>
+            <h1 class="site-title"><a href="/" title="Zu hyperlink.cool!" rel="home">{{ site.title }}</a></h1>
         </div>
     </header>
 
@@ -88,8 +88,8 @@ layout: compress
 
     <footer class="site-foot">
         <div class="wrapper">
-            <p>Wenn dir ein Link oder Kurs fehlt, dann kannst du ihn selbst eintragen. Wie das geht, erfährst du auf <a href="https://github.com/kleinfreund/vlau.me#contributing" title="Beschreibung, wie ein neuer Eintrag auf der Seite hinzugefügt werden kann (Englisch)">dieser Seite</a>.</p>
-            <p>Die Website <a href="/" title="Zur vlau.me!" rel="home">vlau.me</a> wurde von <a href="{{ site.author.website }}" title="Mondbasis von Philipp Rudloff">Philipp Rudloff</a> mit <a href="http://jekyllrb.com/" title="Simple, blog-aware static site generator">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/vlau.me" title="GitHub-Repository von vlau.me">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT" title="Zur Website der Open Source Initiative">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse" title="GitHub-Repository der Fuzzy Search-Implementierung">Fuse</a> von Kirollos Risk.</p>
+            <p>Wenn dir ein Link oder Kurs fehlt, dann kannst du ihn selbst eintragen. Wie das geht, erfährst du auf <a href="https://github.com/kleinfreund/hyperlink.cool#contributing" title="Beschreibung, wie ein neuer Eintrag auf der Seite hinzugefügt werden kann (Englisch)">dieser Seite</a>.</p>
+            <p>Die Website <a href="/" title="Zu hyperlink.cool!" rel="home">hyperlink.cool</a> wurde von <a href="{{ site.author.website }}" title="Mondbasis von Philipp Rudloff">Philipp Rudloff</a> mit <a href="http://jekyllrb.com/" title="Simple, blog-aware static site generator">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/hyperlink.cool" title="GitHub-Repository von hyperlink.cool">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT" title="Zur Website der Open Source Initiative">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse" title="GitHub-Repository der Fuzzy Search-Implementierung">Fuse</a> von Kirollos Risk.</p>
         </div>
     </footer>
 

@@ -1,5 +1,5 @@
 {
-  "name": "vlau.me",
+  "name": "hyperlink.cool",
   "version": "1.0.0",
   "description": "Link Collection",
   "main": "gulpfile.js",
@@ -17,5 +17,5 @@
   },
   "author": "Philipp Rudloff",
   "license": "UNLICENSED",
-  "repository": "https://github.com/kleinfreund/vlau.me"
+  "repository": "https://github.com/kleinfreund/hyperlink.cool"
 }

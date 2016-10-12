@@ -1,10 +1,10 @@
-# vlau.me
+# hyperlink.cool
 
-[vlau.me](http://vlau.me/) is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.
+[hyperlink.cool](https://hyperlink.cool) is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.
 
 ## Contributing
 
-If you want to add your own course, please go ahead and edit the [records.json](https://github.com/kleinfreund/vlau.me/blob/gh-pages/_data/records.json) file and file a pull request.
+If you want to add your own course, please go ahead and edit the [records.json](https://github.com/kleinfreund/hyperlink.cool/blob/gh-pages/_data/records.json) file and file a pull request.
 
 An example record looks something like this:
 
@@ -24,7 +24,7 @@ An example record looks something like this:
 }
 ```
 
-If you rather not edit the file yourself, you may as well [open a new issue](https://github.com/kleinfreund/vlau.me/issues/new). Please remember to add all the necessary information about the course or whatever you want me to add.
+If you rather not edit the file yourself, you may as well [open a new issue](https://github.com/kleinfreund/hyperlink.cool/issues/new). Please remember to add all the necessary information about the course or whatever you want me to add.
 
 ## To Do
 

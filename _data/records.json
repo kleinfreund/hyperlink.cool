@@ -37,17 +37,17 @@
             }
         ]
     },
-        "analysis": {
-        "key": "analysis",
-        "title": "Analysis",
-        "abbr": "Analysis",
-        "keywords": ["2. Semester"],
-        "persons": ["Klaus Gürlebeck", "Friederike Luther"],
+    "ep": {
+        "key": "ep",
+        "title": "Einführung in die Programmierung",
+        "abbr": "EidP",
+        "keywords": ["1. Semester"],
+        "persons": ["Norbert Siegmund"],
         "links": [
             {
-                "title": "Uni-Website",
-                "key": "Analysis",
-                "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
+                "title": "Moodle",
+                "key": "ep",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1364"
             }
         ]
     },
@@ -89,12 +89,26 @@
         "title": "Modellierung",
         "abbr": "Mod",
         "keywords": ["1. Semester", "modelling"],
-        "persons": ["Eva Hornecker", "Julian Fietkau", "Patrick Tobias Fischer", "Jakob Herpel", "Christian Paffrath"],
+        "persons": ["Eva Hornecker", "Patrick Tobias Fischer", "Christian Paffrath"],
         "links": [
             {
-                "title": "Moodle-Kurs",
+                "title": "Moodle",
                 "key": "mod",
-                "url": "https://moodle.uni-weimar.de/course/view.php?id=185"
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1350"
+            }
+        ]
+    },
+    "analysis": {
+        "key": "analysis",
+        "title": "Analysis",
+        "abbr": "Analysis",
+        "keywords": ["2. Semester"],
+        "persons": ["Klaus Gürlebeck", "Friederike Luther"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "Analysis",
+                "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
             }
         ]
     },
@@ -136,17 +150,12 @@
         "title": "Programmiersprachen",
         "abbr": "Prog",
         "keywords": ["2. Semester", "Programming Languages"],
-        "persons": ["Bernd Bröhlich", "Andreas Bernstein", "André Schollmeyer", "Manuel Hartmann", "Philipp Rudloff"],
+        "persons": ["Bernd Bröhlich", "Andreas Bernstein", "André Schollmeyer"],
         "links": [
             {
                 "title": "Uni-Website",
                 "key": "prog",
                 "url": "http://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2016/vorlesung-programmiersprachen/"
-            },
-            {
-                "title": "Interner Bereich (VPN)",
-                "key": "progi",
-                "url": "https://uranus6.medien.uni-weimar.de/trac/plse"
             },
             {
                 "title": "Moodle",
@@ -202,7 +211,7 @@
         "title": "Datenbanken",
         "abbr": "DB",
         "keywords": ["3. Semester", "databases"],
-        "persons": ["Benno Stein", "Johannes Kiesel", "Henning Wachsmuth"],
+        "persons": ["Benno Stein", "Johannes Kiesel"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -216,12 +225,12 @@
         "title": "Human Computer Interaction",
         "abbr": "HCI",
         "keywords": ["3. Semester"],
-        "persons": ["Eva Hornecker", "Julian Fietkau", "Patrick Tobias Fischer"],
+        "persons": ["Eva Hornecker", "Michaela Honauer", "Patrick Tobias Fischer"],
         "links": [
             {
-                "title": "Moodle-Kurs",
+                "title": "Moodle",
                 "key": "hci",
-                "url": "https://moodle.uni-weimar.de/course/view.php?id=287"
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1276"
             }
         ]
     },
@@ -236,6 +245,11 @@
                 "title": "Uni-Website",
                 "key": "num",
                 "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
+            },
+            {
+                "title": "Moodle",
+                "key": "numm",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1382"
             }
         ]
     },
@@ -257,22 +271,22 @@
         "key": "se",
         "title": "Software Engineering",
         "abbr": "SE",
-        "keywords": ["3. Semester", "Software-Entwurf"],
-        "persons": ["Florian Echtler", "Philipp Seltmann"],
+        "keywords": ["3. Semester"],
+        "persons": ["Norbert Siegmund"],
         "links": [
             {
-                "title": "Moodle-Kurs",
+                "title": "Moodle",
                 "key": "se",
-                "url": "https://moodle.uni-weimar.de/course/view.php?id=218"
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1363"
             }
         ]
     },
     "web": {
         "key": "web",
-        "title": "Webtechnologie Grundlagen",
+        "title": "Webtechnologie",
         "abbr": "WEB",
-        "keywords": ["4. Semester", ""],
-        "persons": ["Benno Stein"],
+        "keywords": ["4. Semester"],
+        "persons": ["Benno Stein", "Johannes Kiesel", "Martin Potthast"],
         "links": [
             {
                 "title": "Uni-Website",
@@ -292,6 +306,34 @@
                 "title": "Uni-Website",
                 "key": "km",
                 "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2016/"
+            }
+        ]
+    },
+    "cg": {
+        "key": "cg",
+        "title": "Computer Graphics",
+        "abbr": "CG",
+        "keywords": ["5. Semester", "Computer Grafik"],
+        "persons": ["Charles A. Wüthrich", "Banafsheh Azari"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "cg",
+                "url": "https://www.uni-weimar.de/en/media/chairs/computer-graphics/teaching/computer-graphics"
+            }
+        ]
+    },
+    "cv": {
+        "key": "cv",
+        "title": "Photogrammetric Computer Vision",
+        "abbr": "CV",
+        "keywords": ["5. Semester", "CompuVis"],
+        "persons": ["Volker Rodehorst", "Jens Kersten"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "cv",
+                "url": "http://www.uni-weimar.de/en/media/chairs/computer-vision/teaching/photogrammetric-computer-vision"
             }
         ]
     },
@@ -360,7 +402,7 @@
         "key": "opac",
         "title": "Katalog der Universitätsbibliothek",
         "abbr": "opac",
-        "keywords": ["ub", "opac", "bibliothek", "katalog", "bibliothekskatalog"],
+        "keywords": ["opac"],
         "persons": [],
         "links": [
             {

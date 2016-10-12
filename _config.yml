@@ -1,8 +1,8 @@
 full_rebuild: true
 
-title: vlau.me
-url: https://vlau.me
-description: 'vlau.me is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.'
+title: hyperlink.cool
+url: https://hyperlink.cool
+description: 'hyperlink.cool is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.'
 
 permalink: /:title
 

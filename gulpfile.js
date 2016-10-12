@@ -11,26 +11,26 @@ var paths = {
 gulp.task('js', function() {
     return gulp.src([
             './js/fuse.js',
-            './js/vlaume.js',
-            '!./js/vlaume.min.js'
+            './js/hyperlink.cool.js',
+            '!./js/hyperlink.cool.min.js'
         ])
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(concat('vlaume.min.js'))
+        .pipe(concat('hyperlink.cool.min.js'))
         .pipe(uglify().on('error', gutil.log))
         .pipe(gulp.dest('js'));
 });
 
-gulp.task('js-vlaume', function() {
+gulp.task('js-hyperlink-cool', function() {
     return gulp.src([
-            './js/vlaume.js',
-            '!./js/vlaume.min.js'
+            './js/hyperlink.cool.js',
+            '!./js/hyperlink.cool.min.js'
         ])
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(concat('vlaume.min.js'))
+        .pipe(concat('hyperlink.cool.min.js'))
         .pipe(uglify().on('error', gutil.log))
         .pipe(gulp.dest('js'));
 });
