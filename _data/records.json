@@ -334,6 +334,11 @@
                 "title": "Uni-Website",
                 "key": "cv",
                 "url": "http://www.uni-weimar.de/en/media/chairs/computer-vision/teaching/photogrammetric-computer-vision"
+            },
+            {
+                "title": "Moodle",
+                "key": "cvm",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1378"
             }
         ]
     },
