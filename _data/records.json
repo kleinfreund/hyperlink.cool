@@ -62,6 +62,11 @@
                 "title": "Uni-Website",
                 "key": "lina",
                 "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/lineare-algebra-medieninformatik/"
+            },
+            {
+                "title": "Übungsaufgaben",
+                "key": "linau",
+                "url": "http://webuser.uni-weimar.de/~xume0027/"
             }
         ]
     },
