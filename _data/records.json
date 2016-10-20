@@ -9,15 +9,15 @@
             {
                 "title": "Vorlesungsfolien",
                 "key": "ds",
-                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-vorlesung/"
+                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2016/diskrete-strukturen-vorlesung/"
             },
             {
                 "title": "Übungsaufgaben",
                 "key": "dsu",
-                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2015/diskrete-strukturen-uebung/"
+                "url": "http://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ws-2016/diskrete-strukturen-uebung/"
             },
             {
-                "title": "Tutoriumsfolien",
+                "title": "Tutoriumsfolien (WS 2015)",
                 "key": "dst",
                 "url": "http://webuser.uni-weimar.de/~lopa1693/master/index.html"
             }
@@ -48,25 +48,6 @@
                 "title": "Moodle",
                 "key": "ep",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=1364"
-            }
-        ]
-    },
-    "ic": {
-        "key": "ic",
-        "title": "Information und Codierung",
-        "abbr": "IC",
-        "keywords": ["1. Semester", "IuC"],
-        "persons": ["Günther Schatter", "Lars Meyer"],
-        "links": [
-            {
-                "title": "Uni-Website",
-                "key": "ic",
-                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
-            },
-            {
-                "title": "Interner Bereich",
-                "key": "ici",
-                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
             }
         ]
     },
@@ -334,6 +315,25 @@
                 "title": "Uni-Website",
                 "key": "cv",
                 "url": "http://www.uni-weimar.de/en/media/chairs/computer-vision/teaching/photogrammetric-computer-vision"
+            }
+        ]
+    },
+    "ic": {
+        "key": "ic",
+        "title": "Information und Codierung",
+        "abbr": "IC",
+        "keywords": ["1. Semester", "IuC"],
+        "persons": ["Günther Schatter", "Lars Meyer"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "ic",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
+            },
+            {
+                "title": "Interner Bereich",
+                "key": "ici",
+                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
             }
         ]
     },
