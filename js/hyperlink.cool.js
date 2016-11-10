@@ -1,14 +1,14 @@
-"use strict";
+"use strict"
 
-var listData;
-var containerName;
-var inputID;
+var listData
+var containerName
+var inputID
 
 function init(jsonFile, containerName_, inputID_) {
-    containerName = containerName_;
-    inputID = inputID_;
+    containerName = containerName_
+    inputID = inputID_
     getJSON(jsonFile).then(function(data) {
-        listData = data;
+        listData = data
     }, function(error) {
         console.error(error);
     });
@@ -18,22 +18,22 @@ function getJSON(jsonFile) {
     if ( window.Promise ) {
         return new Promise( function(resolve, reject) {
             // Get the JSON data by using a XML http request
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', jsonFile);
+            var xhr = new XMLHttpRequest()
+            xhr.open('GET', jsonFile)
             xhr.addEventListener('load', function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.responseText));
+                        resolve(JSON.parse(xhr.responseText))
                     } else {
-                        reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText));
+                        reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText))
                     }
                 }
-            });
+            })
             xhr.addEventListener('error', function() {
-                reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText));
-            });
-            xhr.send(null);
-        });
+                reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText))
+            })
+            xhr.send(null)
+        })
     } else {
         console.log('Your browser does not support promises.')
     }
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
      * the body. Remove it, so potentially interactive elements become usable.
      */
     if (document.body.classList.contains('js-disabled')) {
-        document.body.classList.remove('js-disabled');
+        document.body.classList.remove('js-disabled')
     }
 
     let loop = function() {
@@ -112,54 +112,53 @@ function recordFilter() {
      * Opening links is done by giving links focus which has the desired interaction by default
      *
      * Some keys and which keycodes they’re mapped to:
-     * `tab` – 9;   `enter` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
+     * `tab` – 9;   `return` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
      */
     document.addEventListener("keydown", function(e) {
-        e = e || window.event;
-        var key = e.keyCode;
-        var recordList = document.getElementById(listName);
+        e = e || window.event
+        var key = e.keyCode
+        var recordList = document.getElementById(listName)
 
         // If `e.keyCode` is not in the array, abort mission right away
         if ([9, 13, 37, 38, 39, 40].indexOf(key) === -1 || !recordList.hasChildNodes()) {
-            return;
+            return
         }
 
-        var activeLink = recordList.getElementsByClassName(activeLinkName)[0];
+        var activeLink = recordList.getElementsByClassName(activeLinkName)[0]
 
-        if (key === 13) {
-            if (document.activeElement === document.getElementById(inputID)) {
-                document.activeElement.blur();
-                activeLink.focus();
-            } else {
-                return;
-            }
-        }
-
-        var targetElement;
-
-        if (key === 9) {
-            // If there is only one item, the default is fine.
-            if (recordList.length === 1) {
-                return;
-            }
-
-            var elements = focusableElements();
-            var activeElement = document.activeElement;
-
-            // Determine which element is the one that will receive focus
-            for (var el = 0; el < elements.length; el++) {
-                if (elements[el] === activeElement) {
-                    if (e.shiftKey && elements[el-1]) {
-                        targetElement = elements[el-1];
-                    } else if (elements[el+1]) {
-                        targetElement = elements[el+1];
-                    }
-                    break;
+        // If the record input is currently active …
+        if (document.activeElement === document.getElementById(inputID)) {
+            // … and the user presses return or mouse down
+            if ([13, 40].indexOf(key) > -1) {
+                // … make the first link in the record list the active item
+                recordList.getElementsByClassName(linkName)[0].focus()
+                // Prevent scrolling the viewport on mouse down
+                if (key === 40) {
+                    e.preventDefault()
                 }
             }
+            // We’re done here.
+            return
+        } else if (key === 13) {
+            // If return was pressed without the record input being active, we’re done.
+            return
         }
 
-        if ([37, 39].indexOf(key) > -1) {
+        var targetElement
+
+        if (key === 9) {
+            // Determine which element is the one that will receive focus
+            var elements = focusableElements()
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i] === document.activeElement) {
+                    if (event.shiftKey && elements[i-1] != undefined) {
+                        targetElement = elements[i-1]
+                    } else if (elements[i+1] != undefined) {
+                        targetElement = elements[i+1]
+                    }
+                }
+            }
+        } else if ([37, 39].indexOf(key) > -1) {
             var previousLink;
             var nextLink;
             var linkElements = recordList.getElementsByClassName(linkName);
@@ -175,9 +174,9 @@ function recordFilter() {
                 return;
             }
 
-            if (key === 37 && previousLink) {
+            if (key === 37 && previousLink != undefined) {
                 targetElement = previousLink;
-            } else if (key === 39 && nextLink) {
+            } else if (key === 39 && nextLink != undefined) {
                 targetElement = nextLink;
             }
         } else if ([38, 40].indexOf(key) > -1) {
@@ -189,9 +188,9 @@ function recordFilter() {
                 return;
             }
 
-            if (key === 38 && previousItem) {
+            if (key === 38 && previousItem != undefined) {
                 targetElement = previousItem.getElementsByClassName(linkName)[0];
-            } else if (key === 40 && nextItem) {
+            } else if (key === 40 && nextItem != undefined) {
                 targetElement = nextItem.getElementsByClassName(linkName)[0];
             }
 

@@ -12,14 +12,12 @@ layout: compress
     {% if site.description %}<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% endif %}
 
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:300,300italic,500">
+    <link rel="icon" href="/img/icon.png">
 
     {% if jekyll.environment == 'local' %}
-        <script src="/js/fuse.js"></script>
-        <script src="/js/hyperlink.cool.js"></script>
         <link rel="stylesheet" href="/css/hyperlink.cool.css">
+        <script src="/js/hyperlink.cool.js"></script>
     {% else %}
-        <script src="/js/fuse.min.js"></script>
-        <script src="/js/hyperlink.cool.min.js"></script>
         <!-- Inline complete stylesheet for one less blocking request -->
         <style>
             {% capture scss_include %}
@@ -28,13 +26,11 @@ layout: compress
 
             {{ scss_include | scssify }}
         </style>
+        <script src="/js/hyperlink.cool.min.js"></script>
     {% endif %}
     <script>
         init('_data/records.json', 'record-filter', 'record-filter__input');
-        // recordFilter('_data/records.json', 'record-filter', 'record-filter__input');
     </script>
-
-    <link rel="icon" href="/img/icon.png">
 </head>
 <body class="js-disabled">
     <header class="site-head">
@@ -74,9 +70,7 @@ layout: compress
                     <li class="record" data-key="{{ record[0] }}">
                         <div class="record__title">{{ record[1].title }}</div>
                         <nav class="nav  record-nav">
-                        {% for link in record[1].links %}
-                            <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>
-                        {% endfor %}
+                        {% for link in record[1].links %}<a class="record__link" href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
                         </nav>
                     </li>
                 {% endfor %}
