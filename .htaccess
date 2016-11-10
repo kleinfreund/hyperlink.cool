@@ -809,7 +809,7 @@ FileETag None
     ExpiresByType application/rdf+xml                   "access plus 1 hour"
     ExpiresByType application/rss+xml                   "access plus 1 hour"
 
-    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/json                      "access plus 1 year"
     ExpiresByType application/ld+json                   "access plus 0 seconds"
     ExpiresByType application/schema+json               "access plus 0 seconds"
     ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
