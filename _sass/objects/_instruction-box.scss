@@ -2,6 +2,10 @@
     @extend %vertical-rhythm;
     display: none;
 
+    p {
+        margin-bottom: 0.25rem;
+    }
+
     @include media-query(desk) {
         display: block;
     }
