@@ -45,15 +45,19 @@
 }
 
 .magnifying-glass {
-    fill: #fff;
+    fill: $c-text;
 }
 
 .record-filter__input {
     width: 100%;
     padding: $half-spacing-unit $base-spacing-unit;
     border: 0;
-    font-size: 2rem;
+    font-size: 1.2rem;
     background-color: $c-background--dark;
+
+    @include media-query(lap-and-up) {
+        font-size: 2rem;
+    }
 
     @include media-query(desk) {
         font-size: 3rem;
@@ -87,8 +91,12 @@
 }
 
 .record__title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0.5rem;
+
+    @include media-query(lap-and-up) {
+        font-size: 1.5rem;
+    }
 }
 
 .record__link {
@@ -96,16 +104,16 @@
     padding: 4px $half-spacing-unit;
     border-radius: 3px;
     color: #fff;
-    background-color: $c-ui--dark;
+    background-color: $c-link;
 
     @include attention() {
         color: #fff;
-        background-color: $c-ui;
+        background-color: $c-link--attention;
         outline-color: $c-alt;
     }
 }
 
-.record__link--active:focus {
+/* .record__link--active:focus {
     outline: 0;
 }
 
@@ -125,4 +133,4 @@
             background-color: $c-alt;
         }
     }
-}
+} */

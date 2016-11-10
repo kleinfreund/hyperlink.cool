@@ -1,23 +1,9 @@
 .nav {
     list-style: none;
-    margin-bottom: 0;
-    margin-left: 0;
+    margin: -$base-spacing-unit / 4;
 
-    &,
     > a {
-        display: block;
-
-        @include media-query(lap-and-up) {
-            display: inline-block;
-        }
-    }
-
-    > a:not(:last-child) {
-        margin-bottom: $half-spacing-unit;
-
-        @include media-query(lap-and-up) {
-            margin-bottom: 0;
-            margin-right: $half-spacing-unit;
-        }
+        display: inline-block;
+        margin: $base-spacing-unit / 4;
     }
 }

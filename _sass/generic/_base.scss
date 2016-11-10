@@ -1,6 +1,6 @@
-/**
- * Internet Explorer 6 was right!
- */
+/*
+* Internet Explorer 6 was right!
+*/
 *,
 *:before,
 *:after {
@@ -10,22 +10,48 @@
 
 
 
-/**
- * Reset some basic elements
- */
+/*
+* Prevent iOS text size adjust after orientation change, without disabling
+* user zoom.
+*/
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+
+
+/*
+* Correct `block` display not defined for any HTML5 element in IE 8/9.
+* Correct `block` display not defined for `details` or `summary` in IE 10/11
+* and Firefox.
+* Correct `block` display not defined for `main` in IE 11.
+*/
+footer,
+header,
+main,
+nav {
+    display: block;
+}
+
+
+
+/*
+* Reset some basic elements
+*/
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 dl, dd, ol, ul, hr,
-figure {
+figure, body {
     margin: 0;
     padding: 0;
 }
 
 
 
-/**
- * Set `margin-bottom` to maintain vertycal rhythm
- */
+/*
+* Set `margin-bottom` to maintain vertycal rhythm
+*/
 h1, h2, h3, h4, h5, h6,
 p, blockquote, pre,
 ul, ol, dl,
@@ -37,37 +63,22 @@ figure,
 
 
 
-/**
- * Clearfix
- */
-%clearfix:after {
+/*
+* Clearfix
+*/
+/* %clearfix:after {
     content: "";
     display: table;
     clear: both;
-}
+} */
 
 
 
-/**
- * Visually hide content, yet still expose it to screenreaders
- */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    clip: rect(0 0 0 0);
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
+/*
+* Images
+*/
+/* img {
     border: 0;
-}
-
-
-
-/**
- * Images
- */
-img {
     font-style: italic;  // Emphasis on `alt` text
     max-width: 100%;
     height: auto;
@@ -76,14 +87,14 @@ img {
 img,
 svg {
     vertical-align: middle;
-}
+} */
 
 
 
-/**
- * Figures
- */
-figure {
+/*
+* Figures
+*/
+/* figure {
 
     > img {
         display: block;
@@ -96,25 +107,25 @@ figure {
 
 figcaption {
     @include font-size($small-font-size);
-}
+} */
 
 
 
-/**
- * Rulers
- */
-hr {
+/*
+* Rulers
+*/
+/* hr {
     border: 0;
-    border-bottom: 2px solid $c-text--dark;
+    border-bottom: 2px solid $c-text;
     margin-bottom: $base-spacing-unit - 2px;
     margin-bottom: (($base-spacing-unit - 2px) / $base-font-size)*1rem;
-}
+} */
 
 
 
-/**
- * iframes
- */
-iframe {
+/*
+* iframes
+*/
+/* iframe {
     vertical-align: middle;
-}
+} */

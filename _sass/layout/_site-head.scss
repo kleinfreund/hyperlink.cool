@@ -1,11 +1,16 @@
 .site-head {
-    @include vertical-gap(bottom);
+    margin-top: 3rem;
+    margin-bottom: 6rem;
 }
 
 .site-title {
     padding: 10px 20px;
     text-align: center;
-    font-size: 4rem;
+    font-size: 2.5rem;
+
+    @include media-query(lap-and-up) {
+        font-size: 3rem;
+    }
 
     @include media-query(desk) {
         font-size: 5rem;

@@ -1,36 +1,32 @@
-/**
- * Typography
- */
+/*
+* Typography
+*/
 $font-family: Ubuntu, Helvetica, sans-serif;
 $font-weight--regular: 300;
 $font-weight--bold: 500;
 
 
 
-/**
- * Colors
- */
-$c-text: #ffe0e7;
-$c-text--dark: #aaa;
-$c-background: #28143d;
-$c-background--dark: darken($c-background, 5%);
+/*
+* Colors
+*/
+$c-text: #333;
+$c-background: #efefef;
+$c-background--dark: darken($c-background, 6%);
 
-// $c-ui: #8f2400;
-$c-ui: #dc3700;
-$c-ui--light: lighten($c-ui, 15%);
-$c-ui--dark: darken($c-ui, 15%);
+$c-ui: #3756a4;
+$c-ui--dark: #0f3db1;
 
-$c-alt: #ffbd24;
-$c-alt--dark: darken($c-alt, 15%);
+$c-link: $c-ui;
+$c-link--attention: #842d86;
 
-$c-gray: #7e7e6f;
-$c-gray--dark: darken($c-gray, 30%);
-$c-grey: $c-gray;
-$c-grey--dark: $c-gray--dark;
+$c-alt: #e6bd41;
+
+$c-gray: #636357;
 
 
 
-/**
- * Misc
- */
+/*
+* Misc
+*/
 $content-width: 960px;

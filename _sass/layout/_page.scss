@@ -2,9 +2,9 @@
     #PAGE
     General page layout
 \*------------------------------------*/
-/**
- * Page
- */
+/*
+* Page
+*/
 .wrapper {
     padding-right: $half-spacing-unit;
     padding-left: $half-spacing-unit;
@@ -24,18 +24,18 @@
 
 
 
-/**
- * Page Content
- */
+/*
+* Page Content
+*/
 .page-content {
-    @include vertical-gap(bottom);
+    margin-bottom: 6rem;
 }
 
-.note {
+/* .note {
     @extend %vertical-rhythm;
     padding: $half-spacing-unit $base-spacing-unit;
 
     > :last-child {
         margin-bottom: 0;
     }
-}
+} */

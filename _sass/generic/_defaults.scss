@@ -1,6 +1,6 @@
-/**
- * Typography
- */
+/*
+* Typography
+*/
 $font-weight--regular: normal!default;
 $font-weight--bold: bold!default;
 
@@ -25,16 +25,16 @@ $small-font-size: 16px!default;
 
 
 
-/**
- * Colors
- */
+/*
+* Colors
+*/
 $c-ui: #ccc!default;
 
 
 
-/**
- * Media Query Breakpoints
- */
+/*
+* Media Query Breakpoints
+*/
 $lap-start: 680px!default;
 $desk-start: 960px!default;
 $desk-wide-start: 1500px!default;
@@ -44,9 +44,9 @@ $lap-end: $desk-start - 1px;
 
 
 
-/**
- * Misc
- */
+/*
+* Misc
+*/
 $base-spacing-unit: 24px!default;
 $half-spacing-unit: $base-spacing-unit / 2!default;
 $line-height-ratio: $base-line-height / $base-font-size;
