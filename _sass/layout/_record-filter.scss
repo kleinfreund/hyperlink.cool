@@ -17,8 +17,12 @@
         right: 0;
         bottom: 0;
         z-index: 2;
-        width: 130px;
+        width: 75px;
         background: linear-gradient(to right, rgba(0,0,0,0) 0%, $c-background--dark 33%, $c-background--dark 100%);
+
+        @include media-query(desk) {
+            width: 95px;
+        }
     }
 }
 
@@ -31,13 +35,12 @@
     position: absolute;
     top: 50%;
     margin-top: -$width / 2;
-    right: $half-spacing-unit;
+    right: $base-spacing-unit / 4;
     z-index: 3;
     width: $width;
     height: $width;
 
     @include media-query(desk) {
-        right: 30px;
         margin-top: -$width--desk / 2;
         width: $width--desk;
         height: $width--desk;
@@ -56,11 +59,7 @@
     background-color: $c-background--dark;
 
     @include media-query(lap-and-up) {
-        font-size: 2rem;
-    }
-
-    @include media-query(desk) {
-        font-size: 3rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -77,13 +76,6 @@
     &:not(:last-child) {
         margin-bottom: $half-spacing-unit;
     }
-
-    // &:after {
-    //     content: "\2F" attr(data-key);
-    //     position: absolute;
-    //     top: $half-spacing-unit;
-    //     right: $base-spacing-unit;
-    // }
 
     &:focus {
         outline: 0;
