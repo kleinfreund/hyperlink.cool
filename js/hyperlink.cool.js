@@ -1,56 +1,50 @@
 "use strict"
 
+// Contains the JSON data
 var listData
-var containerName
-var inputID
+// Input IT of the record filtering element
+var inputName
 
-function init(jsonFile, containerName_, inputID_) {
-    containerName = containerName_
-    inputID = inputID_
-    getJSON(jsonFile).then(function(data) {
+function init(jsonFile, inputName_) {
+    inputName = inputName_
+
+    var getJSON = function(jsonFile, successHandler, errorHandler) {
+        // Get the JSON data by using a XML http request
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', jsonFile)
+        xhr.addEventListener('load', function() {
+            var status
+            var data
+            if (xhr.readyState === 4) {
+                status = xhr.status
+                if (status === 200) {
+                    data = JSON.parse(xhr.responseText)
+                    successHandler && successHandler(data);
+                } else {
+                    errorHandler && errorHandler(status);
+                }
+            }
+        })
+        xhr.send(null)
+    };
+
+    getJSON(jsonFile, function(data) {
         listData = data
-    }, function(error) {
-        console.error(error);
+    }, function(status) {
+        console.log('Error: ' + status)
     });
 }
 
-function getJSON(jsonFile) {
-    if ( window.Promise ) {
-        return new Promise( function(resolve, reject) {
-            // Get the JSON data by using a XML http request
-            var xhr = new XMLHttpRequest()
-            xhr.open('GET', jsonFile)
-            xhr.addEventListener('load', function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        resolve(JSON.parse(xhr.responseText))
-                    } else {
-                        reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText))
-                    }
-                }
-            })
-            xhr.addEventListener('error', function() {
-                reject(Error('Error: ' + xhr.status + ' ' + xhr.statusText))
-            })
-            xhr.send(null)
-        })
-    } else {
-        console.log('Your browser does not support promises.')
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    /**
-     * If some content is hidden via CSS, the js-disabled HTML class is set on
-     * the body. Remove it, so potentially interactive elements become usable.
-     */
+    // If some content is hidden via CSS, the js-disabled HTML class is set on
+    // the body. Remove it, so potentially interactive elements become usable.
     if (document.body.classList.contains('js-disabled')) {
         document.body.classList.remove('js-disabled')
     }
 
-    let loop = function() {
+    var loop = function() {
         // Check if listData is available …
-        if (listData) {
+        if (listData !== undefined) {
             // … if so, start the record filter
             recordFilter()
         } else {
@@ -63,47 +57,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function recordFilter() {
     // Some names that are repeatedly used as HTML class or ID names
-    var listName = 'record-list';
-    var itemName = 'record';
-    var linkName = itemName + '__link';
-    var activeLinkName = linkName + '--active';
+    var listName = 'record-list'
+    var itemName = 'record'
+    var linkName = itemName + '__link'
+    var activeLinkName = linkName + '--active'
 
-    var placeholderKeys = [];
+    var placeholderKeys = []
     for (var key in listData) {
-        var value = listData[key];
-        placeholderKeys = placeholderKeys.concat(value.title, value.abbr, value.keywords);
+        var value = listData[key]
+        placeholderKeys = placeholderKeys.concat(
+            value.title, value.abbr, value.keywords
+        )
     }
 
-    var filterInput = document.getElementById(inputID);
-    filterInput.placeholder = placeholderKeys[Math.floor(Math.random() * placeholderKeys.length)];
+    var filterInput = document.getElementById(inputName)
+    filterInput.placeholder = placeholderKeys[
+        Math.floor(Math.random() * placeholderKeys.length)
+    ]
 
     if (filterInput.value.length > 0) {
-        buildRecordList(filterKeys(filterInput.value));
+        buildRecordList(filterKeys(filterInput.value))
     }
 
-    var recordList = document.getElementById(listName);
-    if (recordList.firstElementChild != null) {
-        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
+    var recordList = document.getElementById(listName)
+    if (recordList.firstElementChild !== null) {
+        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0])
     }
 
 
 
-    var timer;
+    var timer
     // Watch the search field for input changes …
     filterInput.addEventListener('input', function(e) {
         // … and build a new record list according to the filter value
-        // buildRecordList(filterKeys(filterInput.value));
-        timer && clearTimeout(timer);
+        timer && clearTimeout(timer)
         timer = setTimeout(function() {
-            buildRecordList(filterKeys(filterInput.value));
-        }, 150);
-    }, false);
+            buildRecordList(filterKeys(filterInput.value))
+        }, 150)
+    }, false)
 
     document.addEventListener('focus', function(e) {
         if (document.activeElement) {
-            setActiveClass(document.activeElement);
+            setActiveClass(document.activeElement)
         }
-    }, true);
+    }, true)
 
 
 
@@ -127,7 +124,7 @@ function recordFilter() {
         var activeLink = recordList.getElementsByClassName(activeLinkName)[0]
 
         // If the record input is currently active …
-        if (document.activeElement === document.getElementById(inputID)) {
+        if (document.activeElement === document.getElementById(inputName)) {
             // … and the user presses return or mouse down
             if ([13, 40].indexOf(key) > -1) {
                 // … make the first link in the record list the active item
@@ -159,52 +156,53 @@ function recordFilter() {
                 }
             }
         } else if ([37, 39].indexOf(key) > -1) {
-            var previousLink;
-            var nextLink;
-            var linkElements = recordList.getElementsByClassName(linkName);
+            var previousLink
+            var nextLink
+            var linkElements = recordList.getElementsByClassName(linkName)
             for (var i = 0; i < linkElements.length; i++) {
                 if (activeLink === linkElements[i]) {
-                    previousLink = linkElements[i-1];
-                    nextLink = linkElements[i+1];
-                    break;
+                    previousLink = linkElements[i-1]
+                    nextLink = linkElements[i+1]
+                    break
                 }
             }
 
             if (!previousLink && !nextLink) {
-                return;
+                return
             }
 
-            if (key === 37 && previousLink != undefined) {
-                targetElement = previousLink;
-            } else if (key === 39 && nextLink != undefined) {
-                targetElement = nextLink;
+            if (key === 37 && previousLink !== undefined) {
+                targetElement = previousLink
+            } else if (key === 39 && nextLink !== undefined) {
+                targetElement = nextLink
             }
         } else if ([38, 40].indexOf(key) > -1) {
-            var activeItem = findAncestor(activeLink, itemName);
-            var previousItem = activeItem.previousElementSibling;
-            var nextItem = activeItem.nextElementSibling;
+            var activeItem = findAncestor(activeLink, itemName)
+            var previousItem = activeItem.previousElementSibling
+            var nextItem = activeItem.nextElementSibling
 
             if (!previousItem && !nextItem) {
-                return;
+                return
             }
 
-            if (key === 38 && previousItem != undefined) {
-                targetElement = previousItem.getElementsByClassName(linkName)[0];
-            } else if (key === 40 && nextItem != undefined) {
-                targetElement = nextItem.getElementsByClassName(linkName)[0];
+            if (key === 38 && previousItem !== undefined) {
+                targetElement = previousItem.getElementsByClassName(linkName)[0]
+            } else if (key === 40 && nextItem !== undefined) {
+                targetElement = nextItem.getElementsByClassName(linkName)[0]
             }
 
         }
 
-        if (targetElement && targetElement.classList.contains(linkName)) {
+        if (targetElement !== undefined
+            && targetElement.classList.contains(linkName)) {
             if ([37, 38, 39, 40].indexOf(key) > -1) {
-                e.preventDefault();
-                targetElement.focus();
+                e.preventDefault()
+                targetElement.focus()
             }
-            activeLink.classList.remove(activeLinkName);
-            targetElement.className += '  ' + activeLinkName;
+            activeLink.classList.remove(activeLinkName)
+            targetElement.className += '  ' + activeLinkName
         }
-    });
+    })
 
 
 
@@ -214,23 +212,23 @@ function recordFilter() {
      */
     function filterKeys(str) {
         if (str.length === 0) {
-            var allKeys = [];
+            var allKeys = []
             for (var key in listData) {
-                allKeys.push(key);
+                allKeys.push(key)
             }
-            return allKeys;
+            return allKeys
         }
 
-        var recordObjects = [];
+        var recordObjects = []
         for (var objectKey in listData) {
-            recordObjects.push(listData[objectKey]);
+            recordObjects.push(listData[objectKey])
         }
         var options = {
             keys: ['abbr', 'title', 'keywords', 'persons', 'links.title'],
             id: 'key'
-        };
-        var fuse = new Fuse(recordObjects, options);
-        return fuse.search(str);
+        }
+        var fuse = new Fuse(recordObjects, options)
+        return fuse.search(str)
     }
 
 
@@ -239,34 +237,20 @@ function recordFilter() {
      * Build the record list containing elements belonging to keys in `relatedKeys`.
      */
     function buildRecordList(relatedKeys) {
-        // Check if a list was build previously …
-        var recordList = document.getElementById(listName);
-        if (recordList) {
-            // … and remove its content
-            recordList.innerHTML = '';
-        } else {
-            // … otherwise, create it
-            recordList = document.createElement('ul');
-            recordList.id = recordList.className = listName;
-            document.getElementById(containerName).insertBefore(recordList, null);
-        }
-
-        var recordListStr = '';
+        var recordListStr = ''
         for (var i = 0; i < relatedKeys.length; i++) {
-            recordListStr += recordStr(relatedKeys[i], listData[relatedKeys[i]]);
+            recordListStr += recordStr(relatedKeys[i], listData[relatedKeys[i]])
         }
 
-        if (recordListStr) {
-            recordList.innerHTML = recordListStr;
-        }
+        var recordList = document.getElementById(listName)
+        recordList.innerHTML = recordListStr
 
-        // If no list items were inserted, we need to stop here
-        if (!recordList.hasChildNodes()) {
-            return;
+        if (recordList.hasChildNodes()) {
+            // Set the first child element in the list to active state
+            setActiveClass(
+                recordList.firstElementChild.getElementsByClassName(linkName)[0]
+            )
         }
-
-        // Set the first child element in the list to active state
-        setActiveClass(recordList.firstElementChild.getElementsByClassName(linkName)[0]);
     }
 
 
@@ -276,20 +260,20 @@ function recordFilter() {
      */
     function recordStr(key, value) {
         var str = '<li class="' + itemName + '" data-key="' + value.key + '">' +
-            '<div class="' + itemName + '__title">' + value.title + '</div>';
+            '<div class="' + itemName + '__title">' + value.title + '</div>'
 
         if (value.links.length > 0) {
-            str += '<nav class="nav  record-nav">';
+            str += '<nav class="nav  record-nav">'
             for (var i = 0; i < value.links.length; i++) {
-                var link = value.links[i];
-                str += '<a class="' + itemName + '__link" href="' + link.url + '">' +
-                    link.title + '</a>';
+                var link = value.links[i]
+                str += '<a class="' + itemName + '__link" href="'
+                    + link.url + '">' + link.title + '</a>'
             }
         }
 
         str += '</nav></li>'
 
-        return str;
+        return str
     }
 
 
@@ -298,14 +282,16 @@ function recordFilter() {
      * @brief  Moves the active class to the given element
      */
     function setActiveClass(element) {
-        if (element) {
+        if (element !== undefined) {
             if (element.className.indexOf(linkName) > -1) {
-                var recordList = document.getElementById(listName);
-                var activeItem = recordList.getElementsByClassName(activeLinkName)[0];
-                if (activeItem) {
-                    activeItem.classList.remove(activeLinkName);
+                var recordList = document.getElementById(listName)
+                var activeItem = recordList
+                    .getElementsByClassName(activeLinkName)[0]
+
+                if (activeItem !== undefined) {
+                    activeItem.classList.remove(activeLinkName)
                 }
-                element.className += '  ' + activeLinkName;
+                element.className += '  ' + activeLinkName
             }
         }
     }
@@ -316,8 +302,12 @@ function recordFilter() {
      * @return  the closest ancestor of `element` that has a class `className`
      */
     function findAncestor(element, className) {
-        while ((element = element.parentElement) && !element.classList.contains(className));
-        return element;
+        while (
+            (element = element.parentElement) &&
+            !element.classList.contains(className)
+        ) {
+            return element
+        }
     }
 
 
@@ -328,13 +318,14 @@ function recordFilter() {
      * @return  an array containing all currently focusable elements in the DOM
      */
     function focusableElements() {
-        var elements = document.getElementsByTagName('*');
-        var focusable = [];
+        var elements = document.getElementsByTagName('*')
+        var focusable = []
         for (var i = 0; i < elements.length; i++) {
-            if (elements[i].tabIndex > -1 && elements[i].offsetParent !== null) {
-                focusable.push(elements[i]);
+            element = elements[i]
+            if (element.tabIndex > -1 && element.offsetParent !== null) {
+                focusable.push(element)
             }
         }
-        return focusable;
+        return focusable
     }
 }
