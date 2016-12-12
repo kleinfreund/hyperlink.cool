@@ -1,9 +1,8 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var gutil = require('gulp-util');
-var order = require('gulp-order');
 var babel = require('gulp-babel');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var gutil = require('gulp-util');
 
 var paths = {
     scripts: ['./js/*.js', '!./js/*.min.js']
