@@ -41,7 +41,7 @@ compress_html:
   comments: ["<!--", "-->"]
   endings: all
   ignore:
-    envs: [local]
+    envs: [development]
 
 
 defaults:
