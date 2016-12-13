@@ -156,6 +156,7 @@ function recordFilter() {
                 }
             }
         } else if ([37, 39].indexOf(key) > -1) {
+            // `←` – 37; `→` – 39
             var previousLink
             var nextLink
             var linkElements = recordList.getElementsByClassName(linkName)
@@ -177,6 +178,7 @@ function recordFilter() {
                 targetElement = nextLink
             }
         } else if ([38, 40].indexOf(key) > -1) {
+            // `↑` – 38; `↓` – 40
             var activeItem = findAncestor(activeLink, itemName)
             var previousItem = activeItem.previousElementSibling
             var nextItem = activeItem.nextElementSibling
@@ -185,9 +187,9 @@ function recordFilter() {
                 return
             }
 
-            if (key === 38 && previousItem !== undefined) {
+            if (key === 38 && previousItem !== null) {
                 targetElement = previousItem.getElementsByClassName(linkName)[0]
-            } else if (key === 40 && nextItem !== undefined) {
+            } else if (key === 40 && nextItem !== null) {
                 targetElement = nextItem.getElementsByClassName(linkName)[0]
             }
 
@@ -302,11 +304,12 @@ function recordFilter() {
      * @return  the closest ancestor of `element` that has a class `className`
      */
     function findAncestor(element, className) {
-        while (
-            (element = element.parentElement) &&
-            !element.classList.contains(className)
-        ) {
-            return element
+        var currentElement = element;
+        while (true) {
+            currentElement = currentElement.parentElement;
+            if (currentElement.classList.contains(className)) {
+                return currentElement
+            }
         }
     }
 
@@ -321,7 +324,7 @@ function recordFilter() {
         var elements = document.getElementsByTagName('*')
         var focusable = []
         for (var i = 0; i < elements.length; i++) {
-            element = elements[i]
+            var element = elements[i]
             if (element.tabIndex > -1 && element.offsetParent !== null) {
                 focusable.push(element)
             }
