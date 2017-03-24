@@ -97,108 +97,129 @@ function recordFilter() {
     }, false)
 
     document.addEventListener('focus', function(e) {
-        if (document.activeElement) {
+        if (document.activeElement !== null) {
             setActiveClass(document.activeElement)
         }
     }, true)
 
 
 
-    /**
-     * Listen to various key presses to enable arrow key navigation over the record links.
-     * Opening links is done by giving links focus which has the desired interaction by default
-     *
-     * Some keys and which keycodes they’re mapped to:
-     * `tab` – 9;   `return` – 13;   `←` – 37;   `↑` – 38;   `→` – 39;   `↓` – 40;
-     */
-    document.addEventListener("keydown", function(e) {
-        e = e || window.event
-        var key = e.keyCode
+    /*
+    * Part of the navigation module.
+    * Determines the target element that will be focused on pressing a certain key.
+    */
+    function findTargetElement(keyCode, reverseDirection) {
         var recordList = document.getElementById(listName)
+        var activeLink = recordList.querySelector('.' + activeLinkName)
 
-        // If `e.keyCode` is not in the array, abort mission right away
-        if ([9, 13, 37, 38, 39, 40].indexOf(key) === -1 || !recordList.hasChildNodes()) {
-            return
-        }
-
-        var activeLink = recordList.getElementsByClassName(activeLinkName)[0]
-
-        // If the record input is currently active …
-        if (document.activeElement === document.getElementById(inputName)) {
-            // … and the user presses return or mouse down
-            if ([13, 40].indexOf(key) > -1) {
-                // … make the first link in the record list the active item
-                recordList.getElementsByClassName(linkName)[0].focus()
-                // Prevent scrolling the viewport on mouse down
-                if (key === 40) {
-                    e.preventDefault()
-                }
-            }
-            // We’re done here.
-            return
-        } else if (key === 13) {
-            // If return was pressed without the record input being active, we’re done.
-            return
+        var keyCodeNames = {
+            tab: 9,
+            return: 13,
+            arrowLeft: 37,
+            arrowUp: 38,
+            arrowRight: 39,
+            arrowDown: 40,
         }
 
         var targetElement
 
-        if (key === 9) {
+        if (keyCode === keyCodeNames.tab) {
             // Determine which element is the one that will receive focus
             var elements = focusableElements()
             for (var i = 0; i < elements.length; i++) {
                 if (elements[i] === document.activeElement) {
-                    if (event.shiftKey && elements[i-1] != undefined) {
-                        targetElement = elements[i-1]
-                    } else if (elements[i+1] != undefined) {
-                        targetElement = elements[i+1]
-                    }
+                    targetElement = elements[i + (reverseDirection ? -1 : 1)]
                 }
             }
-        } else if ([37, 39].indexOf(key) > -1) {
-            // `←` – 37; `→` – 39
-            var previousLink
-            var nextLink
+        } else if ([keyCodeNames.arrowLeft, keyCodeNames.arrowRight].indexOf(keyCode) > -1) {
             var linkElements = recordList.getElementsByClassName(linkName)
-            for (var i = 0; i < linkElements.length; i++) {
-                if (activeLink === linkElements[i]) {
-                    previousLink = linkElements[i-1]
-                    nextLink = linkElements[i+1]
-                    break
+            for (var j = 0; j < linkElements.length; j++) {
+                if (activeLink === linkElements[j]) {
+                    targetElement = linkElements[j + (keyCode === keyCodeNames.arrowLeft ? -1 : 1)]
                 }
             }
+        } else if ([keyCodeNames.arrowUp, keyCodeNames.arrowDown].indexOf(keyCode) > -1) {
+            var activeItem = activeLink.getAncestorByClassName(itemName)
+            var targetItem = keyCode === keyCodeNames.arrowUp ? activeItem.previousElementSibling : activeItem.nextElementSibling
 
-            if (!previousLink && !nextLink) {
-                return
+            if (targetItem !== null) {
+                targetElement = targetItem.querySelector('.' + linkName)
             }
-
-            if (key === 37 && previousLink !== undefined) {
-                targetElement = previousLink
-            } else if (key === 39 && nextLink !== undefined) {
-                targetElement = nextLink
-            }
-        } else if ([38, 40].indexOf(key) > -1) {
-            // `↑` – 38; `↓` – 40
-            var activeItem = findAncestor(activeLink, itemName)
-            var previousItem = activeItem.previousElementSibling
-            var nextItem = activeItem.nextElementSibling
-
-            if (!previousItem && !nextItem) {
-                return
-            }
-
-            if (key === 38 && previousItem !== null) {
-                targetElement = previousItem.getElementsByClassName(linkName)[0]
-            } else if (key === 40 && nextItem !== null) {
-                targetElement = nextItem.getElementsByClassName(linkName)[0]
-            }
-
         }
 
-        if (targetElement !== undefined
-            && targetElement.classList.contains(linkName)) {
-            if ([37, 38, 39, 40].indexOf(key) > -1) {
-                e.preventDefault()
+        if (targetElement !== undefined) {
+            return targetElement
+        }
+
+        // A target element could not be determined. Returning `null` explicitly reflects that.
+        return null
+    }
+
+
+
+    /**
+     * Listen to various key presses to enable arrow key navigation over the record links.
+     * Opening links is done by giving links focus which has the desired interaction by default
+     */
+    document.addEventListener("keydown", function(event) {
+        event = event || window.event
+        var keyCode = event.keyCode
+        var recordList = document.getElementById(listName)
+
+        // If `recordList` has no entries, stop
+        if (!recordList.hasChildNodes()) return
+
+        // Store all used keyCode values in a map-like object
+        var keyCodeNames = {
+            tab: 9,
+            return: 13,
+            arrowLeft: 37,
+            arrowUp: 38,
+            arrowRight: 39,
+            arrowDown: 40,
+        }
+
+        // Create an array of all values in `keyCodeNames`
+        var keyCodeValues = Object.keys(keyCodeNames).map(function(keyCode) {
+            return keyCodeNames[keyCode]
+        })
+
+        // If `keyCode` is not in `keyCodeValues`, stop
+        if (keyCodeValues.indexOf(keyCode) === -1) return
+
+        // Determine which keys require special actions. For all other keys, return
+        var inputElementIsActive = document.activeElement === document.getElementById(inputName)
+        if (inputElementIsActive) {
+            // All keys except return and arrowDown don’t require any special actions in this case
+            keyCodeValues = [keyCodeNames.return, keyCodeNames.arrowDown]
+        } else {
+            // Only return doesn’t require a special action in this case
+            keyCodeValues.splice(keyCodeValues.indexOf(keyCodeNames.return), 1)
+        }
+
+        // If `keyCode` is not in `keyCodeValues`, stop
+        if (keyCodeValues.indexOf(keyCode) === -1) return
+
+        // If the record input is currently active …
+        if (inputElementIsActive) {
+            // … make the first link in the record list the active item
+            recordList.querySelector('.' + linkName).focus()
+
+            // Prevent scrolling the viewport on mouse down
+            if (keyCode === keyCodeNames.arrowDown) {
+                event.preventDefault()
+            }
+
+            return
+        }
+
+        var activeLink = recordList.querySelector('.' + activeLinkName)
+
+        var targetElement = findTargetElement(keyCode, event.shiftKey)
+
+        if (targetElement !== null && targetElement.classList.contains(linkName)) {
+            if ([37, 38, 39, 40].indexOf(keyCode) > -1) {
+                event.preventDefault()
                 targetElement.focus()
             }
             activeLink.classList.remove(activeLinkName)
@@ -297,38 +318,44 @@ function recordFilter() {
             }
         }
     }
+}
 
 
 
-    /**
-     * @return  the closest ancestor of `element` that has a class `className`
-     */
-    function findAncestor(element, className) {
-        var currentElement = element;
-        while (true) {
-            currentElement = currentElement.parentElement;
-            if (currentElement.classList.contains(className)) {
-                return currentElement
-            }
+/*
+* Determine the closest ancestor of an element that has a certain class
+*/
+Element.prototype.getAncestorByClassName = function(className) {
+    var currentParent = this.parentElement;
+    while (true) {
+        // If the root of the DOM is reached, an ancestor cannot be found anymore.
+        if (currentParent === null) {
+            return null
+        }
+
+        if (currentParent.classList.contains(className)) {
+            return currentParent
+        }
+
+        var currentParent = currentParent.parentElement;
+    }
+}
+
+
+
+/**
+ * @brief  Iterates over all current DOM elements to create an array of elements that are
+ *         focusable (i.e. they’re visible and have a tabIndex greater -1)
+ * @return  an array containing all currently focusable elements in the DOM
+ */
+function focusableElements() {
+    var elements = document.getElementsByTagName('*')
+    var focusable = []
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i]
+        if (element.tabIndex > -1 && element.offsetParent !== null) {
+            focusable.push(element)
         }
     }
-
-
-
-    /**
-     * @brief  Iterates over all current DOM elements to create an array of elements that are
-     *         focusable (i.e. they’re visible and have a tabIndex greater -1)
-     * @return  an array containing all currently focusable elements in the DOM
-     */
-    function focusableElements() {
-        var elements = document.getElementsByTagName('*')
-        var focusable = []
-        for (var i = 0; i < elements.length; i++) {
-            var element = elements[i]
-            if (element.tabIndex > -1 && element.offsetParent !== null) {
-                focusable.push(element)
-            }
-        }
-        return focusable
-    }
+    return focusable
 }
