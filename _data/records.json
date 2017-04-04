@@ -323,6 +323,34 @@
             }
         ]
     },
+    "at": {
+        "key": "at",
+        "title": "Audiotechnik",
+        "abbr": "AT",
+        "keywords": ["6. Semester"],
+        "persons": ["Günther Schatter", "Harms Achtergarde"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "at",
+                "url": "https://www.uni-weimar.de/?id=19944"
+            }
+        ]
+    },
+    "vis": {
+        "key": "vis",
+        "title": "Visualisierung",
+        "abbr": "Vis",
+        "keywords": ["6. Semester"],
+        "persons": ["Bernd Fröhlich", "Patrick Riehmann", "Carl-Feofan Matthes"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "vis",
+                "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/course-visualization/"
+            }
+        ]
+    },
     "ic": {
         "key": "ic",
         "title": "Information und Codierung",
