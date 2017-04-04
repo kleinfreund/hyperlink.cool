@@ -84,6 +84,25 @@
             }
         ]
     },
+    "ic": {
+        "key": "ic",
+        "title": "Information und Codierung",
+        "abbr": "IC",
+        "keywords": ["1. Semester", "IuC"],
+        "persons": ["Günther Schatter", "Lars Meyer"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "ic",
+                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
+            },
+            {
+                "title": "Interner Bereich",
+                "key": "ici",
+                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
+            }
+        ]
+    },
     "analysis": {
         "key": "analysis",
         "title": "Analysis",
@@ -93,8 +112,13 @@
         "links": [
             {
                 "title": "Uni-Website",
-                "key": "Analysis",
+                "key": "analysis",
                 "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
+            },
+            {
+                "title": "Moodle-Kurs",
+                "key": "analysism",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=2067"
             }
         ]
     },
@@ -136,17 +160,17 @@
         "title": "Programmiersprachen",
         "abbr": "Prog",
         "keywords": ["2. Semester", "Programming Languages"],
-        "persons": ["Bernd Bröhlich", "Andreas Bernstein", "André Schollmeyer"],
+        "persons": ["Bernd Bröhlich", "Andreas-Christoph Bernstein", "André Schollmeyer"],
         "links": [
             {
                 "title": "Uni-Website",
                 "key": "prog",
-                "url": "http://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2016/vorlesung-programmiersprachen/"
+                "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/vorlesung-programmiersprachen/"
             },
             {
                 "title": "Moodle",
                 "key": "progm",
-                "url": "https://moodle.uni-weimar.de/course/view.php?id=745"
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=2028"
             }
         ]
     },
@@ -175,6 +199,20 @@
                 "title": "Uni-Website",
                 "key": "st",
                 "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
+            }
+        ]
+    },
+    "wakog": {
+        "key": "wakog",
+        "title": "Grundlagen von Wahrnehmung und Kognition",
+        "abbr": "WaKog",
+        "keywords": ["2. Semester"],
+        "persons": ["Michael Minge", "Vanessa Jan", "Jakob Herpel"],
+        "links": [
+            {
+                "title": "Uni-Website",
+                "key": "wakog",
+                "url": "https://moodle.uni-weimar.de/course/view.php?id=1977"
             }
         ]
     },
@@ -277,7 +315,7 @@
             {
                 "title": "Uni-Website",
                 "key": "web",
-                "url": "http://www.uni-weimar.de/en/media/chairs/webis/teaching/ss-2016/web-technology/"
+                "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ss-2017/web-technology/"
             }
         ]
     },
@@ -291,7 +329,7 @@
             {
                 "title": "Uni-Website",
                 "key": "km",
-                "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2016/"
+                "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2017/"
             }
         ]
     },
@@ -348,25 +386,6 @@
                 "title": "Uni-Website",
                 "key": "vis",
                 "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/course-visualization/"
-            }
-        ]
-    },
-    "ic": {
-        "key": "ic",
-        "title": "Information und Codierung",
-        "abbr": "IC",
-        "keywords": ["1. Semester", "IuC"],
-        "persons": ["Günther Schatter", "Lars Meyer"],
-        "links": [
-            {
-                "title": "Uni-Website",
-                "key": "ic",
-                "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
-            },
-            {
-                "title": "Interner Bereich",
-                "key": "ici",
-                "url": "http://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
             }
         ]
     },
