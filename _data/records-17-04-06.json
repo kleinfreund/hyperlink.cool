@@ -103,21 +103,21 @@
             }
         ]
     },
-    "analysis": {
-        "key": "analysis",
+    "ana": {
+        "key": "ana",
         "title": "Analysis",
-        "abbr": "Analysis",
+        "abbr": "ana",
         "keywords": ["2. Semester"],
         "persons": ["Klaus Gürlebeck", "Friederike Luther"],
         "links": [
             {
                 "title": "Uni-Website",
-                "key": "analysis",
+                "key": "ana",
                 "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
             },
             {
                 "title": "Moodle-Kurs",
-                "key": "analysism",
+                "key": "anam",
                 "url": "https://moodle.uni-weimar.de/course/view.php?id=2067"
             }
         ]

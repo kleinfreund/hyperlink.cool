@@ -30,7 +30,7 @@ layout: compress
         <script src="/js/hyperlink.cool.min.js"></script>
     {% endif %}
     <script>
-        init('_data/records.json', 'record-filter__input');
+        init('_data/records-17-04-06.json', 'record-filter__input');
     </script>
 </head>
 <body class="js-disabled">
@@ -67,7 +67,7 @@ layout: compress
                 </div>
 
                 <ul id="record-list" class="record-list">
-                {% for record in site.data.records %}
+                {% for record in site.data.records-17-04-06 %}
                     <li class="record" data-key="{{ record[0] }}">
                         <div class="record__title">{{ record[1].title }}</div>
                         <nav class="nav  record-nav">
