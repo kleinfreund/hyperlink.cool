@@ -1,15 +1,13 @@
 html {
     min-height: 100%;
     overflow-y: scroll;
-    font: $font-weight--regular #{($base-font-size/16px)*1em}/#{$line-height-ratio} $font-family;
+    font-size: ($base-font-size/16px)*1em;
+    line-height: $line-height-ratio;
+    font-weight: $font-weight--regular;
+    font-family: $font-family;
     color: $c-text;
     background-color: $c-background;
 }
-
-/* b,
-strong {
-    font-weight: $font-weight--bold;
-} */
 
 
 
@@ -24,26 +22,6 @@ h1 {
     @include font-size($h1-size);
 }
 
-/* h2 {
-    @include font-size($h2-size);
-}
-
-h3 {
-    @include font-size($h3-size);
-}
-
-h4 {
-    @include font-size($h4-size);
-}
-
-h5 {
-    @include font-size($h5-size);
-}
-
-h6 {
-    @include font-size($h6-size);
-} */
-
 
 
 /*
@@ -52,27 +30,6 @@ h6 {
 dl, ol, ul {
     margin-left: 2rem;
 }
-
-/* li {
-
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-} */
-
-/* dt {
-    font-weight: $font-weight--bold;
-} */
-
-
-
-/*
-* Quotations
-*/
-/* blockquote, q {
-    font-style: italic;
-} */
 
 
 
@@ -106,14 +63,6 @@ kbd,
 samp {
     font-family: $code-font-family;
 }
-
-/* pre {
-    overflow: auto;
-} */
-
-/* code {
-    white-space: nowrap;
-} */
 
 kbd {
     display: inline-block;
