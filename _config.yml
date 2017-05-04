@@ -27,9 +27,9 @@ sass:
 
 
 color:
-  text: ffe0e7
-  background: 28143d
-  ui: 8f2400
+  text: '333333'
+  background: 'efefef'
+  ui: '3756a4'
 
 author:
   mail: 'phrudloff@gmail.com'
