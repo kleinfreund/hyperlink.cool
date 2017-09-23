@@ -1,5 +1,3 @@
-full_rebuild: true
-
 title: hyperlink.cool
 url: https://hyperlink.cool
 description: 'hyperlink.cool is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.'
@@ -14,7 +12,7 @@ exclude:
   - 'node_modules'
   - '*.sublime-workspace'
 
-gems:
+plugins:
   - jekyll-sitemap
 
 kramdown:
