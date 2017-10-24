@@ -81,31 +81,6 @@
       }
     ]
   },
-  "ic": {
-    "key": "ic",
-    "title": "Information und Codierung",
-    "abbr": "IC",
-    "keywords": ["1. Semester", "IuC"],
-    "persons": ["Günther Schatter", "Lars Meyer"],
-    "links": [
-      {
-        "title": "Uni-Website",
-        "key": "ic",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/vernetzte-medien/personen/pd-dr-guenther-schatter/information-und-codierung/"
-      },
-      {
-        "title": "Interner Bereich",
-        "key": "ici",
-        "url": "https://www.uni-weimar.de/medien/schatter/doc/material/ic/ic-index.html"
-      },
-      {
-        "title": "Moodle",
-        "key": "icm",
-        "url": "https://moodle.uni-weimar.de/course/view.php?id=2658"
-      }
-    ]
-  },
   "ana": {
     "key": "ana",
     "title": "Analysis",
@@ -181,35 +156,6 @@
       }
     ]
   },
-  "fsub": {
-    "key": "fsub",
-    "title": "Formale Sprachen und Berechenbarkeit",
-    "abbr": "fsub",
-    "keywords": ["2. Semester", "Formal Languages"],
-    "persons": ["Andreas Jakoby"],
-    "links": [
-      {
-        "title": "Moodle",
-        "key": "fsub",
-        "url": "https://moodle.uni-weimar.de/course/view.php?id=2652"
-      }
-    ]
-  },
-  "st": {
-    "key": "st",
-    "title": "Stochastik",
-    "abbr": "ST",
-    "keywords": ["2. Semester"],
-    "persons": ["Rainer Illge"],
-    "links": [
-      {
-        "title": "Uni-Website",
-        "key": "st",
-        "url":
-          "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
-      }
-    ]
-  },
   "wakog": {
     "key": "wakog",
     "title": "Grundlagen von Wahrnehmung und Kognition",
@@ -221,6 +167,46 @@
         "title": "Uni-Website",
         "key": "wakog",
         "url": "https://moodle.uni-weimar.de/course/view.php?id=1977"
+      }
+    ]
+  },
+  "ic": {
+    "key": "ic",
+    "title": "Information und Codierung",
+    "abbr": "IC",
+    "keywords": ["3. Semester", "IuC"],
+    "persons": ["Andreas Jakoby", "Micheal Schwarzkopf"],
+    "links": [
+      {
+        "title": "Moodle",
+        "key": "ic",
+        "url": "https://moodle.uni-weimar.de/course/view.php?id=2658"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "ic",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36574&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+      }
+    ]
+  },
+  "fsub": {
+    "key": "fsub",
+    "title": "Formale Sprachen und Berechenbarkeit",
+    "abbr": "fsub",
+    "keywords": ["3. Semester", "Formal Languages"],
+    "persons": ["Andreas Jakoby"],
+    "links": [
+      {
+        "title": "Moodle",
+        "key": "fsub",
+        "url": "https://moodle.uni-weimar.de/course/view.php?id=2651"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "fsub",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36573&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
@@ -247,9 +233,22 @@
     "persons": ["Benno Stein", "Johannes Kiesel"],
     "links": [
       {
-        "title": "Uni-Website",
+        "title": "Uni-Website: Übungsblätter",
         "key": "db",
-        "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ws-201516/databases/"
+        "url":
+          "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/ws-201718/databases/"
+      },
+      {
+        "title": "Uni-Website: Vorlesungsfolien",
+        "key": "dbv",
+        "url":
+          "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/lecturenotes/#databases"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "dbb",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35883&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
@@ -258,12 +257,18 @@
     "title": "Human Computer Interaction",
     "abbr": "HCI",
     "keywords": ["3. Semester"],
-    "persons": ["Eva Hornecker", "Michaela Honauer"],
+    "persons": ["Eva Hornecker", "Michaela Honauer", "Patrick Tobias Fischer"],
     "links": [
       {
         "title": "Moodle",
         "key": "hci",
         "url": "https://moodle.uni-weimar.de/course/view.php?id=2906"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "hcib",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35435&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
@@ -275,15 +280,15 @@
     "persons": ["Klaus Gürlebeck", "Gudrun Schmidt"],
     "links": [
       {
-        "title": "Uni-Website",
+        "title": "Moodle",
         "key": "num",
-        "url":
-          "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/numerik-medieninformatik/"
+        "url": "https://moodle.uni-weimar.de/enrol/index.php?id=2669"
       },
       {
-        "title": "Moodle",
-        "key": "numm",
-        "url": "https://moodle.uni-weimar.de/course/view.php?id=2674"
+        "title": "Vorlesungsverzeichnis",
+        "key": "numb",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35864&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
@@ -298,7 +303,13 @@
         "title": "Uni-Website",
         "key": "pvs",
         "url":
-          "https://www.uni-weimar.de/de/medien/professuren/computer-vision/lehre/parallele-und-verteilte-systeme/"
+          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/computer-vision/lehre/parallele-und-verteilte-systeme/"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "pvsb",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35898&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
@@ -307,12 +318,34 @@
     "title": "Software Engineering",
     "abbr": "SE",
     "keywords": ["3. Semester"],
-    "persons": ["Norbert Siegmund"],
+    "persons": ["Norbert Siegmund", "Philipp Seltmann"],
     "links": [
       {
-        "title": "Moodle",
+        "title": "Uni-Website",
         "key": "se",
-        "url": "https://moodle.uni-weimar.de/course/view.php?id=1363"
+        "url":
+          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/"
+      },
+      {
+        "title": "Vorlesungsverzeichnis",
+        "key": "se",
+        "url":
+          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35836&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+      }
+    ]
+  },
+  "st": {
+    "key": "st",
+    "title": "Stochastik",
+    "abbr": "ST",
+    "keywords": ["4. Semester"],
+    "persons": ["Rainer Illge"],
+    "links": [
+      {
+        "title": "Uni-Website",
+        "key": "st",
+        "url":
+          "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
       }
     ]
   },
