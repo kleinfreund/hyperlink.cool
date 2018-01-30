@@ -71,6 +71,7 @@ function recordFilter() {
     }
 
     var filterInput = document.getElementById(inputName)
+    filterInput.focus()
     filterInput.placeholder = placeholderKeys[
         Math.floor(Math.random() * placeholderKeys.length)
     ]
