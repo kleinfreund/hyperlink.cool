@@ -104,25 +104,3 @@
         outline-color: $c-alt;
     }
 }
-
-/* .record__link--active:focus {
-    outline: 0;
-}
-
-@include media-query(desk) {
-    .record--active,
-    .record__link--active {
-
-        &:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 3;
-            width: 4px;
-            overflow: hidden;
-            background-color: $c-alt;
-        }
-    }
-} */

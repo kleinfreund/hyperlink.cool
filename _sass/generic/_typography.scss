@@ -80,40 +80,23 @@ kbd {
 * Forms
 */
 input {
-    color: $c-gray;
+    color: $c-text;
     font: $font-weight--regular #{($base-font-size/16px)*1em}/#{$line-height-ratio} $font-family;
     line-height: 1.5;
     text-decoration: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
 
     &:focus {
         outline: 0;
-        color: $c-text;
     }
 }
 
-
-
-/*
-* The following input rulesets for input’s placeholder color need to stay
- * separate or the complete ruleset would be ignored due to unknown selectors
- *
- * as per: http://stackoverflow.com/a/2610741/2036825
-*/
-// WebKit, Blink, Edge
-::-webkit-input-placeholder {
-    color: $c-gray;
-}
-
-// Mozilla Firefox 19+
-::-moz-placeholder {
+::-ms-placeholder {
    color: $c-gray;
    opacity: 1;
 }
 
-// Internet Explorer 10-11
-:-ms-input-placeholder {
-   color: $c-gray;
+::placeholder {
+    color: $c-gray;
 }
