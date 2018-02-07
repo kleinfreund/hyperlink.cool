@@ -1,0 +1,30 @@
+/*
+* Page
+*/
+.wrapper {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+@media only screen and (min-width: 1000px) {
+    .wrapper {
+        max-width: 1000px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.wrapper > :last-child {
+    margin-bottom: 0;
+}
+
+
+
+/*
+* Page Content
+*/
+.page-content {
+    margin-bottom: 6rem;
+}

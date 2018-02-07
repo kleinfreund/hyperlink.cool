@@ -1,5 +1,5 @@
 .site-foot {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    background-color: $c-background--dark;
+    background-color: var(--c-alt);
 }

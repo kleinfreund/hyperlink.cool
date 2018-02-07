@@ -1,0 +1,7 @@
+:root {
+  --c-text: #222;
+  --c-alt: #ededed;
+  --c-ui: hsl(227, 100%, 40%);
+  --c-ui-dark: hsl(227, 100%, 25%);
+  --c-focus: hsl(325, 100%, 38%);
+}

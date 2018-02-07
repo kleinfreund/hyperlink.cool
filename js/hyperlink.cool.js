@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const config = {
   selector: {
-    input: '.record-filter__input',
+    input: '.search__control',
     list: '.record-list',
     item: '.record',
     link: '.record__link',
@@ -89,6 +89,7 @@ class RecordNavigator {
   constructor() {
     this._recordList = document.querySelector(config.selector.list);
     this._searchInput = document.querySelector(config.selector.input);
+    this._searchInput.parentElement.removeAttribute('hidden');
     this.selectLink(this._recordList.querySelector(config.selector.link));
   }
 
@@ -250,7 +251,7 @@ function buildRecordString(value) {
       <div class="${itemClass}__title">${value.title}</div>`;
 
   if (value.links.length > 0) {
-    str += `<nav class="nav record-nav">`;
+    str += `<nav class="record__links">`;
     for (const link of value.links) {
       str += `
         <a class="${itemClass}__link" href="${link.url}">

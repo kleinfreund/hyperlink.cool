@@ -3,15 +3,14 @@
 ---
 @charset "utf-8";
 @import
-    "generic/vars",
-    "generic/defaults",
-    "generic/mixins",
-    "generic/base",
-    "generic/typography",
-    "objects/nav",
-    "objects/instruction-box",
-    "layout/page",
-    "layout/site-head",
-    "layout/site-foot",
-    "layout/record-filter"
+    "settings.colors.css",
+    "generic.reset.css",
+    "elements.base.css",
+    "components.page.css",
+    "components.record-filter.css",
+    "components.instruction-box.css",
+    "components.search.css",
+    "components.site-title.css",
+    "components.site-foot.css",
+    "trumps.visually-hidden.css"
 ;

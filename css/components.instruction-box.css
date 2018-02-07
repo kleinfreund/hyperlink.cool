@@ -1,0 +1,7 @@
+.js-disabled .instruction-box {
+    display: none !important;
+}
+
+.instruction-box {
+    padding: 0.5rem;
+}
