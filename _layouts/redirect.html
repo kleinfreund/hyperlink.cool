@@ -1,5 +1,4 @@
 ---
-layout: compress
 ---
 {% for record in site.data.records %}
     {% if page.key == record[0] %}
@@ -28,11 +27,10 @@ layout: compress
             margin: 100px auto;
             font-size: large;
             font-family: Consolas, monospace;
-            color: {{ site.color.text | prepend: '#' }};
-            background-color: {{ site.color.background | prepend: '#' }};
+            color: #222;
         }
         a {
-            color: {{ site.color.ui | prepend: '#' }};
+            color: hsl(227, 100%, 40%);
         }
         </style>
     </head>
@@ -40,7 +38,6 @@ layout: compress
         <h1>Redirecting to …</h1>
         <p><a href="{{ redirect_url }}">{{ redirect_url }}/</a></p>
         <p style="position: absolute; right: 100px; bottom: 50px;">ᕕ[ ᐛ ]ᕗ</p>
+        <script>location='{{ redirect_url }}';</script>
     </body>
-    <script>location='{{ redirect_url }}';</script>
 </html>
-

@@ -13,9 +13,9 @@
     "gulp-util": "~3.0.7"
   },
   "scripts": {
-    "test": "gulp"
+    "start": "gulp"
   },
   "author": "Philipp Rudloff",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": "https://github.com/kleinfreund/hyperlink.cool"
 }
