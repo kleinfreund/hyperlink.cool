@@ -1,7 +1,7 @@
 'use strict';
 
 const fuseOptions = {
-  keys: ['abbr', 'title', 'keywords', 'persons', 'links.title'],
+  keys: ['title', 'keywords', 'persons', 'links.title'],
   id: 'key'
 };
 
@@ -228,13 +228,13 @@ function initSearch(recordNavigator, data) {
  * Takes a string to search for in `listData` to create an array of related keys.
  * @return An array consisting of key strings which are related to `str`.
  */
-function filterRecordData(data, str) {
+function filterRecordData(data, searchString) {
   const dataValues = Object.values(data);
-  if (str.length === 0) {
+  if (searchString.length === 0) {
     return dataValues;
   }
   const fuse = new Fuse(dataValues, fuseOptions);
-  const filteredKeys = fuse.search(str);
+  const filteredKeys = fuse.search(searchString);
 
   let filteredData = [];
   filteredKeys.forEach(key => filteredData.push(data[key]));

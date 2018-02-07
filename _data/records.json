@@ -2,21 +2,26 @@
   "ds": {
     "key": "ds",
     "title": "Diskrete Strukturen",
-    "abbr": "DS",
-    "keywords": ["1. Semester"],
-    "persons": ["Andreas Jakoby", "Eik List", "Jannis Bossert", "Norina Marie Grosch"],
+    "keywords": [
+      "ds",
+      "1. Semester"
+    ],
+    "persons": [
+      "Andreas Jakoby",
+      "Eik List",
+      "Jannis Bossert",
+      "Norina Marie Grosch"
+    ],
     "links": [
       {
         "title": "Vorlesungsfolien",
         "key": "ds",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-vorlesung/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-vorlesung/"
       },
       {
         "title": "Übungsaufgaben",
         "key": "dsu",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-uebung/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-uebung/"
       },
       {
         "title": "Moodle",
@@ -28,9 +33,15 @@
   "eidi": {
     "key": "eidi",
     "title": "Einführung in die Informatik",
-    "abbr": "EidI",
-    "keywords": ["1. Semester", "EI"],
-    "persons": ["Matthias Hagen", "Andreas Jakoby"],
+    "keywords": [
+      "eidi",
+      "1. Semester",
+      "ei"
+    ],
+    "persons": [
+      "Matthias Hagen",
+      "Andreas Jakoby"
+    ],
     "links": [
       {
         "title": "Interner Bereich",
@@ -42,9 +53,13 @@
   "ep": {
     "key": "ep",
     "title": "Einführung in die Programmierung",
-    "abbr": "EidP",
-    "keywords": ["1. Semester"],
-    "persons": ["Norbert Siegmund"],
+    "keywords": [
+      "ep",
+      "1. Semester"
+    ],
+    "persons": [
+      "Norbert Siegmund"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -56,9 +71,15 @@
   "lina": {
     "key": "lina",
     "title": "Lineare Algebra",
-    "abbr": "LinA",
-    "keywords": ["1. Semester", "LA", "LinAlg"],
-    "persons": ["Klaus Gürlebeck", "Friederike Luther"],
+    "keywords": [
+      "lina",
+      "la",
+      "1. Semester"
+    ],
+    "persons": [
+      "Klaus Gürlebeck",
+      "Friederike Luther"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -70,9 +91,16 @@
   "mod": {
     "key": "mod",
     "title": "Modellierung",
-    "abbr": "Mod",
-    "keywords": ["1. Semester", "modelling"],
-    "persons": ["Eva Hornecker", "Patrick Tobias Fischer", "Christian Paffrath"],
+    "keywords": [
+      "modelling",
+      "mod",
+      "1. Semester"
+    ],
+    "persons": [
+      "Eva Hornecker",
+      "Patrick Tobias Fischer",
+      "Christian Paffrath"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -84,18 +112,22 @@
   "ana": {
     "key": "ana",
     "title": "Analysis",
-    "abbr": "ana",
-    "keywords": ["2. Semester"],
-    "persons": ["Klaus Gürlebeck", "Friederike Luther"],
+    "keywords": [
+      "ana",
+      "2. Semester"
+    ],
+    "persons": [
+      "Klaus Gürlebeck",
+      "Friederike Luther"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "ana",
-        "url":
-          "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
+        "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
       },
       {
-        "title": "Moodle-Kurs",
+        "title": "Moodle",
         "key": "anam",
         "url": "https://moodle.uni-weimar.de/course/view.php?id=2067"
       }
@@ -104,15 +136,20 @@
   "est": {
     "key": "est",
     "title": "Elektrotechnik und Systemtheorie",
-    "abbr": "EST",
-    "keywords": ["2. Semester", "ET"],
-    "persons": ["Günther Schatter", "Lars Meyer"],
+    "keywords": [
+      "est",
+      "et",
+      "2. Semester"
+    ],
+    "persons": [
+      "Günther Schatter",
+      "Lars Meyer"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "est",
-        "url":
-          "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/vernetzte-medien/personen/prof-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
       },
       {
         "title": "Interner Bereich",
@@ -124,30 +161,39 @@
   "mr": {
     "key": "mr",
     "title": "Medienrecht",
-    "abbr": "MR",
-    "keywords": ["2. Semester"],
-    "persons": ["Harald Vinke"],
+    "keywords": [
+      "mr",
+      "2. Semester"
+    ],
+    "persons": [
+      "Harald Vinke"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "mr",
-        "url":
-          "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/medienrecht/"
+        "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/medienrecht/"
       }
     ]
   },
   "prog": {
     "key": "prog",
     "title": "Programmiersprachen",
-    "abbr": "Prog",
-    "keywords": ["2. Semester", "Programming Languages"],
-    "persons": ["Bernd Bröhlich", "Andreas-Christoph Bernstein", "André Schollmeyer"],
+    "keywords": [
+      "programming languages",
+      "prog",
+      "2. Semester"
+    ],
+    "persons": [
+      "Bernd Bröhlich",
+      "Andreas-Christoph Bernstein",
+      "André Schollmeyer"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "prog",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/vorlesung-programmiersprachen/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/vorlesung-programmiersprachen/"
       },
       {
         "title": "Moodle",
@@ -159,9 +205,15 @@
   "wakog": {
     "key": "wakog",
     "title": "Grundlagen von Wahrnehmung und Kognition",
-    "abbr": "WaKog",
-    "keywords": ["2. Semester"],
-    "persons": ["Michael Minge", "Vanessa Jan", "Jakob Herpel"],
+    "keywords": [
+      "wakog",
+      "2. Semester"
+    ],
+    "persons": [
+      "Michael Minge",
+      "Vanessa Jan",
+      "Jakob Herpel"
+    ],
     "links": [
       {
         "title": "Uni-Website",
@@ -173,9 +225,15 @@
   "ic": {
     "key": "ic",
     "title": "Information und Codierung",
-    "abbr": "IC",
-    "keywords": ["3. Semester", "IuC"],
-    "persons": ["Andreas Jakoby", "Micheal Schwarzkopf"],
+    "keywords": [
+      "iuc",
+      "ic",
+      "3. Semester"
+    ],
+    "persons": [
+      "Andreas Jakoby",
+      "Micheal Schwarzkopf"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -185,17 +243,21 @@
       {
         "title": "Vorlesungsverzeichnis",
         "key": "ic",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36574&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36574&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "fsub": {
     "key": "fsub",
     "title": "Formale Sprachen und Berechenbarkeit",
-    "abbr": "fsub",
-    "keywords": ["3. Semester", "Formal Languages"],
-    "persons": ["Andreas Jakoby"],
+    "keywords": [
+      "fsub",
+      "formal languages",
+      "3. Semester"
+    ],
+    "persons": [
+      "Andreas Jakoby"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -205,59 +267,73 @@
       {
         "title": "Vorlesungsverzeichnis",
         "key": "fsub",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36573&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36573&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "ad": {
     "key": "ad",
     "title": "Algorithmen und Datenstrukturen",
-    "abbr": "AD",
-    "keywords": ["3. Semester", "ADS", "AlgoDat", "Algorithms and Data Structures"],
-    "persons": ["Charles Wüthrich", "Banafsheh Azari"],
+    "keywords": [
+      "algodat",
+      "ads",
+      "algorithms and data structures",
+      "3. Semester"
+    ],
+    "persons": [
+      "Charles Wüthrich",
+      "Banafsheh Azari"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "ad",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/grafische-datenverarbeitung/lehre/algorithmen-und-datenstrukturen/"
       }
     ]
   },
   "db": {
     "key": "db",
     "title": "Datenbanken",
-    "abbr": "DB",
-    "keywords": ["3. Semester", "databases"],
-    "persons": ["Benno Stein", "Johannes Kiesel"],
+    "keywords": [
+      "db",
+      "databases",
+      "3. Semester"
+    ],
+    "persons": [
+      "Benno Stein",
+      "Johannes Kiesel"
+    ],
     "links": [
       {
         "title": "Uni-Website: Übungsblätter",
         "key": "db",
-        "url":
-          "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/ws-201718/databases/"
+        "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/ws-201718/databases/"
       },
       {
         "title": "Uni-Website: Vorlesungsfolien",
         "key": "dbv",
-        "url":
-          "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/lecturenotes/#databases"
+        "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/lecturenotes/#databases"
       },
       {
         "title": "Vorlesungsverzeichnis",
         "key": "dbb",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35883&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35883&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "hci": {
     "key": "hci",
     "title": "Human Computer Interaction",
-    "abbr": "HCI",
-    "keywords": ["3. Semester"],
-    "persons": ["Eva Hornecker", "Michaela Honauer", "Patrick Tobias Fischer"],
+    "keywords": [
+      "hci",
+      "3. Semester"
+    ],
+    "persons": [
+      "Eva Hornecker",
+      "Michaela Honauer",
+      "Patrick Tobias Fischer"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -267,17 +343,22 @@
       {
         "title": "Vorlesungsverzeichnis",
         "key": "hcib",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35435&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35435&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "num": {
     "key": "num",
     "title": "Numerik",
-    "abbr": "Num",
-    "keywords": ["3. Semester"],
-    "persons": ["Klaus Gürlebeck", "Gudrun Schmidt"],
+    "keywords": [
+      "num",
+      "calculus",
+      "3. Semester"
+    ],
+    "persons": [
+      "Klaus Gürlebeck",
+      "Gudrun Schmidt"
+    ],
     "links": [
       {
         "title": "Moodle",
@@ -287,74 +368,92 @@
       {
         "title": "Vorlesungsverzeichnis",
         "key": "numb",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35864&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35864&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "pvs": {
     "key": "pvs",
     "title": "Parallele und verteilte Systeme",
-    "abbr": "PVS",
-    "keywords": ["3. Semester", "PuVS", "parallel and distributed systems"],
-    "persons": ["Volker Rodehorst", "Jens Kersten"],
+    "keywords": [
+      "pvs",
+      "puvs",
+      "parallel and distributed systems",
+      "3. Semester"
+    ],
+    "persons": [
+      "Volker Rodehorst",
+      "Jens Kersten"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "pvs",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/computer-vision/lehre/parallele-und-verteilte-systeme/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/computer-vision/lehre/parallele-und-verteilte-systeme/"
       },
       {
         "title": "Vorlesungsverzeichnis",
         "key": "pvsb",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35898&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35898&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "se": {
     "key": "se",
     "title": "Software Engineering",
-    "abbr": "SE",
-    "keywords": ["3. Semester"],
-    "persons": ["Norbert Siegmund", "Philipp Seltmann"],
+    "keywords": [
+      "se",
+      "softwareentwurf",
+      "3. Semester"
+    ],
+    "persons": [
+      "Norbert Siegmund",
+      "Philipp Seltmann"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "se",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/"
       },
       {
         "title": "Vorlesungsverzeichnis",
         "key": "se",
-        "url":
-          "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35836&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35836&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
       }
     ]
   },
   "st": {
     "key": "st",
     "title": "Stochastik",
-    "abbr": "ST",
-    "keywords": ["4. Semester"],
-    "persons": ["Rainer Illge"],
+    "keywords": [
+      "st",
+      "4. Semester"
+    ],
+    "persons": [
+      "Rainer Illge"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "st",
-        "url":
-          "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
+        "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
       }
     ]
   },
   "web": {
     "key": "web",
     "title": "Webtechnologie",
-    "abbr": "WEB",
-    "keywords": ["4. Semester"],
-    "persons": ["Benno Stein", "Johannes Kiesel", "Martin Potthast"],
+    "keywords": [
+      "web",
+      "wt",
+      "4. Semester"
+    ],
+    "persons": [
+      "Benno Stein",
+      "Johannes Kiesel",
+      "Martin Potthast"
+    ],
     "links": [
       {
         "title": "Uni-Website",
@@ -366,9 +465,16 @@
   "km": {
     "key": "km",
     "title": "Kryptographie und Mediensicherheit",
-    "abbr": "KM",
-    "keywords": ["4. Semester", "Kryptografie"],
-    "persons": ["Stefan Lucks", "Eik List", "Jakob Wenzel"],
+    "keywords": [
+      "km",
+      "kryptografie",
+      "4. Semester"
+    ],
+    "persons": [
+      "Stefan Lucks",
+      "Eik List",
+      "Jakob Wenzel"
+    ],
     "links": [
       {
         "title": "Uni-Website",
@@ -380,39 +486,54 @@
   "cg": {
     "key": "cg",
     "title": "Computer Graphics",
-    "abbr": "CG",
-    "keywords": ["5. Semester", "Computer Grafik"],
-    "persons": ["Charles A. Wüthrich", "Banafsheh Azari"],
+    "keywords": [
+      "cg",
+      "computergrafik",
+      "5. Semester"
+    ],
+    "persons": [
+      "Charles A. Wüthrich",
+      "Banafsheh Azari"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "cg",
-        "url":
-          "https://www.uni-weimar.de/en/media/chairs/computer-graphics/teaching/computer-graphics"
+        "url": "https://www.uni-weimar.de/en/media/chairs/computer-graphics/teaching/computer-graphics"
       }
     ]
   },
   "cv": {
     "key": "cv",
     "title": "Photogrammetric Computer Vision",
-    "abbr": "CV",
-    "keywords": ["5. Semester", "CompuVis"],
-    "persons": ["Volker Rodehorst", "Jens Kersten"],
+    "keywords": [
+      "cv",
+      "pcv",
+      "5. Semester"
+    ],
+    "persons": [
+      "Volker Rodehorst",
+      "Jens Kersten"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "cv",
-        "url":
-          "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/computer-vision/teaching/photogrammetric-computer-vision/"
+        "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/computer-vision/teaching/photogrammetric-computer-vision/"
       }
     ]
   },
   "at": {
     "key": "at",
     "title": "Audiotechnik",
-    "abbr": "AT",
-    "keywords": ["6. Semester"],
-    "persons": ["Günther Schatter", "Harms Achtergarde"],
+    "keywords": [
+      "at",
+      "6. Semester"
+    ],
+    "persons": [
+      "Günther Schatter",
+      "Harms Achtergarde"
+    ],
     "links": [
       {
         "title": "Uni-Website",
@@ -424,23 +545,29 @@
   "vis": {
     "key": "vis",
     "title": "Visualisierung",
-    "abbr": "Vis",
-    "keywords": ["6. Semester"],
-    "persons": ["Bernd Fröhlich", "Patrick Riehmann", "Carl-Feofan Matthes"],
+    "keywords": [
+      "vis",
+      "6. Semester"
+    ],
+    "persons": [
+      "Bernd Fröhlich",
+      "Patrick Riehmann",
+      "Carl-Feofan Matthes"
+    ],
     "links": [
       {
         "title": "Uni-Website",
         "key": "vis",
-        "url":
-          "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/course-visualization/"
+        "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/course-visualization/"
       }
     ]
   },
   "mail": {
     "key": "mail",
     "title": "Uni-Mail",
-    "abbr": "Mail",
-    "keywords": [],
+    "keywords": [
+      "mail"
+    ],
     "persons": [],
     "links": [
       {
@@ -453,8 +580,9 @@
   "bison": {
     "key": "bison",
     "title": "BISON",
-    "abbr": "BISON",
-    "keywords": [],
+    "keywords": [
+      "bison"
+    ],
     "persons": [],
     "links": [
       {
@@ -467,8 +595,10 @@
   "pinboard": {
     "key": "pinboard",
     "title": "Pinnwände",
-    "abbr": "Pin",
-    "keywords": ["Pinnwand", "Piazza"],
+    "keywords": [
+      "pinnwand",
+      "piazza"
+    ],
     "persons": [],
     "links": [
       {
@@ -486,23 +616,24 @@
   "mensa": {
     "key": "mensa",
     "title": "Mensa am Park – Speiseplan",
-    "abbr": "Mensa",
-    "keywords": [],
+    "keywords": [
+      "mensa"
+    ],
     "persons": [],
     "links": [
       {
         "title": "Mensa am Park",
         "key": "mensa",
-        "url":
-          "http://www.stw-thueringen.de/deutsch/mensen/einrichtungen/weimar/mensa-am-park.html#accordion1"
+        "url": "http://www.stw-thueringen.de/deutsch/mensen/einrichtungen/weimar/mensa-am-park.html#accordion1"
       }
     ]
   },
   "opac": {
     "key": "opac",
     "title": "Katalog der Universitätsbibliothek",
-    "abbr": "opac",
-    "keywords": ["opac"],
+    "keywords": [
+      "opac"
+    ],
     "persons": [],
     "links": [
       {
