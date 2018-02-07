@@ -1,5 +1,9 @@
 .site-foot {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background-color: var(--c-alt);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: var(--c-alt);
+}
+
+.site-foot p:last-child {
+  margin-bottom: 0;
 }

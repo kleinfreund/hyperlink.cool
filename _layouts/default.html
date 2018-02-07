@@ -3,42 +3,42 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>hyperlink.cool</title>
+  <title>hyperlink.cool</title>
 
-    <meta name="description" content="hyperlink.cool is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.">
+  <meta name="description" content="hyperlink.cool is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.">
 
-    <link rel="icon" href="/img/icon.png">
-    <link rel="icon" href="/img/icon.svg" sizes="any" type="image/svg+xml">
+  <link rel="icon" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.svg" sizes="any" type="image/svg+xml">
 
-    <link rel="stylesheet" href="/css/hyperlink.cool.css">
+  <link rel="stylesheet" href="/css/hyperlink.cool.css">
 
-    {% if jekyll.environment == 'development' %}
-        <script src="/js/fuse.js"></script>
-        <script src="/js/hyperlink.cool.js"></script>
-    {% else %}
-        <script src="/js/hyperlink.cool.min.js"></script>
-    {% endif %}
+  {% if jekyll.environment == 'development' %}
+    <script src="/js/fuse.js"></script>
+    <script src="/js/hyperlink.cool.js"></script>
+  {% else %}
+    <script src="/js/hyperlink.cool.min.js"></script>
+  {% endif %}
 </head>
 <body class="js-disabled">
 
-    <h1 class="site-title">
-        <a href="/" title="Zu hyperlink.cool!" rel="home">hyperlink.cool</a>
-    </h1>
+  <h1 class="site-title">
+    <a href="/" title="Zu hyperlink.cool!" rel="home">hyperlink.cool</a>
+  </h1>
 
-    <main class="page-content">
-        <div class="wrapper">
-            {{ content }}
-        </div>
-    </main>
+  <main class="page-content">
+    <div class="wrapper">
+      {{ content }}
+    </div>
+  </main>
 
-    <footer class="site-foot">
-        <div class="wrapper">
-            <p>Wenn dir ein Link oder Kurs fehlt, dann kannst du ihn selbst eintragen. Wie das geht, erfährst du auf <a href="https://github.com/kleinfreund/hyperlink.cool#contributing">dieser Seite</a>.</p>
-            <p>Die Website <a href="/" rel="home">hyperlink.cool</a> wurde von <a href="https://kleinfreund.de">Philipp Rudloff</a> mit <a href="https://jekyllrb.com/">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/hyperlink.cool">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse">Fuse</a> von Kirollos Risk.</p>
-        </div>
-    </footer>
+  <footer class="site-foot">
+    <div class="wrapper">
+      <p>Wenn dir ein Link oder Kurs fehlt, dann kannst du ihn selbst eintragen. Wie das geht, erfährst du auf <a href="https://github.com/kleinfreund/hyperlink.cool#contributing">dieser Seite</a>.</p>
+      <p>Die Website <a href="/" rel="home">hyperlink.cool</a> wurde von <a href="https://kleinfreund.de">Philipp Rudloff</a> mit <a href="https://jekyllrb.com/">Jekyll</a> erstellt. Der Code ist auf <a href="https://github.com/kleinfreund/hyperlink.cool">GitHub</a> unter einer <a href="https://opensource.org/licenses/MIT">MIT-Lizenz</a> veröffentlicht. Die Suche verwendet die Fuzzy Search-Implementierung <a href="https://github.com/krisk/Fuse">Fuse</a> von Kirollos Risk.</p>
+    </div>
+  </footer>
 </body>
 </html>

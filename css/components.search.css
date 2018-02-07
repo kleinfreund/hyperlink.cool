@@ -1,21 +1,21 @@
 .search {
-    display: block;
-    position: relative;
-    margin-bottom: 1.5rem;
+  display: block;
+  position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .search__label {
-    display: block;
-    padding: 0.5rem;
+  display: block;
+  padding: 0.75rem;
 }
 
 .search__control {
-    padding: 0.75rem;
-    font-size: 1.25rem;
+  padding: 0.75rem;
+  font-size: 1.25rem;
 }
 
 @media only screen and (min-width: 601px) {
-    .search__control {
-      padding: 0.75rem 1.5rem;
-    }
+  .search__control {
+    padding: 0.75rem 1.5rem;
+  }
 }

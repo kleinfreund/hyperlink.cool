@@ -1,11 +1,11 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 main {
-    display: block;
+  display: block;
 }
 
 /*
@@ -15,5 +15,5 @@ body,
 h1, h2, h3,
 ul,
 p {
-    margin: 0;
+  margin: 0;
 }

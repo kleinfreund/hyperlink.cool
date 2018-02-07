@@ -2,33 +2,50 @@
 layout: default
 ---
 <noscript>
-    <div class="note">
-        <h2>Oh, JavaScript ist deaktiviert!</h2>
-        <p>Was heißt das? Die Einträge unten werden nicht filterbar sein.</p>
-    </div>
+  <div class="note">
+    <h2>Oh, JavaScript ist deaktiviert!</h2>
+    <p>Was heißt das? Die Einträge unten werden nicht filterbar sein.</p>
+  </div>
 </noscript>
 
-<div class="instruction-box">
-    <p>
-        Navigation: <kbd>←<span class="vh">Left Arrow</span></kbd>, <kbd>↑<span class="vh">Up Arrow</span></kbd>, <kbd>→<span class="vh">Right Arrow</span></kbd>, <kbd>↓<span class="vh">Down Arrow</span></kbd>.
-    </p>
-</div>
-
 <div id="record-filter">
-    <label class="search" for="search" hidden>
-        <span class="search__label">Filter</span>
+  <label class="search" for="search" hidden>
+    <span class="search__label">Filter</span>
 
-        <input type="text" id="search" class="search__control" spellcheck="false" autofocus placeholder="web technology">
-    </label>
+    <input type="text" id="search" class="search__control" spellcheck="false" autofocus placeholder="web technology">
+  </label>
 
-    <ul id="record-list" class="record-list">
+  <div class="instruction-box">
+    <p>
+      Navigation:
+      <kbd>
+        <span aria-hidden="true">↑</span>
+        <span class="vh">Up Arrow</span>
+      </kbd>
+      <kbd>
+        <span aria-hidden="true">↓</span>
+        <span class="vh">Down Arrow</span>
+      </kbd>
+      <kbd>
+        <span aria-hidden="true">←</span>
+        <span class="vh">Left Arrow</span>
+      </kbd>
+      <kbd>
+        <span aria-hidden="true">→</span>
+        <span class="vh">Right Arrow</span>
+      </kbd>
+    </p>
+  </div>
+
+  <ul id="record-list" class="record-list">
     {% for record in site.data.records %}
-        <li class="record" data-key="{{ record[0] }}">
-            <div class="record__title">{{ record[1].title }}</div>
-            <nav class="record__links">
-            {% for link in record[1].links %}<a class="record__link" href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
-            </nav>
-        </li>
+    <li class="record" data-key="{{ record[0] }}">
+      <div class="record__title">{{ record[1].title }}</div>
+      <nav class="record__links">
+        {% for link in record[1].links %}
+        <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+      </nav>
+    </li>
     {% endfor %}
-    </ul>
+  </ul>
 </div>
