@@ -6,68 +6,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
+    <title>hyperlink.cool</title>
 
-    {% if site.description %}<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">{% endif %}
+    <meta name="description" content="hyperlink.cool is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.">
 
     <link rel="icon" href="/img/icon.png">
 
+    <link rel="stylesheet" href="/css/hyperlink.cool.css">
+
     {% if jekyll.environment == 'development' %}
-        <link rel="stylesheet" href="/css/hyperlink.cool.css">
         <script src="/js/fuse.js"></script>
         <script src="/js/hyperlink.cool.js"></script>
     {% else %}
-        <!-- Inline complete stylesheet for one less blocking request -->
-        <style>
-            {% capture scss_include %}
-                {% include hyperlink.cool.scss %}
-            {% endcapture %}
-
-            {{ scss_include | scssify }}
-        </style>
         <script src="/js/hyperlink.cool.min.js"></script>
     {% endif %}
 </head>
 <body class="js-disabled">
 
-    <h1 class="site-title"><a href="/" title="Zu hyperlink.cool!" rel="home">{{ site.title }}</a></h1>
+    <h1 class="site-title">
+        <a href="/" title="Zu hyperlink.cool!" rel="home">hyperlink.cool</a>
+    </h1>
 
     <main class="page-content">
         <div class="wrapper">
             {{ content }}
-
-            <noscript>
-                <div class="note">
-                    <h2>Oh, JavaScript ist deaktiviert!</h2>
-                    <p>Was heißt das? Die Einträge unten werden nicht filterbar sein.</p>
-                </div>
-            </noscript>
-
-            <div class="instruction-box">
-                <p>
-                    Navigation: <kbd>←<span class="vh">Left Arrow</span></kbd>, <kbd>↑<span class="vh">Up Arrow</span></kbd>, <kbd>→<span class="vh">Right Arrow</span></kbd>, <kbd>↓<span class="vh">Down Arrow</span></kbd>.
-                </p>
-            </div>
-
-            <div id="record-filter">
-                <label class="search" for="search" hidden>
-                    <span class="search__label">Filter</span>
-
-                    <input type="text" id="search" class="search__control" spellcheck="false" autofocus placeholder="web technology">
-                </label>
-
-                <ul id="record-list" class="record-list">
-                {% for record in site.data.records %}
-                    <li class="record" data-key="{{ record[0] }}">
-                        <div class="record__title">{{ record[1].title }}</div>
-                        <nav class="record__links">
-                        {% for link in record[1].links %}<a class="record__link" href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
-                        </nav>
-                    </li>
-                {% endfor %}
-                </ul>
-
-            </div>
         </div>
     </main>
 
