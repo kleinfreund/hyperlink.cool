@@ -9,27 +9,26 @@ If you want to add your own course, please go ahead and edit the [records.json](
 An example record looks something like this:
 
 ```json
-"eidi": {
-    "key": "eidi",
-    "title": "Einführung in die Informatik",
-    "abbr": "EidI",
-    "keywords": ["EI"],
-    "persons": ["Matthias Hagen"],
-    "links": [
-        {
-            "title": "Interner Bereich",
-            "url": "http://webuser.uni-weimar.de/~fuce7538/eidi/"
-        }
-    ]
+"web": {
+  "key": "web",
+  "title": "Webtechnologie",
+  "keywords": [
+    "web",
+    "wt",
+    "4. Semester"
+  ],
+  "persons": [
+    "Benno Stein",
+    "Johannes Kiesel"
+  ],
+  "links": [
+    {
+      "title": "Uni-Website",
+      "key": "web",
+      "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ss-2018/web-technology/"
+    }
+  ]
 }
 ```
 
 If you rather not edit the file yourself, you may as well [open a new issue](https://github.com/kleinfreund/hyperlink.cool/issues/new). Please remember to add all the necessary information about the course or whatever you want me to add.
-
-## To Do
-
-- Gulp tasks for …:
-  - Building the site with Jekyll (also handles Sass)
-  - previewing the site via a local server
-  - watching the directory for changes
-  - detecting dead links with something like HTMLProofer
