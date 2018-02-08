@@ -1,28 +1,23 @@
-var gulp = require('gulp');
-var babel = require('gulp-babel');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify-es').default;
 
-var paths = {
+const paths = {
     scripts: ['./js/*.js', '!./js/*.min.js']
 };
 
-gulp.task('js', function() {
+gulp.task('js', function () {
     return gulp.src([
-            './js/fuse.js',
-            './js/hyperlink.cool.js',
-            '!./js/hyperlink.cool.min.js'
-        ])
-        .pipe(babel({
-            presets: ['es2015']
-        }))
+        './js/fuse.js',
+        './js/hyperlink.cool.js',
+        '!./js/hyperlink.cool.min.js'
+    ])
         .pipe(concat('hyperlink.cool.min.js'))
-        .pipe(uglify().on('error', gutil.log))
+        .pipe(uglify())
         .pipe(gulp.dest('js'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch(['./js/**/*.js'], ['js']);
 });
 
