@@ -26,8 +26,7 @@ p {
 
 a {
   color: var(--c-ui);
-  background-color: transparent;
-  font-weight: bold;
+  border-bottom: 0.1em solid;
   text-decoration: none;
 }
 
