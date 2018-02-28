@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  fetch('_data/records.json')
+  fetch('/_data/records.json')
     .then(response => response.json())
-    .then(data => initSearch(recordNavigator, data))
+    .then(data => new RecordSearch(recordNavigator, data))
     .catch(error => {
       console.error(error);
       document.querySelector(config.selector.input).parentElement.remove();
@@ -178,67 +178,101 @@ class RecordNavigator {
       event.preventDefault();
     }
   }
+};
+
+class RecordSearch {
+  constructor(recordNavigator, recordsJson) {
+    this._recordNavigator = recordNavigator;
+    this._recordMarkup = prebuildRecordMarkup(recordsJson.entries);
+    this._records = recordsJson.entries;
+    this._recordList = document.querySelector(config.selector.list);
+    this._searchInput = document.querySelector(config.selector.input);
+    this.initSearchInput();
+  }
+
+  get recordNavigator() {
+    return this._recordNavigator;
+  }
+
+  get recordMarkup() {
+    return this._recordMarkup;
+  }
+
+  get records() {
+    return this._records;
+  }
+
+  get recordList() {
+    return this._recordList;
+  }
+
+  get searchInput() {
+    return this._searchInput;
+  }
+
+  initSearchInput() {
+    if (window.location.search.includes('search=')) {
+      const query = window.location.search.split('search=')[1].split('&')[0];
+      // ... put it in the search input
+      this.searchInput.value = decodeURIComponent(query);
+    }
+
+    if (this.searchInput.value.length > 0) {
+      this.buildRecordList();
+    }
+
+    this.searchInput.focus();
+
+    let timer;
+    // Watch the search field for input changes …
+    this.searchInput.addEventListener('input', () => {
+      // … and build a new record list according to the filter value
+      timer && clearTimeout(timer);
+      timer = setTimeout(() => {
+        this.buildRecordList();
+      }, 150);
+    }, false);
+  }
 
   /**
    * Build the record list containing elements belonging to keys in `relatedKeys`.
    */
-  buildRecordList(filteredData) {
-    let recordListStr = '';
-    filteredData.forEach(value => recordListStr += buildRecordString(value));
-    this.recordList.innerHTML = recordListStr;
+  buildRecordList() {
+    const filteredKeys = this.filterRecordData();
+    let recordListMarkup = '';
+
+    if (this.searchInput.value.length === 0) {
+      this.recordMarkup.forEach(markup => recordListMarkup += markup);
+    } else {
+      filteredKeys.forEach(key => recordListMarkup += this.recordMarkup.get(key));
+    }
+
+    this.recordList.innerHTML = recordListMarkup;
 
     if (this.recordList.hasChildNodes()) {
       // Set the first child element in the list to active state
-      this.selectLink(this.recordList.querySelector(config.selector.link));
+      this.recordNavigator.selectLink(this.recordList.querySelector(config.selector.link));
     }
+  }
+
+  /**
+   * Takes a string to search for in records to create an array of related keys.
+   * @return {Array} An array consisting of key strings which are related to `str`.
+   */
+  filterRecordData() {
+    const fuse = new Fuse(this.records, fuseOptions);
+    return fuse.search(this.searchInput.value);
   }
 };
 
-function initSearch(recordNavigator, data) {
-  const listData = data;
-  const searchInput = document.querySelector(config.selector.input);
+function prebuildRecordMarkup(records) {
+  const recordMarkup = new Map();
 
-  // If there is a search string in the URL ...
-  if (window.location.search.includes('search=')) {
-    const query = window.location.search.split('search=')[1].split('&')[0];
-    // ... put it in the search input
-    searchInput.value = decodeURIComponent(query);
+  for (const record of records) {
+    recordMarkup.set(record.key, buildRecordString(record));
   }
 
-  if (searchInput.value.length > 0) {
-    const filteredData = filterRecordData(listData, searchInput.value);
-    recordNavigator.buildRecordList(filteredData);
-  }
-
-  searchInput.focus();
-
-  let timer;
-  // Watch the search field for input changes …
-  searchInput.addEventListener('input', function () {
-    // … and build a new record list according to the filter value
-    timer && clearTimeout(timer);
-    timer = setTimeout(() => {
-      const filteredData = filterRecordData(listData, searchInput.value);
-      recordNavigator.buildRecordList(filteredData);
-    }, 150);
-  }, false);
-}
-
-/**
- * Takes a string to search for in `listData` to create an array of related keys.
- * @return An array consisting of key strings which are related to `str`.
- */
-function filterRecordData(data, searchString) {
-  const dataValues = Object.values(data);
-  if (searchString.length === 0) {
-    return dataValues;
-  }
-  const fuse = new Fuse(dataValues, fuseOptions);
-  const filteredKeys = fuse.search(searchString);
-
-  let filteredData = [];
-  filteredKeys.forEach(key => filteredData.push(data[key]));
-  return filteredData;
+  return recordMarkup;
 }
 
 /**
@@ -246,8 +280,7 @@ function filterRecordData(data, searchString) {
  */
 function buildRecordString(value) {
   const itemClass = config.selector.item.slice(1);
-  let str = `
-    <li class="${itemClass}" data-key="${value.key}">
+  let str = `<li class="${itemClass}" data-key="${value.key}">
       <div class="${itemClass}__title">${value.title}</div>`;
 
   if (value.links.length > 0) {

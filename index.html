@@ -38,12 +38,13 @@ layout: default
   </div>
 
   <ul id="record-list" class="record-list">
-    {% for record in site.data.records %}
-    <li class="record" data-key="{{ record[0] }}">
-      <div class="record__title">{{ record[1].title }}</div>
+    {% for record in site.data.records.entries %}
+    <li class="record" data-key="{{ record.key }}">
+      <div class="record__title">{{ record.title }}</div>
       <nav class="record__links">
-        {% for link in record[1].links %}
-        <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+        {% for link in record.links %}
+        <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
       </nav>
     </li>
     {% endfor %}

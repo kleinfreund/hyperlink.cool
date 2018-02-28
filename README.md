@@ -9,7 +9,7 @@ If you want to add your own course, please go ahead and edit the [records.json](
 An example record looks something like this:
 
 ```json
-"web": {
+{
   "key": "web",
   "title": "Webtechnologie",
   "keywords": [
@@ -19,7 +19,8 @@ An example record looks something like this:
   ],
   "persons": [
     "Benno Stein",
-    "Johannes Kiesel"
+    "Johannes Kiesel",
+    "Martin Potthast"
   ],
   "links": [
     {
