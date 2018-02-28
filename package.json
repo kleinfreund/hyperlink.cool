@@ -10,7 +10,8 @@
     "gulp-uglify-es": "^1.0.0"
   },
   "scripts": {
-    "start": "gulp"
+    "start": "jekyll s",
+    "build": "gulp js && JEKYLL_ENV=production jekyll b"
   },
   "author": "Philipp Rudloff",
   "license": "MIT",
