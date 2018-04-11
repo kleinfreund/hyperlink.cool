@@ -123,14 +123,9 @@
       ],
       "links": [
         {
-          "title": "Uni-Website",
-          "key": "ana",
-          "url": "https://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/analysis-medieninformatik/"
-        },
-        {
           "title": "Moodle",
-          "key": "anam",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2067"
+          "key": "ana",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=3677"
         }
       ]
     },
@@ -150,12 +145,12 @@
         {
           "title": "Uni-Website",
           "key": "est",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/vernetzte-medien/personen/prof-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/vernetzte-medien/personen/apl-prof-dr-guenther-schatter/elektrotechnik-und-systemtheorie/"
         },
         {
           "title": "Interner Bereich",
           "key": "esti",
-          "url": "http://www.uni-weimar.de/medien/schatter/doc/material/est/est-index.html"
+          "url": "https://www.uni-weimar.de/medien/schatter/doc/material/est/est-index.html"
         }
       ]
     },
@@ -194,12 +189,12 @@
         {
           "title": "Uni-Website",
           "key": "prog",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/vorlesung-programmiersprachen/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2018/vorlesung-programmiersprachen/"
         },
         {
           "title": "Moodle",
           "key": "progm",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2028"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=3501"
         }
       ]
     },
@@ -436,9 +431,9 @@
       ],
       "links": [
         {
-          "title": "Uni-Website",
+          "title": "Moodle",
           "key": "st",
-          "url": "http://www.uni-weimar.de/de/bauingenieurwesen/professuren/angewandte-mathematik/lehre/lehrmaterialien/stochastik-medieninformatik/"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=3432"
         }
       ]
     },
@@ -459,7 +454,7 @@
         {
           "title": "Uni-Website",
           "key": "web",
-          "url": "https://www.uni-weimar.de/en/media/chairs/webis/teaching/ss-2018/web-technology/"
+          "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/teaching/ss-2018/web-technology/"
         }
       ]
     },
@@ -480,7 +475,43 @@
         {
           "title": "Uni-Website",
           "key": "km",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2017/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/mediensicherheit/teaching/ss-2018/"
+        }
+      ]
+    },
+    {
+      "key": "kt",
+      "title": "Komplexitätstheorie",
+      "keywords": [
+        "kt",
+        "4. Semester"
+      ],
+      "persons": [
+        "Andreas Jakoby"
+      ],
+      "links": [
+        {
+          "title": "Moodle",
+          "key": "kt",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=3472"
+        }
+      ]
+    },
+    {
+      "key": "emw",
+      "title": "Einführung in die Medienwissenschaften",
+      "keywords": [
+        "emw",
+        "Medienwissenschaften"
+      ],
+      "persons": [
+        "Simon Frisch"
+      ],
+      "links": [
+        {
+          "title": "Moodle",
+          "key": "emw",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=3809"
         }
       ]
     },
@@ -559,7 +590,7 @@
         {
           "title": "Uni-Website",
           "key": "vis",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2017/course-visualization/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/vr/teaching/ss-2018/course-visualization/"
         }
       ]
     },
@@ -589,7 +620,7 @@
         {
           "title": "BISON",
           "key": "bison",
-          "url": "http://www.uni-weimar.de/qisserver"
+          "url": "https://www.uni-weimar.de/qisserver"
         }
       ]
     },
