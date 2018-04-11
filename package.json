@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "jekyll s",
-    "build": "gulp js && JEKYLL_ENV=production jekyll b"
+    "build": "gulp js && JEKYLL_ENV=production jekyll b",
+    "build:win": "gulp js && set JEKYLL_ENV=production && jekyll b"
   },
   "author": "Philipp Rudloff",
   "license": "MIT",
