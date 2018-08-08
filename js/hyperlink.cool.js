@@ -5,30 +5,6 @@ const fuseOptions = {
   id: 'key'
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  // If some content is hidden via CSS, the js-disabled HTML class is set on
-  // the body. Remove it, so potentially interactive elements become usable.
-  if (document.body.classList.contains('js-disabled')) {
-    document.body.classList.remove('js-disabled');
-  }
-
-  const recordNavigator = new RecordNavigator();
-  document.addEventListener('keydown', function (event) {
-    if (event.keyCode in controlKeyNames) {
-      const keyName = controlKeyNames[event.keyCode];
-      controlKey[keyName].trigger(recordNavigator, event);
-    }
-  });
-
-  fetch('/_data/records.json?cache-bust-2018-04-11-08-30')
-    .then(response => response.json())
-    .then(data => new RecordSearch(recordNavigator, data))
-    .catch(error => {
-      console.error(error);
-      document.querySelector(config.selector.input).parentElement.remove();
-    });
-});
-
 const config = {
   selector: {
     input: '.search__control',
@@ -39,8 +15,26 @@ const config = {
   }
 };
 
+function start() {
+  // If some content is hidden via CSS, the js-disabled HTML class is set on
+  // the body. Remove it, so potentially interactive elements become usable.
+  if (document.body.classList.contains('js-disabled')) {
+    document.body.classList.remove('js-disabled');
+  }
+
+  const recordNavigator = new RecordNavigator();
+  recordNavigator.start();
+
+  fetch('/_data/records.json?cache-bust-2018-04-11-08-30')
+    .then(response => response.json())
+    .then(data => new RecordSearch(recordNavigator, data))
+    .catch(error => {
+      console.error(error);
+      document.querySelector(config.selector.input).parentElement.remove();
+    });
+  }
+
 const controlKeyNames = {
-  // 9: 'tab',
   13: 'enter',
   37: 'arrowLeft',
   38: 'arrowUp',
@@ -48,49 +42,48 @@ const controlKeyNames = {
   40: 'arrowDown'
 };
 
-const controlKey = {
-  enter: {
-    trigger: function (recordNavigator, event) {
-      recordNavigator.handleEnter(event);
-    }
-  },
-  tab: {
-    trigger: function (recordNavigator, event) {
-      recordNavigator.navigateLink(event, event.shiftKey ? -1 : 1);
-    }
-  },
-  arrowLeft: {
-    direction: -1,
-    trigger: function (recordNavigator, event) {
-      recordNavigator.navigateLink(event, this.direction);
-    }
-  },
-  arrowRight: {
-    direction: 1,
-    trigger: function (recordNavigator, event) {
-      recordNavigator.navigateLink(event, this.direction);
-    }
-  },
-  arrowUp: {
-    direction: -1,
-    trigger: function (recordNavigator, event) {
-      recordNavigator.navigateRecord(event, this.direction);
-    }
-  },
-  arrowDown: {
-    direction: 1,
-    trigger: function (recordNavigator, event) {
-      recordNavigator.navigateRecord(event, this.direction);
-    }
-  }
-};
-
+/**
+ * Keyboard Navigation
+ *
+ * @property {HTMLUListElement} recordList
+ * @property {HTMLInputElement} searchInput
+ */
 class RecordNavigator {
   constructor() {
+    /** @type {HTMLUListElement} */
     this._recordList = document.querySelector(config.selector.list);
+    /** @type {HTMLInputElement} */
     this._searchInput = document.querySelector(config.selector.input);
     this._searchInput.parentElement.removeAttribute('hidden');
     this.selectLink(this._recordList.querySelector(config.selector.link));
+
+    this.controlKey = {
+  enter: {
+        trigger: event => {
+          this.handleEnter(event);
+    }
+  },
+  arrowLeft: {
+        trigger: event => {
+          this.navigateLink(event, -1);
+    }
+  },
+  arrowRight: {
+        trigger: event => {
+          this.navigateLink(event, 1);
+    }
+  },
+  arrowUp: {
+        trigger: event => {
+          this.navigateRecord(event, -1);
+    }
+  },
+  arrowDown: {
+        trigger: event => {
+          this.navigateRecord(event, 1);
+    }
+  }
+};
   }
 
   get recordList() {
@@ -101,19 +94,36 @@ class RecordNavigator {
     return this._searchInput;
   }
 
+  start() {
+    document.addEventListener('keydown', this.handleKeyboardInput.bind(this));
+  }
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  handleKeyboardInput(event) {
+    if (event.keyCode in controlKeyNames) {
+      const keyName = controlKeyNames[event.keyCode];
+      this.controlKey[keyName].trigger(event);
+    }
+  }
+
+  /**
+   * @returns {Boolean} whether the search input is currently focussed.
+   */
   searchInputInFocus() {
     return document.activeElement === this.searchInput;
   }
 
   /**
-   * @returns {Element}
+   * @returns {HTMLAnchorElement}
    */
   getSelectedLink() {
     return this.recordList.querySelector(config.selector.activeLink);
   }
 
   /**
-   * @param {Element} targetLink
+   * @param {HTMLAnchorElement} targetLink
    */
   selectLink(targetLink) {
     const activeLink = this.getSelectedLink();
@@ -124,11 +134,17 @@ class RecordNavigator {
     targetLink.classList.add(config.selector.activeLink.slice(1));
   }
 
+  /**
+   * @param {KeyboardEvent} event
+   * @param {Number} direction
+   */
   navigateRecord(event, direction) {
     event.preventDefault();
 
     if (this.searchInputInFocus()) {
+      /** @type {HTMLAnchorElement} */
       const targetLink = this.recordList.querySelector(config.selector.link);
+
       if (targetLink) {
         this.selectLink(targetLink);
         targetLink.focus();
@@ -142,7 +158,9 @@ class RecordNavigator {
     const targetRecord = records[currentIndex + direction];
 
     if (targetRecord) {
+      /** @type {HTMLAnchorElement} */
       const targetLink = targetRecord.querySelector(config.selector.link);
+
       if (targetLink) {
         this.selectLink(targetLink);
         targetLink.focus();
@@ -150,6 +168,10 @@ class RecordNavigator {
     }
   }
 
+  /**
+   * @param {KeyboardEvent} event
+   * @param {Number} direction
+   */
   navigateLink(event, direction) {
     if (this.searchInputInFocus()) {
       return;
@@ -157,9 +179,11 @@ class RecordNavigator {
 
     event.preventDefault();
 
-    const activeLink = this.getSelectedLink();
+    /** @type {Array<HTMLAnchorElement>} */
     const links = Array.from(this.recordList.querySelectorAll(config.selector.link));
+    const activeLink = this.getSelectedLink();
     const currentIndex = links.indexOf(activeLink);
+
     const targetLink = links[currentIndex + direction];
 
     if (targetLink) {
@@ -168,26 +192,44 @@ class RecordNavigator {
     }
   }
 
+  /**
+   * @param {KeyboardEvent} event
+   */
   handleEnter(event) {
-    if (this.searchInputInFocus()) {
+    if (!this.searchInputInFocus()) {
+      return;
+    }
+
+    event.preventDefault();
+
+    /** @type {HTMLAnchorElement} */
       const targetLink = this.recordList.querySelector(config.selector.link);
       if (targetLink) {
         this.selectLink(targetLink);
         targetLink.focus();
       }
-      event.preventDefault();
-    }
   }
 };
 
+/**
+ * @property {RecordNavigator} recordNavigator
+ * @property {Map<String, String>} recordMarkup
+ * @property {Array<HyperlinkRecord>} records
+ * @property {HTMLUListElement} recordList
+ * @property {HTMLInputElement} searchInput
+ */
 class RecordSearch {
+  /**
+   * @param {RecordNavigator} recordNavigator
+   * @param {*} recordsJson
+   */
   constructor(recordNavigator, recordsJson) {
     this._recordNavigator = recordNavigator;
     this._recordMarkup = prebuildRecordMarkup(recordsJson.entries);
     this._records = recordsJson.entries;
+    /** @type {HTMLUListElement} */
     this._recordList = document.querySelector(config.selector.list);
-    this._searchInput = document.querySelector(config.selector.input);
-    this.initSearchInput();
+    this._searchInput = this.initSearchInput();
   }
 
   get recordNavigator() {
@@ -210,28 +252,35 @@ class RecordSearch {
     return this._searchInput;
   }
 
+  /**
+   * @returns {HTMLInputElement}
+   */
   initSearchInput() {
+    /** @type {HTMLInputElement} */
+    const searchInput = document.querySelector(config.selector.input);
+
     if (window.location.search.includes('search=')) {
       const query = window.location.search.split('search=')[1].split('&')[0];
-      // ... put it in the search input
-      this.searchInput.value = decodeURIComponent(query);
+      searchInput.value = decodeURIComponent(query);
     }
 
-    if (this.searchInput.value.length > 0) {
+    if (searchInput.value.length > 0) {
       this.buildRecordList();
     }
 
-    this.searchInput.focus();
+    searchInput.focus();
 
     let timer;
     // Watch the search field for input changes …
-    this.searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input', () => {
       // … and build a new record list according to the filter value
       timer && clearTimeout(timer);
       timer = setTimeout(() => {
         this.buildRecordList();
       }, 150);
     }, false);
+
+    return searchInput;
   }
 
   /**
@@ -242,9 +291,13 @@ class RecordSearch {
     let recordListMarkup = '';
 
     if (this.searchInput.value.length === 0) {
-      this.recordMarkup.forEach(markup => recordListMarkup += markup);
+      this.recordMarkup.forEach(markup => {
+        recordListMarkup += markup;
+      });
     } else {
-      filteredKeys.forEach(key => recordListMarkup += this.recordMarkup.get(key));
+      filteredKeys.forEach(key => {
+        recordListMarkup += this.recordMarkup.get(key);
+      });
     }
 
     this.recordList.innerHTML = recordListMarkup;
@@ -257,7 +310,7 @@ class RecordSearch {
 
   /**
    * Takes a string to search for in records to create an array of related keys.
-   * @return {Array} An array consisting of key strings which are related to `str`.
+   * @returns {Array<String>} An array consisting of key strings which are related to `str`.
    */
   filterRecordData() {
     const fuse = new Fuse(this.records, fuseOptions);
@@ -265,6 +318,10 @@ class RecordSearch {
   }
 };
 
+/**
+ * @param {Array<HyperlinkRecord>} records
+ * @returns {Map<String, String>}
+ */
 function prebuildRecordMarkup(records) {
   const recordMarkup = new Map();
 
@@ -276,26 +333,43 @@ function prebuildRecordMarkup(records) {
 }
 
 /**
- * @return {String} a string that contains the HTML markup for a record
+ * @param {HyperlinkRecord} record
+ * @returns {String} a string that contains the HTML markup for a record
  */
-function buildRecordString(value) {
+function buildRecordString(record) {
   const itemClass = config.selector.item.slice(1);
-  let str = `<li class="${itemClass}" data-key="${value.key}">
-      <div class="${itemClass}__title">${value.title}</div>`;
+  let recordString = `<li class="${itemClass}" data-key="${record.key}">
+    <div class="${itemClass}__title">${record.title}</div>`;
 
-  if (value.links.length > 0) {
-    str += `<nav class="record__links">`;
-    for (const link of value.links) {
-      str += `
-        <a class="${itemClass}__link" href="${link.url}">
-          ${link.title}
-        </a>
-      `;
+  if (record.links.length > 0) {
+    recordString += '<nav class="record__links">';
+    for (const recordLink of record.links) {
+      recordString += `<a class="${itemClass}__link" href="${recordLink.url}">
+        ${recordLink.title}
+      </a>`;
     }
-    str += `</nav>`;
+    recordString += '</nav>';
   }
 
-  str += `</li>`;
+  recordString += '</li>';
 
-  return str;
+  return recordString;
 }
+
+document.addEventListener('DOMContentLoaded', start);
+
+/**
+ * Type definitions
+ *
+ * @typedef HyperlinkRecord
+ * @property {String} key
+ * @property {String} title
+ * @property {Array<String>} keywords
+ * @property {Array<String>} persons
+ * @property {Array<HyperlinkLink>} links
+ *
+ * @typedef HyperlinkLink
+ * @property {String} title
+ * @property {String} key
+ * @property {String} url
+ */
