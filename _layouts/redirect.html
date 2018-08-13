@@ -1,13 +1,13 @@
 ---
 ---
-{% for record in site.data.records %}
-  {% if page.key == record[0] %}
+{% for record in site.data.records.entries %}
+  {% if page.key == record.key %}
     {% if page.index %}
       {% assign link_index = page.index %}
     {% else %}
       {% assign link_index = 0 %}
     {% endif %}
-    {% for link in record[1].links %}
+    {% for link in record.links %}
       {% if forloop.index0 == link_index %}
         {% assign redirect_url = link.url %}
       {% endif %}
