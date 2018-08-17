@@ -27,7 +27,9 @@ function start() {
 
   fetch('/_data/records.json?cache-bust-2018-04-11-08-30')
     .then(response => response.json())
-    .then(data => new RecordSearch(recordNavigator, data))
+    .then(data => {
+      new RecordSearch(recordNavigator, data);
+    })
     .catch(error => {
       console.error(error);
       document.querySelector(config.selector.input).parentElement.remove();
@@ -254,6 +256,7 @@ class RecordSearch {
 
   /**
    * @returns {HTMLInputElement}
+   * @private
    */
   initSearchInput() {
     /** @type {HTMLInputElement} */
@@ -285,6 +288,8 @@ class RecordSearch {
 
   /**
    * Build the record list containing elements belonging to keys in `relatedKeys`.
+   *
+   * @private
    */
   buildRecordList() {
     const filteredKeys = this.filterRecordData();
@@ -310,7 +315,9 @@ class RecordSearch {
 
   /**
    * Takes a string to search for in records to create an array of related keys.
+   *
    * @returns {Array<String>} An array consisting of key strings which are related to `str`.
+   * @private
    */
   filterRecordData() {
     const fuse = new Fuse(this.records, fuseOptions);
