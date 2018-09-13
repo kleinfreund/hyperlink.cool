@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: layouts/base.liquid
 ---
 <noscript>
   <div class="note">
-    <h2>Oh, JavaScript ist deaktiviert!</h2>
-    <p>Was heißt das? Die Einträge unten werden nicht filterbar sein.</p>
+    <h2>JavaScript ist deaktiviert</h2>
+    <p><b>Hinweis</b>: Die Einträge unten lassen sich mit aktiviertem JavaScript filtern.</p>
   </div>
 </noscript>
 
@@ -17,36 +17,20 @@ layout: default
 
   <div class="instruction-box">
     <p>
-      Navigation:
-      <kbd>
-        <span aria-hidden="true">↑</span>
-        <span class="vh">Up Arrow</span>
-      </kbd>
-      <kbd>
-        <span aria-hidden="true">↓</span>
-        <span class="vh">Down Arrow</span>
-      </kbd>
-      <kbd>
-        <span aria-hidden="true">←</span>
-        <span class="vh">Left Arrow</span>
-      </kbd>
-      <kbd>
-        <span aria-hidden="true">→</span>
-        <span class="vh">Right Arrow</span>
-      </kbd>
+      Navigation: <kbd>↑</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>, <kbd>→</kbd>
     </p>
   </div>
 
   <ul id="record-list" class="record-list">
-    {% for record in site.data.records.entries %}
-    <li class="record" data-key="{{ record.key }}">
-      <div class="record__title">{{ record.title }}</div>
-      <nav class="record__links">
-        {% for link in record.links %}
-        <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>
-        {% endfor %}
-      </nav>
-    </li>
+    {% for record in records.entries %}
+      <li class="record" data-key="{{ record.key }}">
+        <div class="record__title">{{ record.title }}</div>
+        <nav class="record__links">
+          {% for link in record.links %}
+            <a class="record__link" href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </nav>
+      </li>
     {% endfor %}
   </ul>
 </div>

@@ -1,6 +1,0 @@
-include:
-  - '.htaccess'
-  - '_data'
-
-exclude:
-  - 'node_modules'

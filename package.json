@@ -1,19 +1,17 @@
 {
   "name": "hyperlink.cool",
-  "version": "1.2.0",
-  "description": "Link Collection",
-  "main": "gulpfile.js",
+  "repository": "https://github.com/kleinfreund/hyperlink.cool",
+  "version": "1.3.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "ELEVENTY_ENV=development eleventy --serve",
+    "build": "npm run clean && gulp js && ELEVENTY_ENV=production eleventy",
+    "clean": "rm -rf ./_site"
+  },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-uglify-es": "^1.0.4"
-  },
-  "scripts": {
-    "start": "jekyll s",
-    "build": "gulp js && JEKYLL_ENV=production jekyll b",
-    "build:win": "gulp js && set JEKYLL_ENV=production && jekyll b"
-  },
-  "author": "Philipp Rudloff",
-  "license": "MIT",
-  "repository": "https://github.com/kleinfreund/hyperlink.cool"
+    "gulp-uglify-es": "^1.0.4",
+    "html-minifier": "^3.5.20"
+  }
 }
