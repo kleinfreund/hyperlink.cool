@@ -34,7 +34,7 @@ function start() {
       console.error(error);
       document.querySelector(config.selector.input).parentElement.remove();
     });
-  }
+}
 
 const controlKeyNames = {
   13: 'enter',
@@ -60,32 +60,32 @@ class RecordNavigator {
     this.selectLink(this._recordList.querySelector(config.selector.link));
 
     this.controlKey = {
-  enter: {
+      enter: {
         trigger: event => {
           this.handleEnter(event);
-    }
-  },
-  arrowLeft: {
+        }
+      },
+      arrowLeft: {
         trigger: event => {
           this.navigateLink(event, -1);
-    }
-  },
-  arrowRight: {
+        }
+      },
+      arrowRight: {
         trigger: event => {
           this.navigateLink(event, 1);
-    }
-  },
-  arrowUp: {
+        }
+      },
+      arrowUp: {
         trigger: event => {
           this.navigateRecord(event, -1);
-    }
-  },
-  arrowDown: {
+        }
+      },
+      arrowDown: {
         trigger: event => {
           this.navigateRecord(event, 1);
-    }
-  }
-};
+        }
+      }
+    };
   }
 
   get recordList() {
@@ -205,11 +205,11 @@ class RecordNavigator {
     event.preventDefault();
 
     /** @type {HTMLAnchorElement} */
-      const targetLink = this.recordList.querySelector(config.selector.link);
-      if (targetLink) {
-        this.selectLink(targetLink);
-        targetLink.focus();
-      }
+    const targetLink = this.recordList.querySelector(config.selector.link);
+    if (targetLink) {
+      this.selectLink(targetLink);
+      targetLink.focus();
+    }
   }
 };
 
