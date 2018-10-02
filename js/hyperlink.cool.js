@@ -25,7 +25,7 @@ function start() {
   const recordNavigator = new RecordNavigator();
   recordNavigator.start();
 
-  fetch('/_data/records.json?cache-bust-2018-04-11-08-30')
+  fetch('/_data/records.json?cache-bust-2018-10-02')
     .then(response => response.json())
     .then(data => {
       new RecordSearch(recordNavigator, data);

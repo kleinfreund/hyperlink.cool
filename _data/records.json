@@ -8,26 +8,19 @@
         "1. Semester"
       ],
       "persons": [
-        "Andreas Jakoby",
-        "Eik List",
-        "Jannis Bossert",
-        "Norina Marie Grosch"
+        "Stefan Luchs",
+        "Nathalie Dittrich"
       ],
       "links": [
         {
           "title": "Vorlesungsfolien",
           "key": "ds",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-vorlesung/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2018/"
         },
         {
-          "title": "Übungsaufgaben",
-          "key": "dsu",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2017/diskrete-strukturen-uebung/"
-        },
-        {
-          "title": "Moodle",
-          "key": "dsm",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2659"
+          "title": "Vorlesungsverzeichnis",
+          "key": "dsvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39029&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -63,9 +56,14 @@
       ],
       "links": [
         {
-          "title": "Moodle",
+          "title": "Uni-Website",
           "key": "ep",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=1364"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/#jfmulticontent_c220336-1"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "epvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=38957&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -84,8 +82,13 @@
       "links": [
         {
           "title": "Moodle",
-          "key": "linam",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2680"
+          "key": "lina",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4450"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "linavz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39064&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -106,7 +109,37 @@
         {
           "title": "Moodle",
           "key": "mod",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2901"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4414"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "modvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39001&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+        }
+      ]
+    },
+    {
+      "key": "gdi",
+      "title": "Grundlagen der Informatik",
+      "keywords": [
+        "basics of computer science",
+        "gdi",
+        "1. Semester"
+      ],
+      "persons": [
+        "Andreas Jakoby",
+        "Günther Schatter"
+      ],
+      "links": [
+        {
+          "title": "Moodle",
+          "key": "gdi",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4440"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "gdivz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=40011&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -169,6 +202,11 @@
           "title": "Uni-Website",
           "key": "mr",
           "url": "http://www.uni-weimar.de/de/medien/professuren/vernetzte-medien/personen/pd-dr-guenther-schatter/medienrecht/"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "mrvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39173&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -227,27 +265,26 @@
         "3. Semester"
       ],
       "persons": [
-        "Andreas Jakoby",
-        "Micheal Schwarzkopf"
+        "Andreas Jakoby"
       ],
       "links": [
         {
           "title": "Moodle",
           "key": "ic",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2658"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4438"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "ic",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36574&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=40010&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
     {
-      "key": "fsub",
-      "title": "Formale Sprachen und Berechenbarkeit",
+      "key": "fs",
+      "title": "Formale Sprachen",
       "keywords": [
-        "fsub",
+        "fs",
         "formal languages",
         "3. Semester"
       ],
@@ -257,13 +294,13 @@
       "links": [
         {
           "title": "Moodle",
-          "key": "fsub",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2651"
+          "key": "fs",
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4444"
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "fsub",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=36573&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "fsvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39164&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -307,14 +344,14 @@
           "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/ws-201718/databases/"
         },
         {
-          "title": "Uni-Website: Vorlesungsfolien",
+          "title": "Vorlesungsfolien",
           "key": "dbv",
-          "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/webis/teaching/lecturenotes/#databases"
+          "url": "https://webis.de/lecturenotes/slides.html#databases"
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "dbb",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35883&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "dbvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39024&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -334,12 +371,12 @@
         {
           "title": "Moodle",
           "key": "hci",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=2906"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4418"
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "hcib",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35435&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "hcivz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=38932&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -359,12 +396,12 @@
         {
           "title": "Moodle",
           "key": "num",
-          "url": "https://moodle.uni-weimar.de/enrol/index.php?id=2669"
+          "url": "https://moodle.uni-weimar.de/course/view.php?id=4472"
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "numb",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35864&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "numvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39025&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -389,8 +426,8 @@
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "pvsb",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35898&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "pvsvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39063&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -410,12 +447,12 @@
         {
           "title": "Uni-Website",
           "key": "se",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/#jfmulticontent_c220336-2"
         },
         {
           "title": "Vorlesungsverzeichnis",
-          "key": "se",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=35836&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "key": "sevz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=38997&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -447,14 +484,13 @@
       ],
       "persons": [
         "Benno Stein",
-        "Johannes Kiesel",
-        "Martin Potthast"
+        "Johannes Kiesel"
       ],
       "links": [
         {
           "title": "Uni-Website",
           "key": "web",
-          "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-department/webis/teaching/ss-2018/web-technology/"
+          "url": "https://webis.de/lecturenotes/slides.html#web-technology"
         }
       ]
     },
@@ -532,6 +568,11 @@
           "title": "Uni-Website",
           "key": "cg",
           "url": "https://www.uni-weimar.de/en/media/chairs/computer-graphics/teaching/computer-graphics"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "cgvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39078&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -552,6 +593,11 @@
           "title": "Uni-Website",
           "key": "cv",
           "url": "https://www.uni-weimar.de/en/media/chairs/computer-science-and-media/computer-vision/teaching/photogrammetric-computer-vision/"
+        },
+        {
+          "title": "Vorlesungsverzeichnis",
+          "key": "cvvz",
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=38998&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
