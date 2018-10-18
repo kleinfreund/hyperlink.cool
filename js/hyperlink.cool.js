@@ -25,7 +25,7 @@ function start() {
   const recordNavigator = new RecordNavigator();
   recordNavigator.start();
 
-  fetch('/_data/records.json?cache-bust-2018-10-02')
+  fetch('/_data/records.json?cache-bust-2018-10-18')
     .then(response => response.json())
     .then(data => {
       new RecordSearch(recordNavigator, data);
@@ -364,6 +364,8 @@ function buildRecordString(record) {
 }
 
 document.addEventListener('DOMContentLoaded', start);
+
+// start();
 
 /**
  * Type definitions
