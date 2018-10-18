@@ -5,13 +5,17 @@
   "license": "MIT",
   "scripts": {
     "start": "ELEVENTY_ENV=development eleventy --serve",
-    "build": "npm run clean && gulp js && ELEVENTY_ENV=production eleventy",
-    "clean": "rm -rf ./_site"
+    "build": "npm run clean && gulp js && npm run build:eleventy",
+    "build:eleventy": "ELEVENTY_ENV=production eleventy",
+    "build:parcel": "parcel build _site/index.html --no-source-maps --out-dir _site",
+    "b": "npm run clean && npm run build:eleventy && npm run build:parcel",
+    "clean": "rm -rf _site"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-uglify-es": "^1.0.4",
-    "html-minifier": "^3.5.20"
+    "html-minifier": "^3.5.20",
+    "parcel-bundler": "^1.10.3"
   }
 }
