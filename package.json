@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ELEVENTY_ENV=development eleventy --serve",
-    "build": "npm run clean && gulp scripts && ELEVENTY_ENV=production eleventy",
-    "clean": "rm -rf _site"
+    "build": "rm -rf _site && gulp scripts && ELEVENTY_ENV=production eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.8.3",
