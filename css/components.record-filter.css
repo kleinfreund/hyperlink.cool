@@ -28,7 +28,6 @@
 }
 
 .record__links > a {
-  display: inline-block;
   padding: 0.25em 0.75em;
   border-bottom: 0;
   border-radius: 0.5em;
@@ -40,6 +39,11 @@
 .record__links > a:active {
   color: #fff;
   background-color: var(--c-ui-dark);
+}
+
+.record__links > a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--c-focus);
 }
 
 @media only screen and (max-width: 600px) {
