@@ -9,11 +9,11 @@
     "clean": "rm -rf _site"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
-    "gulp": "^4.0.0",
+    "@11ty/eleventy": "^0.8.3",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-uglify-es": "^1.0.4",
-    "html-minifier": "^3.5.21",
-    "parcel-bundler": "^1.11.0"
+    "html-minifier": "^4.0.0",
+    "parcel-bundler": "^1.12.3"
   }
 }
