@@ -15,32 +15,12 @@
         {
           "title": "Vorlesungsfolien",
           "key": "ds",
-          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2018/"
+          "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/mediensicherheit/teaching/ws-2019/diskrete-strukturen-vorlesung/"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "dsvz",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39029&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
-        }
-      ]
-    },
-    {
-      "key": "eidi",
-      "title": "Einführung in die Informatik",
-      "keywords": [
-        "eidi",
-        "1. Semester",
-        "ei"
-      ],
-      "persons": [
-        "Matthias Hagen",
-        "Andreas Jakoby"
-      ],
-      "links": [
-        {
-          "title": "Interner Bereich",
-          "key": "eidi",
-          "url": "https://webuser.uni-weimar.de/~fuce7538/eidi/"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=42749&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -56,14 +36,14 @@
       ],
       "links": [
         {
-          "title": "Uni-Website",
+          "title": "Vorlesungsfolien",
           "key": "ep",
           "url": "https://www.uni-weimar.de/de/medien/professuren/medieninformatik/intelligente-softwaresysteme/lehre/#jfmulticontent_c220336-1"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "epvz",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=38957&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=42682&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -83,12 +63,12 @@
         {
           "title": "Moodle",
           "key": "lina",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=4450"
+          "url": "https://moodle.uni-weimar.de/enrol/index.php?id=10785"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "linavz",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39064&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=42790&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -109,12 +89,12 @@
         {
           "title": "Moodle",
           "key": "mod",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=4414"
+          "url": "https://moodle.uni-weimar.de/enrol/index.php?id=15711"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "modvz",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=39001&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=42719&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
@@ -134,12 +114,12 @@
         {
           "title": "Moodle",
           "key": "gdi",
-          "url": "https://moodle.uni-weimar.de/course/view.php?id=4440"
+          "url": "https://moodle.uni-weimar.de/enrol/index.php?id=15235"
         },
         {
           "title": "Vorlesungsverzeichnis",
           "key": "gdivz",
-          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=40011&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
+          "url": "https://www.uni-weimar.de/qisserver/rds?state=verpublish&status=init&vmfile=no&publishid=42927&moduleCall=webInfo&publishConfFile=webInfo&publishSubDir=veranstaltung"
         }
       ]
     },
