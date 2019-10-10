@@ -2,6 +2,26 @@
 
 [hyperlink.cool](https://hyperlink.cool) is a searchable link collection for my fellow Computer Science and Media students at Bauhaus-Univerität Weimar.
 
+## Developing
+
+Install the project’s dependencies:
+
+```
+npm install
+```
+
+Start a local development server:
+
+```
+npm start
+```
+
+Build the project and upload the contents of the `_site` directory:
+
+```
+npm run build
+```
+
 ## Contributing
 
 If you want to add your own course, please go ahead and edit the [records.json](https://github.com/kleinfreund/hyperlink.cool/blob/gh-pages/_data/records.json) file and file a pull request.
